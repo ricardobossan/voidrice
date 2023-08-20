@@ -6,56 +6,114 @@
 # Use $XINITRC variable if file exists.
 [ -f "$XINITRC" ] && alias startx="startx $XINITRC"
 
-[ -f "$MBSYNCRC" ] && alias mbsync="mbsync -c $MBSYNCRC"
-
 # sudo not required for some system commands
-for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
-	alias $command="sudo $command"
-done; unset command
-
-se() {
-	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
-	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
-	;}
+for command in mount umount sv pacman updatedb su shutdown poweroff reboot; do
+  alias $command="sudo $command"
+done
+unset command
 
 # Verbosity and settings that you pretty much just always are going to want.
 alias \
-	cp="cp -iv" \
-	mv="mv -iv" \
-	rm="rm -vI" \
-	bc="bc -ql" \
-	rsync="rsync -vrPlu" \
-	mkd="mkdir -pv" \
-	yt="yt-dlp --embed-metadata -i" \
-	yta="yt -x -f bestaudio/best" \
-	ytt="yt --skip-download --write-thumbnail" \
-	ffmpeg="ffmpeg -hide_banner"
+  cp="cp -iv" \
+  mv="mv -iv" \
+  rm="rm -vI" \
+  bc="bc -ql" \
+  mkd="mkdir -pv" \
+  yt="yt-dlp --embed-metadata -i" \
+  yta="yt -x -f bestaudio/best" \
+  ffmpeg="ffmpeg -hide_banner" \
+  xclip="xclip -se c" \
+  setkey="setxkbmap -layout br"
 
 # Colorize commands when possible.
 alias \
-	ls="ls -hN --color=auto --group-directories-first" \
-	grep="grep --color=auto" \
-	diff="diff --color=auto" \
-	ccat="highlight --out-format=ansi" \
-	ip="ip -color=auto"
+  ls="ls -hN --color=auto --group-directories-first" \
+  grep="grep --color=auto" \
+  diff="diff --color=auto" \
+  ccat="highlight --out-format=ansi" \
+  ip="ip -color=auto"
 
 # These common commands are just too long! Abbreviate them.
 alias \
-	ka="killall" \
-	g="git" \
-	trem="transmission-remote" \
-	YT="youtube-viewer" \
-	sdn="shutdown -h now" \
-	e="$EDITOR" \
-	v="$EDITOR" \
-	p="pacman" \
-	xi="sudo xbps-install" \
-	xr="sudo xbps-remove -R" \
-	xq="xbps-query" \
-	z="zathura"
+  ka="killall" \
+  g="git" \
+  trem="transmission-remote" \
+  YT="youtube-viewer" \
+  sdn="shutdown -h now" \
+  e="$EDITOR" \
+  v="$EDITOR" \
+  p="pacman" \
+  xi="sudo xbps-install" \
+  xr="sudo xbps-remove -R" \
+  xq="xbps-query" \
+  z="zathura"
 
 alias \
-	lf="lfub" \
-	magit="nvim -c MagitOnly" \
-	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
-	weath="less -S ${XDG_CACHE_HOME:-$HOME/.cache}/weatherreport" \
+  lf="lfub" \
+  magit="nvim -c MagitOnly" \
+  ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc" \
+  weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
+
+# User created {{{
+## GERAL {{{
+#wall="SETWALLPAPER=$HOME/.local/bin/styli.sh && ([ -f $SETWALLPAPER ] && $SETWALLPAPER) || setbg"
+alias \
+  abre="pomo s -t \"#ritual_abertura\" -p 1 \"Ritual de abertura\"" \
+  agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
+  auvo="cd $HOME/HISTORICO/ATIVO/PROJETOS/AUVO/historico/entregas/ && $EDITOR workflow.md" \
+  cls="clear && ls -At1hN --color=auto --group-directories-first" \
+  docs="cd $HOME/Docs/ && $EDITOR ." \
+  exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
+  clexa="clear && exa" \
+  fecha="pomo s -t \"#ritual_fechamento\" -p 1 \"Ritual de fechamento\"" \
+  hj="cd $HOME/HISTORICO/ATIVO/`date '+%Y'`/`date '+%m'` && $HOME/.local/bin/hj.lua" \
+  kamed="libreoffice $HOME/Ricanda/KAMAL/KAMAL_REMEDIOS.ods" \
+  kamal="cd $HOME/Ricanda/KAMAL && exa" \
+  lsa="ls -At1hN --color=auto --group-directories-first" \
+  mapa="libreoffice $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/mapa_da_ignorancia/mapa_da_ignorancia/mapa_da_ignorancia.ods" \
+  meta="cd $HOME/Ricanda/meta/ && $EDITOR ." \
+  pl="pomo l --assend -n 5" \
+  pomobackup="pomo l --json > pomo_hist_\`date '+%Y-%m-%d_%Hh%Mm%Ss'\`.json && mv *.json /home/ricar/Ricanda/HISTORICO/pomo" \
+  prnt="import \`date '+%Y-%m-%d_%Hh%Mm%Ss'\`.jpg" \
+  procsel="$HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/ && ls -A1" \
+  p10="pomo l --assend -n 10" \
+  qr="mupdf $HOME/HISTORICO/ATIVO/PROJETOS/AUVO/qr.pdf" \
+  renameall="$HOME/.local/bin/rename_multiple" \
+  repo="cd ~/source/repos/" \
+  sourcez="source $HOME/.config/zsh/.zshrc" \
+  steam="flatpak run com.valvesoftware.Steam" \
+  uniproj="$HOME/HISTORICO/ATIVO/PROJETOS/UNILASALLE" \
+  unrar="unrar-free" \
+  wall="set-wallpaper" \
+  w2k="$HOME/.local/bin/styli.sh -r earthporn -w 3840 -h 1080" \
+  week="sc-im $HOME/weeks/\`date '+%V'\`.sc" \
+  nweek="sc-im $HOME/weeks/\`echo $(($(date '+%V')+1))\`.sc" \
+  weeks="cd $HOME/weeks" \
+  wh="cd /mnt/c/Users/ricar/" \
+  xd="$HOME/.config/xrandr/dual_landscape_vertical_perspectiva.sh" \
+  xs="$HOME/.config/xrandr/single.sh" \
+  xu="$HOME/.config/xrandr/dual_ultrawide.sh" \
+  du="du -h" \
+  hist="$EDITOR $HOME/.cache/zsh/history" \
+  music="sudo apple-music-for-linux" \
+  cp-gpt="echo 'window.clear();Array.from(document.getElementsByClassName(\"text-base\")).forEach((x)=>console.log(x.textContent));'|xclip" \
+  prospect="cd $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/_oportunidades && clear && exa" \
+  prospectb="cd $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/_oportunidades && clear && libreoffice ./oportunidades.ods" \
+  mupdf="/bin/mupdf -I" \
+  pumldoc="$HOME/.local/bin/pumldoc.lua" \
+  manuais="cd $HOME/Ricanda/manuais/ && exa" \
+  vmon="vm_start" \
+  vmoff="vm_stop" \
+#}}}
+## CODING {{{
+alias \
+  szsh="source $HOME/.config/zsh/.zshrc" \
+  tsdbg="google-chrome-stable --remote-debugging-port=9222 http://localhost:4200" \
+  code="vscodium" \
+  ## GIT {{{
+  alias gd='git diff -w' \
+    gl='git log --all --graph --oneline --decorate' \
+    gs='git status' \
+    ga='git add .'
+      #}}}
+      #}}}

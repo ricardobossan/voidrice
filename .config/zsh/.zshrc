@@ -42,6 +42,17 @@ function zle-keymap-select () {
         viins|main) echo -ne '\e[5 q';; # beam
     esac
 }
+
+# On opening Neovim in a folder, open the README.md file if it exists
+# Should create alias `alias opennv='if [[ -f README.md ]]; then nvim README.md; else nvim .; fi'`
+function opennv() {
+    if [[ -f README.md ]]; then
+        nvim README.md
+    else
+        nvim .
+    fi
+}
+
 zle -N zle-keymap-select
 zle-line-init() {
     zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)

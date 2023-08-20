@@ -3,14 +3,27 @@
 # This file runs when a DM logs you into a graphical session.
 # If you use startx/xinit like a Chad, this file will also be sourced.
 
-xrandr --dpi 96		# Set DPI. User may want to use a larger number for larger screens.
-setbg &			# set the background with the `setbg` script
-#xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
+# Ensures notebook display off if it's folded
+folded-notebook # https://github.com/ricardobossan/folded-notebook
 
-autostart="mpd xcompmgr dunst unclutter pipewire remapd"
+xrandr --dpi 96 # Set DPI. User may want to use a larger number for larger screens.
+#setbg &			# set the background with the `setbg` script
+
+
+# Define random wallpaper using styli.sh
+set-wallpaper # https://github.com/ricardobossan/set-wallpaper
+# shellcheck disable=2086
+#xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
+remaps & # run the remaps script, switching caps/esc and more; check it for more info
+setxkbmap -layout br
+syncthing --no-browser &
+redshift -l -22.9:-43.0 -t 6500:3500 & # Apply blue-light filter, based on lat/long.
+transmission-daemon & # start torrent service
+
+autostart="mpd xcompmgr dunst unclutter pipewire"
 
 for program in $autostart; do
-	pidof -sx "$program" || "$program" &
+	pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
