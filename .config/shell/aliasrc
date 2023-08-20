@@ -101,7 +101,7 @@ alias \
   pumldoc="$HOME/.local/bin/pumldoc.lua" \
   manuais="cd $HOME/Ricanda/manuais/ && exa" \
   vmon="vm_start" \
-  vmoff="vm_stop" \
+  vmoff="vm_shutdown" \
 #}}}
 ## CODING {{{
 alias \
