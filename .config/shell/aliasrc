@@ -60,7 +60,6 @@ alias \
 alias \
   abre="pomo s -t \"#ritual_abertura\" -p 1 \"Ritual de abertura\"" \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
-  auvo="cd $HOME/HISTORICO/ATIVO/PROJETOS/AUVO/historico/entregas/ && $EDITOR workflow.md" \
   cls="clear && ls -At1hN --color=auto --group-directories-first" \
   docs="cd $HOME/Docs/ && $EDITOR ." \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
@@ -77,7 +76,6 @@ alias \
   prnt="import \`date '+%Y-%m-%d_%Hh%Mm%Ss'\`.jpg" \
   procsel="$HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/ && ls -A1" \
   p10="pomo l --assend -n 10" \
-  qr="mupdf $HOME/HISTORICO/ATIVO/PROJETOS/AUVO/qr.pdf" \
   renameall="$HOME/.local/bin/rename_multiple" \
   repo="cd ~/source/repos/" \
   sourcez="source $HOME/.config/zsh/.zshrc" \
