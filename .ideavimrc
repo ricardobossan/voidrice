@@ -8,8 +8,6 @@ set relativenumber
 
 " Escape any mode.
 inoremap jk <esc>
-nnoremap jk <esc>
-vnoremap jk <esc>
 
 " New line, without insert mode
 nnoremap o o<esc>
@@ -90,7 +88,7 @@ map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 "nnoremap <leader>f :Telescope find_files<CR>
 
 """" Edit code
-map lf <Action>(ReformatCode)
+map <leader>lf <Action>(ReformatCode)
 map <leader>r <Action>(RenameElement)
 map <leader>a <Action>(Annotate)
 nnoremap <leader>q :q<CR>
