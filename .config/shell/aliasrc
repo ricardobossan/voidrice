@@ -64,6 +64,7 @@ alias \
   docs="cd $HOME/Docs/ && $EDITOR ." \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
   clexa="clear && exa" \
+  fd="fd -H" \
   fecha="pomo s -t \"#ritual_fechamento\" -p 1 \"Ritual de fechamento\"" \
   hj="cd $HOME/HISTORICO/ATIVO/`date '+%Y'`/`date '+%m'` && $HOME/.local/bin/hj.lua" \
   kamed="libreoffice $HOME/Ricanda/KAMAL/KAMAL_REMEDIOS.ods" \
