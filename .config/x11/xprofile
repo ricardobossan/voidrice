@@ -19,6 +19,7 @@ setxkbmap -layout br
 syncthing --no-browser &
 redshift -l -22.9:-43.0 -t 6500:3500 & # Apply blue-light filter, based on lat/long.
 transmission-daemon & # start torrent service
+pipewire & # sometimes, when leaving dwm and comming back, pipewre doesn't autostart. If it's already started, it just does nothing.
 
 autostart="mpd xcompmgr dunst unclutter pipewire"
 
