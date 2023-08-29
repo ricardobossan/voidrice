@@ -86,7 +86,7 @@ let mapleader=" "
 nnoremap <leader>e :NERDTreeToggle<CR>
 map <leader>z <Action>(ToggleDistractionFreeMode)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-map <leader>o <Action>(FileStructurePopup)
+"map <leader>o <Action>(FileStructurePopup)
 "nnoremap <leader>f :Telescope find_files<CR>
 
 """" Edit code
