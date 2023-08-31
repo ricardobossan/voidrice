@@ -5,6 +5,7 @@ set incsearch
 set nu
 set number
 set relativenumber
+set clipboard+=unnamedplus
 
 " Escape any mode.
 inoremap jk <esc>
@@ -97,11 +98,11 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>wa :wall<CR>
 nnoremap <leader>o :only<CR>
 
-""""" Copy to other windows
-nnoremap y "+y
-vnoremap y "+y
-nnoremap Y "+Y
-vnoremap Y "+Y
+""""" Copy to other windows (unecessary if using 'set clipboard+=unnamedplus')
+"nnoremap y "+y
+"vnoremap y "+y
+"nnoremap Y "+Y
+"vnoremap Y "+Y
 
 """" Navigating
 nnoremap J :bn<CR>
