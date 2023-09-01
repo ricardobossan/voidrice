@@ -4,6 +4,7 @@ api.nvim_create_autocmd("BufEnter", { command = [[syntax on]] })
 
 -- Generic autocommands bellow
 api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[filetype plugin on]] })
+api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[filetype plugin on]] })
 api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[set syntax=markdown]] })
 api.nvim_create_autocmd(
   "FileType",
@@ -21,3 +22,5 @@ api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[let g:vi
 api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[set conceallevel=3]] })
 --api.nvim_create_autocmd("BufEnter", { command = [[set foldlevel=1]] }) -- Folds everytime it switches between oppend files
 api.nvim_create_autocmd("BufEnter", { command = [[set wrap linebreak]] })
+api.nvim_create_autocmd("FileType",
+  { pattern = "markdown", command = "let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'csharp=cs']" })

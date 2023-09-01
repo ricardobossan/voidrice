@@ -1,6 +1,6 @@
 require('plugins')
 require('config')
-require('bufferline').setup{}
+require('bufferline').setup {}
 require('config.nvimtree')
 require('config.remap')
 require('config.set')
@@ -8,6 +8,9 @@ require('config.markdown')
 --require('config.lsp')
 require('config.whichkey')
 require('config.icons')
+require('config.comment')
 require('config.todocomments')
+require('config.autopairs')
 require('config.lsp.autocomplete')
 require('config.lsp.null-ls')
+require('config.lsp.keymaps')
