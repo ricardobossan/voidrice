@@ -231,7 +231,6 @@ function DynamicMappings()
     Mappings["m"] = {
       name = "Markdown",
       p = { "<cmd>MarkdownPreviewToggle<CR>", "Preview toggle" },
-      m = { "<cmd>set syntax=markdown<CR>", "Force syntax" },
       c = { "<cmd>MkdnTableNewColAfter<CR>", "+ Column after" },
       C = { "<cmd>MkdnTableNewColBefore<CR>", "+ Column before" },
       r = { "<cmd>MkdnTableNewRowBelow<CR>", "+ Row below" },
