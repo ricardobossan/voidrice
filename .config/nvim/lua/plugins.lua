@@ -263,6 +263,11 @@ return packer.startup(function(use)
     commit = "845abb56dcd3f12afa6eb47684ef5ba3055802b8",
   })
 
+  use({
+    "vimwiki/vimwiki",
+    commit = "c5b7f7e76f7d9b07036948a2f9c1d6cd0167e884"
+
+  })
   -- ChatGPT
   --[[
   local home = vim.fn.expand("$HOME")
