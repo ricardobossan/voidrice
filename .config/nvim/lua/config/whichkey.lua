@@ -227,20 +227,21 @@ local opts = {
 function DynamicMappings()
   local buf = vim.api.nvim_get_current_buf()
   local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-  if ft == "markdown" then
-    Mappings["m"] = {
-      name = "Markdown",
-      p = { "<cmd>MarkdownPreviewToggle<CR>", "Preview toggle" },
-      c = { "<cmd>MkdnTableNewColAfter<CR>", "+ Column after" },
-      C = { "<cmd>MkdnTableNewColBefore<CR>", "+ Column before" },
-      r = { "<cmd>MkdnTableNewRowBelow<CR>", "+ Row below" },
-      R = { "<cmd>MkdnTableNewRowAbove<CR>", "+ Row above" },
-      --print(ft, Mappings["M"][1], KeyOf(Mappings, "M"))
-      --print(KeyOf(Mappings, "M"))
-    }
+  -- FIX: Will uncomment when find out how to include calcurse notes
+  --if ft == "markdown" then
+  Mappings["m"] = {
+    name = "Markdown",
+    p = { "<cmd>MarkdownPreviewToggle<CR>", "Preview toggle" },
+    c = { "<cmd>MkdnTableNewColAfter<CR>", "+ Column after" },
+    C = { "<cmd>MkdnTableNewColBefore<CR>", "+ Column before" },
+    r = { "<cmd>MkdnTableNewRowBelow<CR>", "+ Row below" },
+    R = { "<cmd>MkdnTableNewRowAbove<CR>", "+ Row above" },
+    t = { "<cmd>InsertToc<CR>", "Insert TOC" },
+    T = { "<cmd>InsertNToc<CR>", "Insert TOC (numbered)" },
+  }
 
-    -- FIX: Got to remove the actual indexes for this table. ie. ["m"] and ["M"]
-    --[[ TODO: Como remover indexes de tables em lua?
+  -- FIX: Got to remove the actual indexes for this table. ie. ["m"] and ["M"]
+  --[[ TODO: Como remover indexes de tables em lua?
   else
     if Mappings["m"] ~= nil then
       Mappings["m"] = { "", "" }
@@ -251,7 +252,7 @@ function DynamicMappings()
       --print(KeyOf(Mappings, "M"))
     end
     --]]
-  end
+  --end
 
   which_key.setup(setup)
   which_key.register(Mappings, opts)
