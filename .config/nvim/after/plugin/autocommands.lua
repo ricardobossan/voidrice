@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.schedule_wrap(function()
   vim.api.nvim_command("autocmd BufNewFile,BufRead ~/.local/share/calcurse/notes/* lua ForceMarkdown()")
-  vim.api.nvim_command("autocmd BufNewFile,BufRead **/*.md lua ForceMarkdown()")
+  vim.api.nvim_command("autocmd BufNewFile,BufRead /**/*.md lua ForceMarkdown()")
 end)
 
 -- Copia para clipboard do sistema
