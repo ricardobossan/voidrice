@@ -69,21 +69,21 @@ return packer.startup(function(use)
     commit = "934a3fdf5072b8cb9da16aadd101901cd1541f3e",
     requires = {
       -- LSP Support
-      { "neovim/nvim-lspconfig",             commit = "886ef7bd76b08d86de3bca6ed9373d2e95c31c55" }, -- Required
-      { "williamboman/mason.nvim",           commit = "2311d9d883eb709ad9979a726a38c5ce1343b63c" }, -- Optional
+      { "neovim/nvim-lspconfig", commit = "886ef7bd76b08d86de3bca6ed9373d2e95c31c55" }, -- Required
+      { "williamboman/mason.nvim", commit = "2311d9d883eb709ad9979a726a38c5ce1343b63c" }, -- Optional
       { "williamboman/mason-lspconfig.nvim", commit = "a8d5db8f227b9b236d1c54a9c6234bc033825ce7" }, -- Optional
 
       -- Autocompletion
-      { "hrsh7th/nvim-cmp",                  commit = "feed47fd1da7a1bad2c7dca456ea19c8a5a9823a" }, -- Required
-      { "hrsh7th/cmp-nvim-lsp",              commit = "78924d1d677b29b3d1fe429864185341724ee5a2" }, -- Required
-      { "hrsh7th/cmp-buffer",                commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa" }, -- Optional
-      { "hrsh7th/cmp-path",                  commit = "91ff86cd9c29299a64f968ebb45846c485725f23" }, -- Optional
-      { "saadparwaiz1/cmp_luasnip",          commit = "18095520391186d634a0045dacaa346291096566" }, -- Optional
-      { "hrsh7th/cmp-nvim-lua",              commit = "44acf47b28ff77b4b18d69d5b51b03184c87ccdf" }, -- Optional
-      { "hrsh7th/cmp-emoji",                 commit = "19075c36d5820253d32e2478b6aaf3734aeaafa0" },
+      { "hrsh7th/nvim-cmp", commit = "feed47fd1da7a1bad2c7dca456ea19c8a5a9823a" }, -- Required
+      { "hrsh7th/cmp-nvim-lsp", commit = "78924d1d677b29b3d1fe429864185341724ee5a2" }, -- Required
+      { "hrsh7th/cmp-buffer", commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa" }, -- Optional
+      { "hrsh7th/cmp-path", commit = "91ff86cd9c29299a64f968ebb45846c485725f23" }, -- Optional
+      { "saadparwaiz1/cmp_luasnip", commit = "18095520391186d634a0045dacaa346291096566" }, -- Optional
+      { "hrsh7th/cmp-nvim-lua", commit = "44acf47b28ff77b4b18d69d5b51b03184c87ccdf" }, -- Optional
+      { "hrsh7th/cmp-emoji", commit = "19075c36d5820253d32e2478b6aaf3734aeaafa0" },
       -- Snippets
-      { "L3MON4D3/LuaSnip",                  commit = "58fbfc627a93281a77f7d161d4ff702e639677b1" }, -- Required
-      { "rafamadriz/friendly-snippets",      commit = "25ddcd96540a2ce41d714bd7fea2e7f75fea8ead" }, -- Optional
+      { "L3MON4D3/LuaSnip", commit = "58fbfc627a93281a77f7d161d4ff702e639677b1" }, -- Required
+      { "rafamadriz/friendly-snippets", commit = "25ddcd96540a2ce41d714bd7fea2e7f75fea8ead" }, -- Optional
     },
   })
 
@@ -116,14 +116,14 @@ return packer.startup(function(use)
     ft = "markdown",
     cmd = { "MarkdownPreview" },
     requires = {
-      { "zhaozg/vim-diagram",   commit = "bd94f79ac6d701caf52a1b5547069c7b93cf6acf" },
+      { "zhaozg/vim-diagram", commit = "bd94f79ac6d701caf52a1b5547069c7b93cf6acf" },
       { "aklt/plantuml-syntax", commit = "845abb56dcd3f12afa6eb47684ef5ba3055802b8" },
     },
   })
 
   -- auto closing
   use({ "windwp/nvim-autopairs", commit = "ae5b41ce880a6d850055e262d6dfebd362bb276e" }) -- autoclose parens, brackets, quotes, etc...
-  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" })                          -- autoclose tags
+  use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- autoclose tags
 
   use({
     "nvim-neorg/neorg",
@@ -144,7 +144,7 @@ return packer.startup(function(use)
     after = "nvim-treesitter",
     requires = {
       { "nvim-lua/plenary.nvim", commit = "0c31c398261567cda89b66ddffc69d39495f63ae" },
-      { "Pocco81/TrueZen.nvim",  commit = "a31109cd423121e1154ae0844fb312086428306f" },
+      { "Pocco81/TrueZen.nvim", commit = "a31109cd423121e1154ae0844fb312086428306f" },
     },
     disable = true,
   })
@@ -209,7 +209,7 @@ return packer.startup(function(use)
   -- Comments
   use({
     "numToStr/Comment.nvim",
-    commit = "0236521ea582747b58869cb72f70ccfa967d2e89"
+    commit = "0236521ea582747b58869cb72f70ccfa967d2e89",
   })
 
   -- Todo highlight
@@ -240,11 +240,15 @@ return packer.startup(function(use)
     requires = {
       -- "alpha2phi/DAPInstall.nvim",
       -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
-      { "theHamsta/nvim-dap-virtual-text",   commit = "2971ce3e89b1711cc26e27f73d3f854b559a77d4" },
-      { "rcarriga/nvim-dap-ui",              commit = "rcarriga/nvim-dap-ui" },
-      { "mfussenegger/nvim-dap-python",      commit = "972b8b8b65823c433ee834ed02a7f06edf590dfc" },
+      { "theHamsta/nvim-dap-virtual-text", commit = "2971ce3e89b1711cc26e27f73d3f854b559a77d4" },
+      { "rcarriga/nvim-dap-ui", commit = "rcarriga/nvim-dap-ui" },
+      { "mfussenegger/nvim-dap-python", commit = "972b8b8b65823c433ee834ed02a7f06edf590dfc" },
       { "nvim-telescope/telescope-dap.nvim", commit = "313d2ea12ae59a1ca51b62bf01fc941a983d9c9c" },
-      { "leoluz/nvim-dap-go",                commit = "b4ded7de579b4e2a85c203388233b54bf1028816", module = "dap-go" },
+      {
+        "leoluz/nvim-dap-go",
+        commit = "b4ded7de579b4e2a85c203388233b54bf1028816",
+        module = "dap-go",
+      },
       {
         "jbyuki/one-small-step-for-vimkind",
         commit = "a0729e2478759583a49c62966836beec46fc5e1d",
@@ -265,8 +269,7 @@ return packer.startup(function(use)
 
   use({
     "vimwiki/vimwiki",
-    commit = "c5b7f7e76f7d9b07036948a2f9c1d6cd0167e884"
-
+    commit = "c5b7f7e76f7d9b07036948a2f9c1d6cd0167e884",
   })
   -- ChatGPT
   --[[
