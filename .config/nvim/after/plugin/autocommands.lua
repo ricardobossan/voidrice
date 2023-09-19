@@ -3,8 +3,8 @@ function ForceMarkdown()
   vim.cmd("set syntax=markdown")
 end
 
-vim.api.nvim_create_autocmd("BufEnter", {
-  pattern = { "*.md", "~/.local/share/calcurse/notes/*", "/tmp/calcurse-note*" },
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  pattern = { "markdown", "*.md", "~/.local/share/calcurse/notes/*", "/tmp/calcurse-note*" },
   command = [[lua ForceMarkdown()]]
 })
 
