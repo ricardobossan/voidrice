@@ -60,7 +60,7 @@ alias \
 alias \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
   cls="clear && ls -At1hN --color=auto --group-directories-first" \
-  docs="cd $HOME/Docs/ && $EDITOR ." \
+  docs="cd $HOME/Docs/ && $EDITOR -c 'NvimTreeOpen'" \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
   clexa="clear && exa" \
   fd="fd -H" \
@@ -101,6 +101,15 @@ alias \
   manuais="cd $HOME/Ricanda/manuais/ && exa" \
   vmon="vm_start" \
   vmoff="vm_shutdown" \
+  calcurse="calcurse -D $HOME/calcurse/" \
+
+## Games
+STEAM_GAME="steam steam://rungameid"
+alias \
+  valheim="$STEAM_GAME/$(cat $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/Valheim/steam_appid.txt)" \
+  et2="$STEAM_GAME/227300" \
+  zomboid="$STEAM_GAME/108600" \
+  rimworld="$STEAM_GAME/294100" \
 
 ## Coding 
 alias \
