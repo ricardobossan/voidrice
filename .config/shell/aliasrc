@@ -56,6 +56,34 @@ alias \
   weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
 
 # User created 
+
+# Functions 
+install_jq() {
+    if ! command -v jq> /dev/null>&1; then
+        echo "jq not found. Installing jq..."
+        yay jq
+    fi
+}
+
+get_github_username() {
+    # Run 'gh api user' to get the GitHub username
+    username=$(gh api user --jq '.login' -H 'Accept: application/vnd.github.v3+json')
+
+    # Return the username
+    echo "$username" | tr -d '"'
+}
+
+get_pr_list_for_authenticated_user() {
+    # Install jq if not already installed
+    install_jq
+
+    # Get the GitHub username using the previously defined function
+    username=$(get_github_username)
+
+    # Call 'gh pr list' for the authenticated user
+    gh pr list -s all -A "$username"
+}
+
 ## General 
 alias \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
@@ -122,3 +150,7 @@ alias \
     gl='git log --all --graph --oneline --decorate' \
     gs='git status' \
     ga='git add .'
+  ### GitHub CLI
+  alias \
+    prl=get_pr_list_for_authenticated_user \
+    pr='gh pr view -c' \
