@@ -56,15 +56,6 @@ alias \
   weath="less -S ${XDG_DATA_HOME:-$HOME/.local/share}/weatherreport"
 
 # User created 
-
-## Functions
-install_jq() {
-    if ! command -v jq > /dev/null>&1; then
-        echo "jq not found. Installing jq..."
-        yay -S jq  # Use 'pacman -S jq' if you don't use yay
-    fi
-}
-
 ## General 
 alias \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
@@ -115,7 +106,7 @@ alias \
 ## Games
 STEAM_GAME="steam steam://rungameid"
 alias \
-  valheim="$STEAM_GAME/$(cat $HOME/.var/app/com.valvesoftware.Steam/.local/share/Steam/steamapps/common/Valheim/steam_appid.txt)" \
+  valheim="$STEAM_GAME/892970" \
   et2="$STEAM_GAME/227300" \
   zomboid="$STEAM_GAME/108600" \
   rimworld="$STEAM_GAME/294100" \
@@ -131,7 +122,3 @@ alias \
     gl='git log --all --graph --oneline --decorate' \
     gs='git status' \
     ga='git add .'
-  ### GitHub CLI
-  alias \
-    prl=get_pr_list_for_authenticated_user \
-    pr='gh pr view -c' \
