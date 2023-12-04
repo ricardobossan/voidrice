@@ -1,0 +1,3 @@
+#!/bin/sh
+
+sh $HOME/.local/bin/syncthing_starter

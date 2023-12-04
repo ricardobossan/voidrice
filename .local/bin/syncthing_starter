@@ -1,0 +1,9 @@
+#!/bin/bash
+
+pgrep -n syncthing >/dev/null 2>&1
+
+# $? contains the exit status of the last executed command
+if [ $? -ne 0 ]; then
+    nohup syncthing --no-browser > /dev/null 2>&1 &
+fi
+
