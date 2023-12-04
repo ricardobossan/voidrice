@@ -17,7 +17,7 @@ set-wallpaper # https://github.com/ricardobossan/set-wallpaper
 remaps & # run the remaps script, switching caps/esc and more; check it for more info
 setxkbmap -layout br
 syncthing --no-browser &
-redshift -l -22.9:-43.0 -t 6500:3500 & # Apply blue-light filter, based on lat/long.
+redshift -l -22.9:-43.0 -t 6500:3500 -b 1:0.6 & # Apply blue-light filter, based on lat/long.
 transmission-daemon & # start torrent service
 pipewire & # sometimes, when leaving dwm and comming back, pipewre doesn't autostart. If it's already started, it just does nothing.
 
@@ -33,3 +33,4 @@ done >/dev/null 2>&1
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
 [ -n "$xrdbpid" ] && wait "$xrdbpid"
+
