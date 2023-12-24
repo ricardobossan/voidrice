@@ -129,7 +129,7 @@ alias \
   manuais="cd $HOME/Ricanda/manuais/ && exa" \
   vmon="vm_start" \
   vmoff="vm_shutdown" \
-  calcurse="calcurse -D $HOME/calcurse/" \
+  calcurse="calcurse -D $HOME/calcurse/ && clexa $HOME/calcurse -a" \
 
 ## Games
 STEAM_GAME="steam steam://rungameid"
