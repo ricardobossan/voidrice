@@ -20,6 +20,7 @@ syncthing --no-browser &
 redshift -l -22.9:-43.0 -t 6500:3500 -b 1:0.6 & # Apply blue-light filter, based on lat/long.
 transmission-daemon & # start torrent service
 pipewire & # sometimes, when leaving dwm and comming back, pipewre doesn't autostart. If it's already started, it just does nothing.
+x0vncserver -rfbauth ~/.vnc/passwd & # start tigervnc, to allow remote connections
 
 if ! $(pgrep -nf valheim_server.x86_64); then
   $HOME/valheim-server/valheim.sh
