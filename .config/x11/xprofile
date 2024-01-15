@@ -10,8 +10,6 @@ xrandr --dpi 96 # Set DPI. User may want to use a larger number for larger scree
 #setbg &			# set the background with the `setbg` script
 
 
-# Define random wallpaper using styli.sh
-set-wallpaper # https://github.com/ricardobossan/set-wallpaper
 # shellcheck disable=2086
 #xrdb ${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources & xrdbpid=$!	# Uncomment to use Xresources colors/settings on startup
 remaps & # run the remaps script, switching caps/esc and more; check it for more info
@@ -20,7 +18,6 @@ syncthing --no-browser &
 redshift -l -22.9:-43.0 -t 6500:3500 -b 1:0.6 & # Apply blue-light filter, based on lat/long.
 transmission-daemon & # start torrent service
 pipewire & # sometimes, when leaving dwm and comming back, pipewre doesn't autostart. If it's already started, it just does nothing.
-x0vncserver -rfbauth ~/.vnc/passwd & # start tigervnc, to allow remote connections
 
 if ! $(pgrep -nf valheim_server.x86_64); then
   $HOME/valheim-server/valheim.sh
@@ -28,10 +25,24 @@ fi
 
 autostart="mpd xcompmgr dunst unclutter pipewire"
 
+# Define random wallpaper using styli.sh
+set-wallpaper # https://github.com/ricardobossan/set-wallpaper
+
 for program in $autostart; do
 	pidof -s "$program" || "$program" &
 done >/dev/null 2>&1
 
 # Ensure that xrdb has finished running before moving on to start the WM/DE.
 [ -n "$xrdbpid" ] && wait "$xrdbpid"
+
+# :TODO Unsafe! find a way to mask the output file path
+#ip a show eno1 | grep -oP 'inet \K[\d.]+' | head -n 1 > $HOME/Ricanda/hostip
+
+if hostnamectl | grep -qi 'chassis.*desktop' ; then
+    ip a show eno1 | grep -oP 'inet \K[\d.]+' | head -n 1 > $HOME/Ricanda/hostip
+    x0vncserver -rfbauth ~/.vnc/passwd -Geometry 1920x1080+0+0 & # start tigervnc, to allow remote connections
+  else
+   connecthost
+fi
+
 

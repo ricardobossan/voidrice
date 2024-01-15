@@ -131,10 +131,17 @@ alias \
   vmoff="vm_shutdown" \
   calcurse="calcurse -D $HOME/calcurse/ && clexa $HOME/calcurse -a" \
   rg="rg -.i" \
+  vncs="x0vncserver -rfbauth ~/.vnc/passwd &  \ # start tigervnc, to allow remote connections" \
+  rarandr="arandr && vncs" \
+  connecthost="ssh $USER@$(cat $HOME/Ricanda/hostip)" \
+  vncview="vncviewer $(cat $HOME/Ricanda/hostip):5900" \
+  wdisplay="xrandr -s 1920x1080" \
+  uwdisplay="xrandr -s 2560x1080" \
 
 ## Games
 STEAM_GAME="steam steam://rungameid"
 alias \
+  sod="$STEAM_GAME/986130" \
   valheim="$STEAM_GAME/892970" \
   et2="$STEAM_GAME/227300" \
   zomboid="$STEAM_GAME/108600" \
