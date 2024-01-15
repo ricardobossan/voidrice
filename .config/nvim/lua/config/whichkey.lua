@@ -25,10 +25,11 @@ Mappings = {
     },
     ["d"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
   },
+--[[
   d = {
     name = "Debug",
   },
-
+--]]
   f = {
     name = "Find",
     ["f"] = { builtin.find_files, "Files" },

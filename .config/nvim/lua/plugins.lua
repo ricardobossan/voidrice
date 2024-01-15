@@ -81,12 +81,12 @@ local plugins = {
 
   -- Markdown
 
-  { "godlygeek/tabular", commit = "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
+  { "godlygeek/tabular",       commit = "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
   {
     "jakewvincent/mkdnflow.nvim",
     commit = "51cf944514e49662cca8a075b1a8f485c2c39d0f",
     config = function()
-      require("mkdnflow").setup({} )
+      require("mkdnflow").setup({})
     end,
     ft = "markdown",
   },
@@ -112,9 +112,9 @@ local plugins = {
   },
 
   -- auto closing
-  { "windwp/nvim-autopairs", commit = "ae5b41ce880a6d850055e262d6dfebd362bb276e" }, -- autoclose parens, brackets, quotes, etc...
+  { "windwp/nvim-autopairs",  commit = "ae5b41ce880a6d850055e262d6dfebd362bb276e" }, -- autoclose parens, brackets, quotes, etc...
 
-  { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },                          -- autoclose tags
+  { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },                           -- autoclose tags
 
   {
     "nvim-neorg/neorg",
@@ -188,7 +188,7 @@ local plugins = {
         -- your configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below
-      } )
+      })
     end,
   },
 
@@ -219,34 +219,231 @@ local plugins = {
 
   {
     "mfussenegger/nvim-dap",
-    commit = "5b986edc95cf7b37da1db91a5c149daa3ac008d2",
-    config = function()
-      require("config.dap").setup()
-    end,
-    opt = true,
-    -- event = "BufReadPre",
-    keys = { [[<leader>d]] },
-    module = { "dap" },
-    wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+
     dependencies = {
-      -- "alpha2phi/DAPInstall.nvim",
-      -- { "Pocco81/dap-buddy.nvim", branch = "dev" },
-      { "theHamsta/nvim-dap-virtual-text",   commit = "2971ce3e89b1711cc26e27f73d3f854b559a77d4" },
-      { "rcarriga/nvim-dap-ui",              commit = "rcarriga/nvim-dap-ui" },
-      { "mfussenegger/nvim-dap-python",      commit = "972b8b8b65823c433ee834ed02a7f06edf590dfc" },
-      { "nvim-telescope/telescope-dap.nvim", commit = "313d2ea12ae59a1ca51b62bf01fc941a983d9c9c" },
-      { "leoluz/nvim-dap-go",                commit = "b4ded7de579b4e2a85c203388233b54bf1028816", module = "dap-go" },
+
+      -- fancy UI for the debugger
       {
-        "jbyuki/one-small-step-for-vimkind",
-        commit = "a0729e2478759583a49c62966836beec46fc5e1d",
-        module = "osv",
+        "rcarriga/nvim-dap-ui",
+        -- stylua: ignore
+        keys = {
+          { "<leader>du", function() require("dapui").toggle({}) end, desc = "Dap UI" },
+          { "<leader>de", function() require("dapui").eval() end,     desc = "Eval",  mode = { "n", "v" } },
+        },
+        opts = {},
+        config = function(_, opts)
+          -- setup dap config by VsCode launch.json file
+          -- require("dap.ext.vscode").load_launchjs()
+          local dap = require("dap")
+          local dapui = require("dapui")
+          dapui.setup(opts)
+          dap.listeners.after.event_initialized["dapui_config"] = function()
+            dapui.open({})
+          end
+          dap.listeners.before.event_terminated["dapui_config"] = function()
+            dapui.close({})
+          end
+          dap.listeners.before.event_exited["dapui_config"] = function()
+            dapui.close({})
+          end
+        end,
+      },
+
+      -- virtual text for the debugger
+      {
+        "theHamsta/nvim-dap-virtual-text",
+        opts = {},
+      },
+
+      -- which key integration
+      {
+        "folke/which-key.nvim",
+        optional = true,
+        opts = {
+          defaults = {
+            ["<leader>d"] = { name = "+debug" },
+          },
+        },
+      },
+
+      -- mason.nvim integration
+      {
+        "jay-babu/mason-nvim-dap.nvim",
+        dependencies = "mason.nvim",
+        cmd = { "DapInstall", "DapUninstall" },
+        opts = {
+          -- Makes a best effort to setup the various debuggers with
+          -- reasonable debug configurations
+          automatic_installation = true,
+
+          -- You can provide additional configuration to the handlers,
+          -- see mason-nvim-dap README for more information
+          handlers = {},
+
+          -- You'll need to check that you have the required things installed
+          -- online, please don't ask me how to install them :)
+          ensure_installed = {
+            -- Update this to ensure that you have the debuggers for the langs you want
+          },
+        },
       },
     },
-  },
 
-  {
-    "rcarriga/nvim-dap-ui",
-    commit = "bdb94e3853d11b5ce98ec182e5a3719d5c0ef6fd",
+    -- stylua: ignore
+    keys = {
+      { "<leader>dB", function() require("dap").set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+      { "<leader>db", function() require("dap").toggle_breakpoint() end,                                    desc = "Toggle Breakpoint" },
+      { "<leader>dc", function() require("dap").continue() end,                                             desc = "Continue" },
+      { "<leader>da", function() require("dap").continue({ before = get_args }) end,                        desc = "Run with Args" },
+      { "<leader>dC", function() require("dap").run_to_cursor() end,                                        desc = "Run to Cursor" },
+      { "<leader>dg", function() require("dap").goto_() end,                                                desc = "Go to line (no execute)" },
+      { "<leader>di", function() require("dap").step_into() end,                                            desc = "Step Into" },
+      { "<leader>dj", function() require("dap").down() end,                                                 desc = "Down" },
+      { "<leader>dk", function() require("dap").up() end,                                                   desc = "Up" },
+      { "<leader>dl", function() require("dap").run_last() end,                                             desc = "Run Last" },
+      { "<leader>do", function() require("dap").step_out() end,                                             desc = "Step Out" },
+      { "<leader>dO", function() require("dap").step_over() end,                                            desc = "Step Over" },
+      { "<leader>dp", function() require("dap").pause() end,                                                desc = "Pause" },
+      { "<leader>dr", function() require("dap").repl.toggle() end,                                          desc = "Toggle REPL" },
+      { "<leader>ds", function() require("dap").session() end,                                              desc = "Session" },
+      { "<leader>dt", function() require("dap").terminate() end,                                            desc = "Terminate" },
+      { "<leader>dw", function() require("dap.ui.widgets").hover() end,                                     desc = "Widgets" },
+    },
+
+    config = function()
+      local Config = {
+        -- colorscheme can be a string like `catppuccin` or a function that will load the colorscheme
+        ---@type string|fun()
+        colorscheme = function()
+          require("tokyonight").load()
+        end,
+        -- load the default settings
+        defaults = {
+          autocmds = true, -- lazyvim.config.autocmds
+          keymaps = true,  -- lazyvim.config.keymaps
+          -- lazyvim.config.options can't be configured here since that's loaded before lazyvim setup
+          -- if you want to disable loading options, add `package.loaded["lazyvim.config.options"] = true` to the top of your init.lua
+        },
+        news = {
+          -- When enabled, NEWS.md will be shown when changed.
+          -- This only contains big new features and breaking changes.
+          lazyvim = true,
+          -- Same but for Neovim's news.txt
+          neovim = false,
+        },
+        -- icons used by other plugins
+        -- stylua: ignore
+        icons = {
+          misc = {
+            dots = "󰇘",
+          },
+          dap = {
+            Stopped             = { "󰁕 ", "DiagnosticWarn", "DapStoppedLine" },
+            Breakpoint          = " ",
+            BreakpointCondition = " ",
+            BreakpointRejected  = { " ", "DiagnosticError" },
+            LogPoint            = ".>",
+          },
+          diagnostics = {
+            Error = " ",
+            Warn  = " ",
+            Hint  = " ",
+            Info  = " ",
+          },
+          git = {
+            added    = " ",
+            modified = " ",
+            removed  = " ",
+          },
+          kinds = {
+            Array         = " ",
+            Boolean       = "󰨙 ",
+            Class         = " ",
+            Codeium       = "󰘦 ",
+            Color         = " ",
+            Control       = " ",
+            Collapsed     = " ",
+            Constant      = "󰏿 ",
+            Constructor   = " ",
+            Copilot       = " ",
+            Enum          = " ",
+            EnumMember    = " ",
+            Event         = " ",
+            Field         = " ",
+            File          = " ",
+            Folder        = " ",
+            Function      = "󰊕 ",
+            Interface     = " ",
+            Key           = " ",
+            Keyword       = " ",
+            Method        = "󰊕 ",
+            Module        = " ",
+            Namespace     = "󰦮 ",
+            Null          = " ",
+            Number        = "󰎠 ",
+            Object        = " ",
+            Operator      = " ",
+            Package       = " ",
+            Property      = " ",
+            Reference     = " ",
+            Snippet       = " ",
+            String        = " ",
+            Struct        = "󰆼 ",
+            TabNine       = "󰏚 ",
+            Text          = " ",
+            TypeParameter = " ",
+            Unit          = " ",
+            Value         = " ",
+            Variable      = "󰀫 ",
+          },
+        },
+        ---@type table<string, string[]|boolean>?
+        kind_filter = {
+          default = {
+            "Class",
+            "Constructor",
+            "Enum",
+            "Field",
+            "Function",
+            "Interface",
+            "Method",
+            "Module",
+            "Namespace",
+            "Package",
+            "Property",
+            "Struct",
+            "Trait",
+          },
+          markdown = false,
+          help = false,
+          -- you can specify a different filter for each filetype
+          lua = {
+            "Class",
+            "Constructor",
+            "Enum",
+            "Field",
+            "Function",
+            "Interface",
+            "Method",
+            "Module",
+            "Namespace",
+            -- "Package", -- remove package since luals uses it for control flow structures
+            "Property",
+            "Struct",
+            "Trait",
+          },
+        },
+      }
+      vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })
+
+      for name, sign in pairs(Config.icons.dap) do
+        sign = type(sign) == "table" and sign or { sign }
+        vim.fn.sign_define(
+          "Dap" .. name,
+          { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
+        )
+      end
+    end,
   },
 
   {
@@ -286,15 +483,15 @@ local plugins = {
     commit = "7d4c1d8198e889d513a030b5a83faa07606bac27",
   },
 }
-  --[[
+--[[
   use {
     "moll/vim-bbye",
     commit = "25ef93ac5a87526111f43e5110675032dbcacf56"
   },
 --]]
-  --
-  -- Snapshots
-  --[[
+--
+-- Snapshots
+--[[
   --- Load snapshot from file
   local default_snapshot = packer.load(vim.fn.expand("/home/ricar/.cache/nvim/packer.nvim/2023-02-16.json"))
   -- Set the loaded snapshot as the default

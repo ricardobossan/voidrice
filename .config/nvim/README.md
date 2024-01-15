@@ -4,6 +4,8 @@ so: Archlinux
 shell: zsh
 ---
 
+<!-- TODO: Adapt nvim-dap -->
+
 # MyNvim
 
 - Minha configuração do Neovim.

@@ -7,7 +7,7 @@ function M.setup()
     type = "executable",
     command = "node",
     args = {
-      "/home/ricar/.install/local-lua-debugger-vscode/extension/debugAdapter.js",
+      "/home/ricar/.install/local-lua-debugger-vscode/extension/debugAdapter.ts",
     },
     enrich_config = function(config, on_config)
       if not config["extensionPath"] then
