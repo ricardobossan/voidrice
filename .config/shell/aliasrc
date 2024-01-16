@@ -137,6 +137,7 @@ alias \
   vncview="vncviewer $(cat $HOME/Ricanda/hostip):5900" \
   wdisplay="xrandr -s 1920x1080" \
   uwdisplay="xrandr -s 2560x1080" \
+  bys="cd $HOME/projetos/bys/ && clexa -a" \
 
 ## Games
 STEAM_GAME="steam steam://rungameid"
