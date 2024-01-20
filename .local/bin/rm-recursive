@@ -1,0 +1,34 @@
+#!/bin/bash
+
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 SEARCH_STRING"
+    exit 1
+fi
+
+search_string="$1"
+
+# Use the current directory as the target directory
+current_directory=$(pwd)
+
+# Use fd to find files and directories matching the search string
+fd "$search_string" "$current_directory" | while IFS= read -r target; do
+    # Display a confirmation prompt
+    read -p "Do you want to remove '$target'? (y/n): " answer < /dev/tty
+
+    # Check the user's response
+    case "$answer" in
+        [Yy]*)
+            # User confirmed, remove the file or directory
+            rm -rfv "$target"
+            ;;
+        [Nn]*)
+            # User declined, skip this iteration
+            echo "Skipped '$target'"
+            ;;
+        *)
+            # Invalid response, skip this iteration
+            echo "Invalid response, skipped '$target'"
+            ;;
+    esac
+done
+
