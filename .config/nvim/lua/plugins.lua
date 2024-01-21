@@ -29,7 +29,7 @@ local plugins = {
   {
     "morhetz/gruvbox",
     commit = "bf2885a95efdad7bd5e4794dd0213917770d79b7",
-    as = "gruvbox"
+    --as = "gruvbox"
     --config = function()
     --vim.cmd[[
     --colorscheme gruvbox
@@ -99,26 +99,28 @@ local plugins = {
   {
     "iamcco/markdown-preview.nvim",
     commit = "02cc3874738bc0f86e4b91f09b8a0ac88aef8e96",
-    opt = true,
-    run = function()
-      vim.fn["mkdp#util#install"]()
-    end,
+    -- TODO: Find out how to replace these opt and run, which get errors when running :checkhealth. The plugin doesn't get loaded.
+    opts = true,
     ft = "markdown",
     cmd = { "MarkdownPreview" },
     dependencies = {
       { "zhaozg/vim-diagram",   commit = "bd94f79ac6d701caf52a1b5547069c7b93cf6acf" },
       { "aklt/plantuml-syntax", commit = "845abb56dcd3f12afa6eb47684ef5ba3055802b8" },
+      confg = function()
+        vim.fn["mkdp#util#install"]()
+      end,
     },
   },
 
   -- auto closing
   { "windwp/nvim-autopairs",  commit = "ae5b41ce880a6d850055e262d6dfebd362bb276e" }, -- autoclose parens, brackets, quotes, etc...
 
-  { "windwp/nvim-ts-autotag", after = "nvim-treesitter" },                           -- autoclose tags
+  { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },                           -- autoclose tags
 
   {
     "nvim-neorg/neorg",
     commit = "9766bef893ec993af9408ea0d44a8f13adbd1e80",
+    opts = true,
     config = function()
       require("neorg").setup({
         load = {
@@ -132,22 +134,21 @@ local plugins = {
       })
     end,
     ft = "norg",
-    after = "nvim-treesitter",
     dependencies = {
       { "nvim-lua/plenary.nvim", commit = "0c31c398261567cda89b66ddffc69d39495f63ae" },
       { "Pocco81/TrueZen.nvim",  commit = "a31109cd423121e1154ae0844fb312086428306f" },
+      { "nvim-treesitter"}
     },
-    disable = true,
   },
 
   {
     "phaazon/mind.nvim",
     commit = "e59c52758c399caceb549c698cfa2d65e6bbb9f9",
+    opts = true,
     dependencies = { "nvim-lua/plenary.nvim", commit = "0c31c398261567cda89b66ddffc69d39495f63ae" },
     config = function()
       require("mind").setup()
     end,
-    disable = true,
   },
 
   --{ "kyazdani42/nvim-web-devicons", commit = "bb6d4fd1e010300510172b173ab5205d37af084f" },
