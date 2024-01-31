@@ -2,7 +2,7 @@ local plantuml = require("config.plantuml")
 local builtin = require("telescope.builtin")
 
 Mappings = {
-  ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
+  ["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
   --["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
