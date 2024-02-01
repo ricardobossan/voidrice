@@ -42,14 +42,9 @@ local plugins = {
     commit = "1a23ea84bd02c34f50d8e10a8b4bfc89597ffe4e",
   },
 
-  -- Null-ls
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    commit = "7b2b28e207a1df4ebb13c7dc0bd83f69b5403d71",
-    config = function()
-      require("null-ls").setup()
-    end,
-    dependencies = { "nvim-lua/plenary.nvim", commit = "0c31c398261567cda89b66ddffc69d39495f63ae" },
+    'stevearc/conform.nvim',
+    opts = {},
   },
 
   -- LSP
@@ -115,7 +110,7 @@ local plugins = {
   -- auto closing
   { "windwp/nvim-autopairs",  commit = "ae5b41ce880a6d850055e262d6dfebd362bb276e" }, -- autoclose parens, brackets, quotes, etc...
 
-  { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },                           -- autoclose tags
+  { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },                    -- autoclose tags
 
   {
     "nvim-neorg/neorg",
@@ -137,7 +132,7 @@ local plugins = {
     dependencies = {
       { "nvim-lua/plenary.nvim", commit = "0c31c398261567cda89b66ddffc69d39495f63ae" },
       { "Pocco81/TrueZen.nvim",  commit = "a31109cd423121e1154ae0844fb312086428306f" },
-      { "nvim-treesitter"}
+      { "nvim-treesitter" }
     },
   },
 
