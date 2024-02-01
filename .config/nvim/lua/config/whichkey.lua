@@ -103,6 +103,7 @@ Mappings = {
         local status, result = pcall(vim.lsp.buf.format, { async = true })
         if result == nil then
           require("conform").format()
+          print(" ")
         end
       end,
       "Format",
