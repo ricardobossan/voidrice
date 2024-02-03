@@ -95,12 +95,12 @@ local plugins = {
 		"iamcco/markdown-preview.nvim",
 		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
 		build = "cd app && yarn install", -- can't use npm. See https://github.com/npm/cli/issues/5126
-    dependencies = { 'zhaozg/vim-diagram', "aklt/plantuml-syntax"},
+		dependencies = { "zhaozg/vim-diagram", "aklt/plantuml-syntax" },
 		init = function()
 			vim.g.mkdp_filetypes = { "markdown" }
 		end,
 		ft = { "markdown" },
-	  },
+	},
 
 	-- auto closing
 	{ "windwp/nvim-autopairs", commit = "ae5b41ce880a6d850055e262d6dfebd362bb276e" }, -- autoclose parens, brackets, quotes, etc...
@@ -446,6 +446,19 @@ local plugins = {
 		"vimwiki/vimwiki",
 		commit = "c5b7f7e76f7d9b07036948a2f9c1d6cd0167e884",
 	},
+	{
+		"mrjones2014/legendary.nvim",
+		version = "v2.1.0",
+		-- since legendary.nvim handles all your keymaps/commands,
+		-- its recommended to load legendary.nvim before other plugins
+		priority = 10000,
+		lazy = false,
+		-- sqlite is only needed if you want to use frecency sorting
+		-- dependencies = { 'kkharji/sqlite.lua' }
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+	},
 	-- ChatGPT
 	--[[
   local home = vim.fn.expand("$HOME")
@@ -474,6 +487,7 @@ local plugins = {
 		commit = "7d4c1d8198e889d513a030b5a83faa07606bac27",
 	},
 }
+
 --[[
   use {
     "moll/vim-bbye",
