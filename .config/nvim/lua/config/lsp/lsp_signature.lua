@@ -60,7 +60,7 @@ local cfg = {
 	-- false: floating_windows setup will not change, toggle_key will pop up signature helper, but signature
 	-- may not popup when typing depends on floating_window setting
 
-	select_signature_key = '<c-j>', -- cycle to next signature, e.g. '<M-n>' function overloading
+	select_signature_key = '<M-m>', -- cycle to next signature, e.g. '<M-n>' function overloading
 	move_cursor_key = nil, -- imap, use nvim_set_current_win to move cursor between current win and floating
 }
 

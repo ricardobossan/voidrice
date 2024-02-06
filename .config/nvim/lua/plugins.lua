@@ -47,10 +47,9 @@ local plugins = {
     opts = {},
   },
 
-	-- TODO: Hoffs/omnisharp-extended-lsp-nvim
-	-- TODO: Install nvim-lightbulb
-	-- TODO: stevearc/dressing.nvim
-	--
+  -- TODO: Install nvim-lightbulb
+  -- TODO: stevearc/dressing.nvim
+  --
   -- LSP
   {
     "VonHeikemen/lsp-zero.nvim",
@@ -75,20 +74,22 @@ local plugins = {
       { "rafamadriz/friendly-snippets",      commit = "25ddcd96540a2ce41d714bd7fea2e7f75fea8ead" }, -- Optional
     },
   },
-	{
-		"ray-x/lsp_signature.nvim",
-		event = "VeryLazy",
-		opts = {},
-		config = function(_, opts)
-			require("lsp_signature").setup(opts)
-		end,
-	},
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts)
+---@diagnostic disable-next-line: redundant-parameter
+      require("lsp_signature").setup(opts)
+    end,
+  },
+  { "Hoffs/omnisharp-extended-lsp.nvim", commit = "4be2e8689067494ed7e5a4f1221adc31d1a07783"},
 
-  { "OmniSharp/omnisharp-vim", commit = "5ce267481d79d1dc5f7fb2c96ef74e71910b7024" },
+  { "OmniSharp/omnisharp-vim",          commit = "5ce267481d79d1dc5f7fb2c96ef74e71910b7024" },
 
   -- Markdown
 
-  { "godlygeek/tabular",       commit = "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
+  { "godlygeek/tabular",                 commit = "339091ac4dd1f17e225fe7d57b48aff55f99b23a" },
   {
     "jakewvincent/mkdnflow.nvim",
     commit = "51cf944514e49662cca8a075b1a8f485c2c39d0f",

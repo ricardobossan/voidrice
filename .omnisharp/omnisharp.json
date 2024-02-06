@@ -5,7 +5,7 @@
         "UseTabs": false,
         "TabSize": 2,
         "IndentationSize": 2,
-        "SpacingAfterMethodDeclarationName": false,
+        "SpacingAfterMethodDeclarationName": true,
         "SpaceWithinMethodDeclarationParenthesis": false,
         "SpaceBetweenEmptyMethodDeclarationParentheses": false,
         "SpaceAfterMethodCallName": false,
@@ -55,6 +55,6 @@
     },
     "RoslynExtensionsOptions": {
         "EnableAnalyzersSupport": false,
-        "EnableDecompilationSupport": false
+        "EnableDecompilationSupport": true
     }
 }
