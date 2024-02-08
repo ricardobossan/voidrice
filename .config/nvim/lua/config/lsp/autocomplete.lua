@@ -1,6 +1,9 @@
 local cmp = require("cmp")
 cmp.setup({
   sources = {
+    -- Copilot
+    { name = "copilot" },
+    { name = "codeium" },
     -- Snippets
     { name = "luasnip" },
     { name = "neosnippet" },
@@ -29,11 +32,22 @@ cmp.setup({
     ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
+  experimental = {
+    ghost_text = true,
+  },
 })
 
 -- autocomplete setup
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+cmp.event:on("menu_opened", function()
+  vim.b.copilot_suggestion_hidden = true
+end)
+
+cmp.event:on("menu_closed", function()
+  vim.b.copilot_suggestion_hidden = false
+end)
 
 local on_attach = function(client, bufnr)
   -- temporary fix for a roslyn issue in omnisharp

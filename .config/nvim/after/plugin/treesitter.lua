@@ -12,7 +12,7 @@ require 'nvim-treesitter.configs'.setup {
     "vim",
     "dockerfile",
     "gitignore",
-    "help",
+    -- "help",
     "javascript",
     "c",
     "lua"
