@@ -39,6 +39,18 @@ cmp.setup({
 
 -- autocomplete setup
 
+-- WARNING: Untested
+-- tried to do nvim correspondent to `autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })`
+
+vim.api.nvim_create_autocmd(
+  {"BufWinEnter", "BufEnter", "BufRead", "BufNewFile"},
+  {
+    pattern = { "sql", "mysql", "plsql"},
+    command = [[lua require('cmp').setup.buffer({sources = {{ name = 'vim-dadbod-completion'}} })]],
+  }
+)
+
+
 local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 cmp.event:on("menu_opened", function()

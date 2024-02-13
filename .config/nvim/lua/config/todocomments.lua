@@ -8,6 +8,7 @@ local info_yellow = "#FFCC66"
 local hint_blue = "#4FC1FF"
 local perf_purple = "#7C3AED"
 
+-- TODO: Some icons don't work, i.e., TODO, NOTE
 function M.setup()
   require("todo-comments").setup {
     signs = true,

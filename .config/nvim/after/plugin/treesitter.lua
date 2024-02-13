@@ -8,6 +8,7 @@ require 'nvim-treesitter.configs'.setup {
     "html",
     "css",
     "markdown",
+    "markdown_inline",
     "lua",
     "vim",
     "dockerfile",

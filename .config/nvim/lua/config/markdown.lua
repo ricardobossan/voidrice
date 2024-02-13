@@ -19,7 +19,7 @@ api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[let g:vi
 api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[let g:vim_markdown_strikethrough = 1]] })
 api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[let g:vim_markdown_new_list_item_indent = 2]] })
 api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[let g:vim_markdown_edit_url_in = 'tab']] })
-api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[set conceallevel=3]] })
+api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[set conceallevel=2]] })
 --api.nvim_create_autocmd("BufEnter", { command = [[set foldlevel=1]] }) -- Folds everytime it switches between oppend files
 --
 --api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[let g:mkdp_browser = '/usr/bin/firefox']] })

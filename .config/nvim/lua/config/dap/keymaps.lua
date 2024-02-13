@@ -148,12 +148,7 @@ function M.setup()
 			C = { "<cmd>Telescope commands<cr>", "Commands" },
 		},
 
-		t = {
-			name = "TODO",
-			["f"] = { "<cmd>TodoTrouble<CR>", "Todo Fast" },
-			["l"] = { "<cmd>TodoLocList<CR>", "Todo List" },
-			["s"] = { "<cmd>TodoTelescope<CR>", "Todo Telescope" },
-		},
+		t = { "<cmd>TodoTrouble<CR>", "Todo" },
 		d = {
 			name = "DAP",
 			R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
