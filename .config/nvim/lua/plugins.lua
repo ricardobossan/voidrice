@@ -68,6 +68,7 @@ local plugins = {
 			{ "saadparwaiz1/cmp_luasnip", commit = "18095520391186d634a0045dacaa346291096566" }, -- Optional
 			{ "hrsh7th/cmp-nvim-lua", commit = "44acf47b28ff77b4b18d69d5b51b03184c87ccdf" }, -- Optional
 			{ "hrsh7th/cmp-emoji", commit = "19075c36d5820253d32e2478b6aaf3734aeaafa0" },
+      { "hrsh7th/cmp-nvim-lsp-signature-help", commit = "3d8912ebeb56e5ae08ef0906e3a54de1c66b92f1" },
 			-- Snippets
 			{ "L3MON4D3/LuaSnip", commit = "58fbfc627a93281a77f7d161d4ff702e639677b1" }, -- Required
 			{ "rafamadriz/friendly-snippets", commit = "25ddcd96540a2ce41d714bd7fea2e7f75fea8ead" }, -- Optional
