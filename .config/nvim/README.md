@@ -1,31 +1,34 @@
 ---
-versão_do_neovim: 0.9
+nvim -v output:
+  - NVIM: v0.9.5
+  - Build type: Release
+  - LuaJIT: 2.1.1702233742
 so: Archlinux
 shell: zsh
 ---
 
-<!-- TODO: Adapt nvim-dap -->
-
 # MyNvim
 
-- Minha configuração do Neovim.
+<!-- TODO: Own neovim -->
 
-## TODO
+- [ ] Adapt nvim-dap
+- [ ] Add plugin: ToggleTerm
 
-- Add plugin: ToggleTerm
-- ~~Null-ls~~
-  - ~~Consider formatting code blocks within markdown with Null-ls's builtin source `cbfmt`~~
-  - ~~Markdown **formatter**~~
-    - ~~Null-ls's builtin source for `Prettier` should do it properly.~~
-      - ~~Worked after uninstalled other servers for markdown in Mason~~
-- ~~highlight para markdown (strikethrough, italic, bold, links) ~~
-  - ~~Para funcionar preciso rodar manualmente no buffer aberto `:set syntax=highlight`~~
-  - ~~Talvez seja melhor acompanhar vídeo ensinando especificamente a configurar markdown no Neovim.~~
-- ~~Adicionar silent aos remaps~~
-- ~~Regularizar clipboard do terminal para outras janelas~~
-- ~~whichkey~~
-- ~~Adicionar plugin para TODO nos comments e configurar~~
-- ~~LSP, autocomplete e debugger para C#~~
+## DONE
+
+- [x] Null-ls
+  - [x] Consider formatting code blocks within markdown with Null-ls's builtin source `cbfmt`
+  - [x] Markdown **formatter**
+    - [x] Null-ls's builtin source for `Prettier` should do it properly.
+      - [x] Worked after uninstalled other servers for markdown in Mason
+- [x] highlight para markdown (strikethrough, italic, bold, links)
+  - [x] Para funcionar preciso rodar manualmente no buffer aberto `:set syntax=highlight`
+  - [x] Talvez seja melhor acompanhar vídeo ensinando especificamente a configurar markdown no Neovim.
+- [x] Adicionar silent aos remaps
+- [x] Regularizar clipboard do terminal para outras janelas
+- [x] whichkey
+- [x] Adicionar plugin para TODO nos comments e configurar
+- [x] LSP, autocomplete e debugger para C#
 
 ## Guias Usados
 
@@ -36,6 +39,7 @@ shell: zsh
 ## Remover configuração anterior
 
 - Verifica versão do Nvim. Na época, a minha foi `v0.9.0`:
+
   ```bash
   nvim -v
   #NVIM v0.9.0-dev-769+g0f52e2c84
@@ -52,25 +56,36 @@ shell: zsh
   #
   #Run :checkhealth for more info
   ```
+
 - Delete a instalação anterior:
+
   - Delete o codigo-fonte:
+
     ```bash
     rm -rfv ~/source/repos/neovim/
     ```
+
   - Remove Neovim com o gerenciador de arquivos:
+
     ```bash
     yay -R neovim
     ```
+
   - Remove binários:
+
     ```bash
     sudo rm /usr/local/bin/nvim
     ```
+
 - clone o código-fonte do Neovim:
+
   ```bash
   git clone https://github.com/neovim/neovim.git
   git checkout release-0.9
   ```
+
 - Instale do código-fonte:
+
   ```bash
   make CMAKE_BUILD_TYPE=RelWithDebInfo
   sudo make install
@@ -111,16 +126,16 @@ rm -rfv ~/.local/share/nvim/site/pack/packer
 
        ```lua
        -- Only required if you have packer configured as `opt`
-       vim.cmd [[packadd packer.nvim]]
+       vim.cmd([[packadd packer.nvim]])
 
-       return require('packer').startup(function(use)
-       -- Packer can manage itself
-       use 'wbthomason/packer.nvim'
-       --[[ Explorador de arquivos
-       use {
-       'nvim-tree/nvim-tree.lua',
-       }
-       --]]
+       return require("packer").startup(function(use)
+       	-- Packer can manage itself
+       	use("wbthomason/packer.nvim")
+       	--[[ Explorador de arquivos
+                     use {
+                     'nvim-tree/nvim-tree.lua',
+                     }
+                     --]]
        end)
        ```
 
@@ -130,10 +145,11 @@ rm -rfv ~/.local/share/nvim/site/pack/packer
        - Eu consigo salvar na pasta que quero se colocar o caminho absoluto.
 
    - Instalar plugins dentro da função `return packer.startup(function(use) ... end`. eg.:
+
      ```lua
-     use {
-     'nvim-tree/nvim-tree.lua',
-     }
+     use({
+     	"nvim-tree/nvim-tree.lua",
+     })
      ```
 
 ## Explorador de Arquivos
@@ -143,10 +159,9 @@ rm -rfv ~/.local/share/nvim/site/pack/packer
   - Configuração: - Acrescente à configuração do Packer(plugins.lua), dentro do método `return require('packer').startup(function(use)`
 
 ```lua
-use {
-'nvim-tree/nvim-tree.lua',
-}
-
+use({
+	"nvim-tree/nvim-tree.lua",
+})
 ```
 
 ## LSP
@@ -159,28 +174,28 @@ use {
 
   ```lua
   --...
-  use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v1.x',
-  requires = {
-  -- LSP Support
-  {'neovim/nvim-lspconfig'},             -- Required
-  {'williamboman/mason.nvim'},           -- Optional
-  {'williamboman/mason-lspconfig.nvim'}, -- Optional
+  use({
+  	"VonHeikemen/lsp-zero.nvim",
+  	branch = "v1.x",
+  	requires = {
+  		-- LSP Support
+  		{ "neovim/nvim-lspconfig" }, -- Required
+  		{ "williamboman/mason.nvim" }, -- Optional
+  		{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-  -- Autocompletion
-  {'hrsh7th/nvim-cmp'},         -- Required
-  {'hrsh7th/cmp-nvim-lsp'},     -- Required
-  {'hrsh7th/cmp-buffer'},       -- Optional
-  {'hrsh7th/cmp-path'},         -- Optional
-  {'saadparwaiz1/cmp_luasnip'}, -- Optional
-  {'hrsh7th/cmp-nvim-lua'},     -- Optional
+  		-- Autocompletion
+  		{ "hrsh7th/nvim-cmp" }, -- Required
+  		{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+  		{ "hrsh7th/cmp-buffer" }, -- Optional
+  		{ "hrsh7th/cmp-path" }, -- Optional
+  		{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+  		{ "hrsh7th/cmp-nvim-lua" }, -- Optional
 
-  -- Snippets
-  {'L3MON4D3/LuaSnip'},             -- Required
-  {'rafamadriz/friendly-snippets'}, -- Optional
-  }
-  }
+  		-- Snippets
+  		{ "L3MON4D3/LuaSnip" }, -- Required
+  		{ "rafamadriz/friendly-snippets" }, -- Optional
+  	},
+  })
   --...
   ```
 
@@ -189,18 +204,18 @@ use {
   ```lua
   -- Learn the keybindings, see :help lsp-zero-keybindings
   -- Learn to configure LSP servers, see :help lsp-zero-api-showcase
-  local lsp = require('lsp-zero')
-  lsp.preset('recommended')
+  local lsp = require("lsp-zero")
+  lsp.preset("recommended")
 
   lsp.setup()
 
   vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  update_in_insert = false,
-  underline = true,
-  severity_sort = false,
-  float = true,
+  	virtual_text = true,
+  	signs = true,
+  	update_in_insert = false,
+  	underline = true,
+  	severity_sort = false,
+  	float = true,
   })
   ```
 
