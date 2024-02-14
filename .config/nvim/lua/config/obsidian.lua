@@ -7,6 +7,10 @@ function M.setup()
         {
           name = "Zettelkasten",
           path = "~/zettelkasten/Zettelkasten/"
+        },
+        {
+          name = "bys",
+          path = "~/projetos/bys/"
         }
       },
   templates = {
