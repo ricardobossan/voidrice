@@ -11,6 +11,11 @@ function M.setup()
 				name = "bys",
 				path = "~/projetos/bys/",
 			},
+			{
+				name = "ricardo",
+				path = "~/projetos/ricardo/",
+			},
+
 		},
 		templates = {
 			subdir = "templates",
