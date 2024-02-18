@@ -1,5 +1,11 @@
 local cmp = require("cmp")
 cmp.setup({
+  completion = {
+    autocomplete = {
+      require('cmp.types').cmp.TriggerEvent.InsertEnter,
+      require('cmp.types').cmp.TriggerEvent.TextChanged
+    }
+  },
   sources = {
     -- Copilot
     { name = "copilot" },
@@ -25,6 +31,14 @@ cmp.setup({
     { name = "buffer" },
     { name = "emoji" },
   },
+  formatting = {
+    format = require('lspkind').cmp_format({
+      mode = "symbol",
+      maxwidth = 50,
+      ellipsis_char = '...',
+      symbol_map = { Codeium = "", }
+    })
+  },
   mapping = {
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -43,9 +57,9 @@ cmp.setup({
 -- tried to do nvim correspondent to `autocmd FileType sql,mysql,plsql lua require('cmp').setup.buffer({ sources = {{ name = 'vim-dadbod-completion' }} })`
 
 vim.api.nvim_create_autocmd(
-  {"BufWinEnter", "BufEnter", "BufRead", "BufNewFile"},
+  { "BufWinEnter", "BufEnter", "BufRead", "BufNewFile" },
   {
-    pattern = { "sql", "mysql", "plsql"},
+    pattern = { "sql", "mysql", "plsql" },
     command = [[lua require('cmp').setup.buffer({sources = {{ name = 'vim-dadbod-completion'}} })]],
   }
 )

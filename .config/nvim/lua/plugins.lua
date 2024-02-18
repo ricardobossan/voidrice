@@ -61,7 +61,7 @@ local plugins = {
       {
         "hrsh7th/nvim-cmp",
         commit = "feed47fd1da7a1bad2c7dca456ea19c8a5a9823a",
-      },                                                                                -- Required
+      },                                                                                              -- Required
       { "hrsh7th/cmp-nvim-lsp",                commit = "78924d1d677b29b3d1fe429864185341724ee5a2" }, -- Required
       { "hrsh7th/cmp-buffer",                  commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa" }, -- Optional
       { "hrsh7th/cmp-path",                    commit = "91ff86cd9c29299a64f968ebb45846c485725f23" }, -- Optional
@@ -82,6 +82,10 @@ local plugins = {
       ---@diagnostic disable-next-line: redundant-parameter
       require("lsp_signature").setup(opts)
     end,
+  },
+  {
+    "onsails/lspkind.nvim",
+    commit = "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf"
   },
   { "Hoffs/omnisharp-extended-lsp.nvim", commit = "4be2e8689067494ed7e5a4f1221adc31d1a07783" },
 
@@ -118,7 +122,7 @@ local plugins = {
   -- auto closing
   { "windwp/nvim-autopairs",  commit = "ae5b41ce880a6d850055e262d6dfebd362bb276e" }, -- autoclose parens, brackets, quotes, etc...
 
-  { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },                  -- autoclose tags
+  { "windwp/nvim-ts-autotag", dependencies = "nvim-treesitter" },                    -- autoclose tags
 
   {
     "nvim-neorg/neorg",
@@ -326,7 +330,7 @@ local plugins = {
         -- load the default settings
         defaults = {
           autocmds = true, -- lazyvim.config.autocmds
-          keymaps = true, -- lazyvim.config.keymaps
+          keymaps = true,  -- lazyvim.config.keymaps
           -- lazyvim.config.options can't be configured here since that's loaded before lazyvim setup
           -- if you want to disable loading options, add `package.loaded["lazyvim.config.options"] = true` to the top of your init.lua
         },
@@ -476,21 +480,26 @@ local plugins = {
   },
   { "kosayoda/nvim-lightbulb" },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    opts = {
-      suggestion = { enabled = false },
-      panel = { enabled = false },
-      filetypes = {
-        cs = true,
-        markdown = true,
-        help = true,
-      },
-    },
+    "github/copilot.vim",
+    commit = "79e1a892ca9b4fa6234fd25f2930dba5201700bd"
   },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   build = ":Copilot auth",
+  --   opts = {
+  --     suggestion = { enabled = false },
+  --     panel = { enabled = false },
+  --     filetypes = {
+  --       cs = true,
+  --       markdown = true,
+  --       help = true,
+  --     },
+  --   },
+  -- },
   { "epwalsh/obsidian.nvim" },
   {
+
     -- WARN: Não faz view para diagramas de classe
     "weirongxu/plantuml-previewer.vim",
     commit = "c0a9e42ad004b706ed3a097c839932110e75aae4",
@@ -515,6 +524,19 @@ local plugins = {
       -- Your DBUI configuration
       vim.g.db_ui_use_nerd_fonts = 1
     end,
+  },
+  -- Codeium
+  {
+    "Exafunction/codeium.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "hrsh7th/nvim-cmp",
+    },
+    config = function()
+      require("codeium").setup({
+      })
+    end,
+    commit = "cd5913ff5481229b15186293d1d46dd9500789f9",
   },
   -- BBye
   {
