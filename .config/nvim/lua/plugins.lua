@@ -296,7 +296,29 @@ local plugins = {
   {
     "akinsho/bufferline.nvim",
     commit = "84b0822b2af478d0b4f7b0f9249ca218855331db",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      commit = "bb6d4fd1e010300510172b173ab5205d37af084f",
+    },
+    --after = "catppuccin",
+    -- config = function()
+    --   local mocha = require("catppuccin.palettes").get_palette "mocha"
+    --   require("bufferline").setup({
+    --     highlights = require("catppuccin.groups.integrations.bufferline").get() {
+    --       styles = { "italic", "bold" },
+    --       custom = {
+    --         all = {
+    --         },
+    --         mocha = {
+    --           background = { fg = mocha.text },
+    --         },
+    --         latte = {
+    --           background = { fg = "#000000" },
+    --         },
+    --       }
+    --     }
+    --   })
+    -- end
   },
 
   -- WhichKey
@@ -318,7 +340,10 @@ local plugins = {
   {
     "folke/trouble.nvim",
     commit = "67337644e38144b444d026b0df2dc5fa0038930f",
-    dependencies = "nvim-tree/nvim-web-devicons",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      commit = "bb6d4fd1e010300510172b173ab5205d37af084f"
+    },
     config = function()
       require("trouble").setup({
         -- your configuration comes here
@@ -621,20 +646,7 @@ local plugins = {
     "github/copilot.vim",
     commit = "79e1a892ca9b4fa6234fd25f2930dba5201700bd",
   },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   build = ":Copilot auth",
-  --   opts = {
-  --     suggestion = { enabled = false },
-  --     panel = { enabled = false },
-  --     filetypes = {
-  --       cs = true,
-  --       markdown = true,
-  --       help = true,
-  --     },
-  --   },
-  -- },
+
   {
     "epwalsh/obsidian.nvim",
     commit = "0458e675d5ea59ba8df5375bf04f2a5a57720af8",

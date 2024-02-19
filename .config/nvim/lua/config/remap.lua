@@ -47,11 +47,10 @@ map("n", "o", "o<Esc>", default_opts)
 map("n", "O", "O<Esc>", default_opts)
 
 -- Buffers
-map("n", "<S-l>", ":BufferLineCycleNext<CR>", default_opts)
-map("n", "<S-h>", ":BufferLineCyclePrev<CR>", default_opts)
+map("n", "<C-k>", ":BufferLineCycleNext<CR>", default_opts)
+map("n", "<C-j>", ":BufferLineCyclePrev<CR>", default_opts)
 map("n", "<C-l>", ":BufferLineMoveNext<CR>", default_opts)
 map("n", "<C-h>", ":BufferLineMovePrev<CR>", default_opts)
-map("n", "<leader>b", ":BufferLineToggle<CR>", default_opts)
 map("n", "<leader>b", ":BufferLineToggle<CR>", default_opts)
 
 -- Lsp
