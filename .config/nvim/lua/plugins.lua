@@ -161,7 +161,42 @@ local plugins = {
       vim.g.mkdp_filetypes = { "markdown" }
     end,
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    commit = "258b5d899da7c681ce0e0225de32c593f3914c27",
+    main = "ibl",
+    opts = {},
+    config = function()
+      local highlight = {
+        "RainbowRed",
+        "RainbowYellow",
+        "RainbowBlue",
+        "RainbowOrange",
+        "RainbowGreen",
+        "RainbowViolet",
+        "RainbowCyan",
+      }
+      local hooks = require "ibl.hooks"
+      -- create the highlight groups in the highlight setup hook, so they are reset
+      -- every time the colorscheme changes
+      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        vim.api.nvim_set_hl(0, "RainbowRed", { fg = "#E06C75" })
+        vim.api.nvim_set_hl(0, "RainbowYellow", { fg = "#E5C07B" })
+        vim.api.nvim_set_hl(0, "RainbowBlue", { fg = "#61AFEF" })
+        vim.api.nvim_set_hl(0, "RainbowOrange", { fg = "#D19A66" })
+        vim.api.nvim_set_hl(0, "RainbowGreen", { fg = "#98C379" })
+        vim.api.nvim_set_hl(0, "RainbowViolet", { fg = "#C678DD" })
+        vim.api.nvim_set_hl(0, "RainbowCyan", { fg = "#56B6C2" })
+      end)
 
+      --vim.g.rainbow_delimiters = { highlight = highlight }
+      require("ibl").setup {
+        scope = { highlight = highlight },
+      }
+
+      --hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
+    end,
+  },
   {
     "nvim-telescope/telescope.nvim",
     --tag = '0.1.1',
@@ -436,7 +471,7 @@ local plugins = {
         -- load the default settings
         defaults = {
           autocmds = true, -- lazyvim.config.autocmds
-          keymaps = true, -- lazyvim.config.keymaps
+          keymaps = true,  -- lazyvim.config.keymaps
           -- lazyvim.config.options can't be configured here since that's loaded before lazyvim setup
           -- if you want to disable loading options, add `package.loaded["lazyvim.config.options"] = true` to the top of your init.lua
         },
@@ -649,7 +684,7 @@ local plugins = {
     commit = "cd5913ff5481229b15186293d1d46dd9500789f9",
     dependencies = {
       {
-        "nvim-lua/plenary.nvim" ,
+        "nvim-lua/plenary.nvim",
         commit = "0c31c398261567cda89b66ddffc69d39495f63ae",
       },
       {
