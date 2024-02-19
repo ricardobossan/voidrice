@@ -88,7 +88,7 @@ get_pr_list_for_authenticated_user() {
 alias \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
   cls="clear && ls -At1hN --color=auto --group-directories-first" \
-  docs="cd $HOME/Docs/ && $EDITOR -c 'NvimTreeOpen'" \
+  docs="cd $HOME/zettelkasten/ && $EDITOR ." \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
   clexa="clear && exa" \
   fd="fd -H" \
