@@ -44,7 +44,7 @@ function M.setup()
 		--["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 		["h"] = { builtin.help_tags, "Help (Vimtutor)" },
 		["O"] = { "<cmd>only<CR>", "Only" },
-		["T"] = { "<cmd>ToggleTerm<cr>", "Terminal" },
+		["T"] = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
 		["U"] = {
 			name = "Plantuml",
 			p = { "<cmd>PlantumlOpen<CR>", "Preview UML" },
