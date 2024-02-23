@@ -20,11 +20,11 @@ alias \
   rm="rm -vI" \
   bc="bc -ql" \
   mkd="mkdir -pv" \
-  yt="yt-dlp --embed-metadata -i" \
+  yt="yt-dlp --default-search 'ytsearch' --embed-metadata -i" \
   yta="yt -x -f bestaudio/best" \
   ffmpeg="ffmpeg -hide_banner" \
   xclip="xclip -se c" \
-  setkey="setxkbmap -layout br"
+  setkey="setxkbmap -layout br" \
 
 ## Colorize commands when possible.
 alias \
@@ -88,7 +88,7 @@ get_pr_list_for_authenticated_user() {
 alias \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
   cls="clear && ls -At1hN --color=auto --group-directories-first" \
-  docs="cd $HOME/zettelkasten/ && $EDITOR ." \
+  docs="cd $HOME/zettelkasten && $EDITOR ." \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
   clexa="clear && exa" \
   fd="fd -H" \
@@ -121,7 +121,7 @@ alias \
   du="du -h" \
   hist="$EDITOR $HOME/.cache/zsh/history" \
   music="sudo apple-music-for-linux" \
-  cp-gpt="echo 'window.clear();Array.from(document.getElementsByClassName(\"text-base\")).forEach((x)=>console.log(x.textContent));'|xclip" \
+  cpgpt="echo 'window.clear();Array.from(document.getElementsByClassName(\"text-base\")).forEach((x)=>console.log(x.textContent));'|xclip" \
   prospect="cd $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/_oportunidades && clear && exa" \
   prospectb="cd $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/_oportunidades && clear && libreoffice ./oportunidades.ods" \
   mupdf="/bin/mupdf -I" \
@@ -137,6 +137,10 @@ alias \
   vncview="vncviewer $(cat $HOME/Ricanda/hostip):5900" \
   wdisplay="xrandr -s 1920x1080" \
   uwdisplay="xrandr -s 2560x1080" \
+  bys="cd $HOME/projetos/bys/ && $EDITOR . && clexa -a" \
+  ric="cd $HOME/projetos/ricardo/ && $EDITOR ." \
+  size="du -h --max-depth=1|sort -rh" \
+  suspend="systemctl suspend" \
 
 ## Games
 STEAM_GAME="steam steam://rungameid"
