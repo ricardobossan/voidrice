@@ -154,6 +154,12 @@ local plugins = {
   },
 
 
+
+  --cp ~/.local/share/nvim/plugged/vim-csharp/snippets/*.snippets ~/.vsnip
+  -- { 'hrsh7th/vim-vsnip' },
+  --
+  -- { 'OrangeT/vim-csharp' },
+  --
   {
     "OmniSharp/omnisharp-vim",
     commit = "5ce267481d79d1dc5f7fb2c96ef74e71910b7024",
@@ -164,14 +170,11 @@ local plugins = {
     commit = "4be2e8689067494ed7e5a4f1221adc31d1a07783",
   },
 
-
-  -- :NOTE: this is not working
-  --cp ~/.local/share/nvim/plugged/vim-csharp/snippets/*.snippets ~/.vsnip
   -- { 'hrsh7th/vim-vsnip' },
   --
   -- { 'OrangeT/vim-csharp' },
   --
-  -- :NOTE: this is not working
+  -- :FIX: this is not working
   -- Allows for razor and blazor highlight
   -- {
   --   "jose-elias-alvarez/nvim-lsp-ts-utils",
@@ -530,6 +533,7 @@ local plugins = {
       { "<leader>dB", function() Dap.set_breakpoint(vim.f.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
       { "<leader>db", function() Dap.toggle_breakpoint() end,                                   desc = "Toggle Breakpoint" },
       { "<leader>dc", function() Dap.continue() end,                                            desc = "Continue" },
+      ---@diagnostic disable-next-line: undefined-global
       { "<leader>da", function() Dap.continue({ before = get_args }) end,                       desc = "Run with Args" },
       { "<leader>dC", function() Dap.run_to_cursor() end,                                       desc = "Run to Cursor" },
       { "<leader>dg", function() Dap.goto_() end,                                               desc = "Go to line (no execute)" },

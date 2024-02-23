@@ -1,3 +1,7 @@
+--[[
+TODO: Olha decisão em `ric` e aplica aqui e onde couber.
+--]]
+
 local M = {}
 
 local plantuml = require("config.plantuml")
@@ -6,25 +10,119 @@ local whichkey = require("which-key")
 local legendary = require("legendary")
 local legendary_whichkey = require("legendary.integrations.which-key")
 
-local g_maps = {
-  f = { "gf", "File" },
-  u = { "<cmd>lua Open_browser_with_url()<CR>", "Url under cursor" },
-  d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-  D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-  h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-  I = { "<cmd>Telescope lsp_implementations<CR>", "Implementation" },
-  b = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
-  r = { "<cmd>Trouble lsp_references<cr>", "References" },
-  R = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References (Telescope)" },
-}
-
-local keymap_g = {
-  name = "Get",
-  g = g_maps,
-}
-
--- TODO: Move all unrelated to dap to .config.lsp.keymaps.lua
+-- TODO: Move all unrelated to dap from here to more neutral location
 function M.setup()
+
+  -- Utils {{{      
+  function KeyOf(tbl, value)
+    for k, v in pairs(tbl) do
+      if k == value then
+        --print(k)
+        return k
+      end
+    end
+    return nil
+  end
+  
+  function Open_browser_with_url()
+    -- Get the word under the cursor
+    local word = vim.fn.expand("<cWORD>")
+  
+    word = word:gsub("^[%[%]%(%)<>]+", "") -- Remove characters at the beginning
+    word = word:gsub("[%[%]%(%)<>]+$", "") -- Remove characters at the end
+  
+    print("word: " .. word)
+  
+    -- Check if the word looks like a URL
+    local url = word:match("(%S+)") -- Extract the non-whitespace part
+  
+    if url and string.match(url, "^https?://%S+") ~= nil then
+      -- Execute the OpenBrowser command with the URL
+      vim.cmd("OpenBrowser " .. url)
+    else
+      print("No URL under the cursor")
+    end
+  end
+  -- }}}
+
+  -- Options {{{  
+  local opts_no_leader = { buffer = bufnr, prefix = "" }
+
+  local opts = {
+    mode = "n",
+    prefix = "<leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = false,
+  }
+
+  local optsV = {
+    mode = "v",
+    prefix = "<leader>",
+    ---@diagnostic disable-next-line: undefined-global
+    buffer = bufnr,
+    silent = true,
+    noremap = true,
+    nowait = false,
+  }
+
+  -- optsX -- ext commands?
+  -- }}}
+
+  -- Mappings {{{
+    local g_maps = {
+      f = { "gf", "File" },
+      u = { "<cmd>lua Open_browser_with_url()<CR>", "Url under cursor" },
+      d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+      D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+      h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
+      I = { "<cmd>Telescope lsp_implementations<CR>", "Implementation" },
+      b = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
+      r = { "<cmd>Trouble lsp_references<cr>", "References" },
+      R = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References (Telescope)" },
+    }
+  -- }}}
+
+  -- Keymaps {{{  
+  local keymap_g = {
+    name = "Get",
+    g = g_maps,
+  }
+
+  local keymapV = {
+    o = {
+      name = "Obsidian",
+      t = { "<cmd>ObsidianTemplate<CR>", "Insert Template" },
+      w = { "<cmd>ObsidianWorkspace<CR>", "Select Workspace" },
+      l = {
+        name = "Link",
+        e = { "<cmd>ObsidianLink<CR>", "Add existing" },
+        g = { "<cmd>ObsidianFollowLink<CR>", "Follow" },
+        l = { "<cmd>ObsidianLinks<CR>", "Search all for current note" },
+        b = { "<cmd>ObsidianBacklinks<CR>", "See backlinks for note" },
+        n = { "<cmd>ObsidianLinkNew<CR>", "Add New" },
+      },
+      n = {
+        name = "Note",
+        d = { "<cmd>ObsidianToday<CR>", "Today" },
+        o = { "<cmd>ObsidianOpen<CR>", "Open" },
+        m = { "<cmd>ObsidianTomorrow<CR>", "Tomorrow" },
+        n = { "<cmd>ObsidianNew<CR>", "New" },
+        y = { "<cmd>ObsidianYesterday<CR>", "Yesterday" },
+      },
+      q = { "<cmd>ObsidianQuickSwitch<CR>", "Switch between notes" },
+      s = {
+        name = "Search",
+        n = { "<cmd>ObsidianSearch<CR>", "Search all notes" },
+        t = { "<cmd>ObsidianTags<CR>", "Search tags" },
+        l = { "<cmd>ObsidianLinks<CR>", "Search links for current note" },
+      },
+    },
+  }
+
+  -- Keymaps (keymapX) -- ext commands?
+
   local keymap = {
     ["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
     ["m"] = {
@@ -179,14 +277,6 @@ function M.setup()
       s = { "<cmd>Lazy<CR>", "Sync" },
     },
     g = g_maps,
-    -- p = {
-    -- 	name = "Packer",
-    -- 	c = { "<cmd>PackerCompile<cr>", "Compile" },
-    -- 	i = { "<cmd>PackerInstall<cr>", "Install" },
-    -- 	s = { "<cmd>PackerSync<cr>", "Sync" },
-    -- 	S = { "<cmd>PackerStatus<cr>", "Status" },
-    -- 	u = { "<cmd>PackerUpdate<cr>", "Update" },
-    -- },
     G = {
       name = "Git",
       g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
@@ -249,7 +339,6 @@ function M.setup()
       K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Documentation" },
       l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
       --q = { "<cmd>lua vim.diagnostic.set_loclist()<cr>", "Quickfix" },
-
       r = { "<cmd>Trouble lsp_references<cr>", "References" },
       --n = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
       e = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
@@ -322,60 +411,9 @@ function M.setup()
       u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
     },
   }
+  -- }}}
 
-  local keymapV = {
-    o = {
-      name = "Obsidian",
-      t = { "<cmd>ObsidianTemplate<CR>", "Insert Template" },
-      w = { "<cmd>ObsidianWorkspace<CR>", "Select Workspace" },
-      l = {
-        name = "Link",
-        e = { "<cmd>ObsidianLink<CR>", "Add existing" },
-        g = { "<cmd>ObsidianFollowLink<CR>", "Follow" },
-        l = { "<cmd>ObsidianLinks<CR>", "Search all for current note" },
-        b = { "<cmd>ObsidianBacklinks<CR>", "See backlinks for note" },
-        n = { "<cmd>ObsidianLinkNew<CR>", "Add New" },
-      },
-      n = {
-        name = "Note",
-        d = { "<cmd>ObsidianToday<CR>", "Today" },
-        o = { "<cmd>ObsidianOpen<CR>", "Open" },
-        m = { "<cmd>ObsidianTomorrow<CR>", "Tomorrow" },
-        n = { "<cmd>ObsidianNew<CR>", "New" },
-        y = { "<cmd>ObsidianYesterday<CR>", "Yesterday" },
-      },
-      q = { "<cmd>ObsidianQuickSwitch<CR>", "Switch between notes" },
-      s = {
-        name = "Search",
-        n = { "<cmd>ObsidianSearch<CR>", "Search all notes" },
-        t = { "<cmd>ObsidianTags<CR>", "Search tags" },
-        l = { "<cmd>ObsidianLinks<CR>", "Search links for current note" },
-      },
-    },
-  }
-
-  local opts = {
-    mode = "n",
-    prefix = "<leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = false,
-  }
-
-  local optsV = {
-    mode = "v",
-    prefix = "<leader>",
-    buffer = bufnr,
-    silent = true,
-    noremap = true,
-    nowait = false,
-  }
-
-  local opts_no_leader = { buffer = bufnr, prefix = "" }
-
-  legendary.setup({ which_key = { auto_register = true } })
-
+  -- NOTE: First all whichkey.register(), then legendary.setup() {{{
   whichkey.register(keymap, opts)
   legendary_whichkey.bind_whichkey(keymap, opts, true)
   legendary_whichkey.parse_whichkey(keymap, opts, true)
@@ -387,37 +425,11 @@ function M.setup()
   whichkey.register(keymapV, optsV)
   legendary_whichkey.bind_whichkey(keymapV, optsV, true)
   legendary_whichkey.parse_whichkey(keymapV, optsV, true)
-end
 
-function KeyOf(tbl, value)
-  for k, v in pairs(tbl) do
-    if k == value then
-      --print(k)
-      return k
-    end
-  end
-  return nil
-end
+  legendary.setup({ which_key = { auto_register = true } })
+  -- }}}
 
-function Open_browser_with_url()
-  -- Get the word under the cursor
-  local word = vim.fn.expand("<cWORD>")
 
-  word = word:gsub("^[%[%]%(%)<>]+", "") -- Remove characters at the beginning
-  word = word:gsub("[%[%]%(%)<>]+$", "") -- Remove characters at the end
-
-  print("word: " .. word)
-
-  -- Check if the word looks like a URL
-  local url = word:match("(%S+)") -- Extract the non-whitespace part
-
-  if url and string.match(url, "^https?://%S+") ~= nil then
-    -- Execute the OpenBrowser command with the URL
-    vim.cmd("OpenBrowser " .. url)
-  else
-    print("No URL under the cursor")
-  end
-end
 
 --vim.api.nvim_set_keymap("n", "<Leader>gu", "<cmd>lua Open_browser_with_url()<CR>", { noremap = true, silent = true })
 
