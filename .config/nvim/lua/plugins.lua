@@ -112,14 +112,31 @@ local plugins = {
   },
 
   {
+    "OmniSharp/omnisharp-vim",
+    commit = "5ce267481d79d1dc5f7fb2c96ef74e71910b7024",
+  },
+
+  {
     "Hoffs/omnisharp-extended-lsp.nvim",
     commit = "4be2e8689067494ed7e5a4f1221adc31d1a07783",
   },
 
-  {
-    "OmniSharp/omnisharp-vim",
-    commit = "5ce267481d79d1dc5f7fb2c96ef74e71910b7024",
-  },
+
+  -- :NOTE: this is not working
+  --cp ~/.local/share/nvim/plugged/vim-csharp/snippets/*.snippets ~/.vsnip
+  -- { 'hrsh7th/vim-vsnip' },
+  --
+  -- { 'OrangeT/vim-csharp' },
+  --
+  -- :NOTE: this is not working
+  -- Allows for razor and blazor highlight
+  -- {
+  --   "jose-elias-alvarez/nvim-lsp-ts-utils",
+  --   commit = "f
+  -- {
+  --   "jmederosalvarado/roslyn.nvim",
+  --   commit = "8be8ec2e269a32cc1bed2d067c67182f04d85ec4"
+  -- },
 
   -- Markdown
   {
