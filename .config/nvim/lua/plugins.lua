@@ -146,7 +146,7 @@ local plugins = {
 
   {
     "jakewvincent/mkdnflow.nvim",
-    commit = "51cf944514e49662cca8a075b1a8f485c2c39d0f",
+    commit = "1b24b8b5fe10fe09af4572c0165293e0dcd998aa",
     config = function()
       require("mkdnflow").setup({})
     end,
@@ -372,7 +372,7 @@ local plugins = {
 
   {
     "nvim-lua/plenary.nvim",
-    commit = "253d34830709d690f013daf2853a9d21ad7accab",
+    commit = "0c31c398261567cda89b66ddffc69d39495f63ae",
     lazy = true,
   },
 
@@ -389,7 +389,7 @@ local plugins = {
     dependencies = {
       {
         "nvim-lua/plenary.nvim",
-        commit = "253d34830709d690f013daf2853a9d21ad7accab",
+        commit = "0c31c398261567cda89b66ddffc69d39495f63ae",
       },
     },
 

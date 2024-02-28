@@ -33,3 +33,5 @@ treasure="$HOME/ORG/not_everyday/familia/ricanda/ricardo/controle/LOGIN/" \
 cfs="\$EDITOR $HOME/.config/shell/shortcutrc" \
 priori="\$EDITOR ~/Docs/pivot/LISTA_prioridades.md" \
 ads="cd $HOME/HISTORICO/ATIVO/PROJETOS/UNILASALLE/p4 && clexa" \
+bys="cd $HOME/projetos/bys/ && $EDITOR . && clexa -a" \
+ric="cd $HOME/projetos/ricardo/ && $EDITOR ./ && clexa -a" \
