@@ -157,7 +157,9 @@ alias \
     gd='git diff -w' \
     gl='git log --all --graph --oneline --decorate' \
     gs='git status' \
-    ga='git add . && git status'
+    ga='git add . && git status' \
+    gc='git commit -m' \
+    gfa='git fetch --all' \
   ### GitHub CLI
   alias \
     prl=get_pr_list_for_authenticated_user \
