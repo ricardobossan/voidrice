@@ -2,6 +2,7 @@ local M = {}
 
 local icons = require "config.icons"
 
+local attention_marine = "#0DB9D7"
 local error_red = "#F44747"
 local warning_orange = "#ff8800"
 local info_yellow = "#FFCC66"
@@ -13,6 +14,8 @@ function M.setup()
   require("todo-comments").setup {
     signs = true,
     keywords = {
+      KiM = { icon = icons.ui.Fire, color = attention_marine},
+      FIX = { icon = icons.ui.Bug, color = error_red },
       FIX = { icon = icons.ui.Bug, color = error_red },
       TODO = { icon = icons.ui.Check, color = hint_blue },
       HACK = { icon = icons.ui.Fire, color = warning_orange },
