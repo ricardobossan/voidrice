@@ -654,6 +654,20 @@ local plugins = {
     commit = "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae",
   },
 
+{
+  'pwntester/octo.nvim',
+    commit = "feae1e5519deebad3c59ee1d57d28aa22822f7c8",
+   dependencies = {
+    'nvim-lua/plenary.nvim',
+    'nvim-telescope/telescope.nvim',
+    -- OR 'ibhagwan/fzf-lua',
+    'nvim-tree/nvim-web-devicons',
+  },
+  config = function ()
+    require"octo".setup()
+  end
+},
+
   {
     "kosayoda/nvim-lightbulb",
     commit = "8f00b89dd1b1dbde16872bee5fbcee2e58c9b8e9",
