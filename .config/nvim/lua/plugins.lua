@@ -111,6 +111,49 @@ local plugins = {
     commit = "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf",
   },
 
+
+  -- Lazy
+  {
+    'dgagn/diagflow.nvim',
+    commit = '6d2ad945ddbc46f42a0a2e7618975a5f3d2e7dbe',
+    -- event = 'LspAttach', This is what I use personnally and it works great
+    opts = {
+      enable = true,
+      max_width = 60,   -- The maximum width of the diagnostic messages
+      max_height = 10,  -- the maximum height per diagnostics
+      severity_colors = { -- The highlight groups to use for each diagnostic severity level
+        error = "DiagnosticFloatingError",
+        warning = "DiagnosticFloatingWarn",
+        info = "DiagnosticFloatingInfo",
+        hint = "DiagnosticFloatingHint",
+      },
+      format = function(diagnostic)
+        return diagnostic.message
+      end,
+      gap_size = 1,
+      scope = 'cursor', -- 'cursor', 'line' this changes the scope, so instead of showing errors under the cursor, it shows errors on the entire line.
+      padding_top = 0,
+      padding_right = 0,
+      text_align = 'right',                                -- 'left', 'right'
+      placement = 'inline',                                   -- 'top', 'inline'
+      inline_padding_left = 0,                             -- the padding left when the placement is inline
+      update_event = { 'DiagnosticChanged', 'BufReadPost' }, -- the event that updates the diagnostics cache
+      toggle_event = {},                                   -- if InsertEnter, can toggle the diagnostics on inserts
+      show_sign = false,                                   -- set to true if you want to render the diagnostic sign before the diagnostic message
+      render_event = { 'DiagnosticChanged', 'CursorMoved' },
+      border_chars = {
+        top_left = "┌",
+        top_right = "┐",
+        bottom_left = "└",
+        bottom_right = "┘",
+        horizontal = "─",
+        vertical = "│"
+      },
+      show_borders = false,
+    }
+  },
+
+
   {
     "OmniSharp/omnisharp-vim",
     commit = "5ce267481d79d1dc5f7fb2c96ef74e71910b7024",
@@ -654,19 +697,19 @@ local plugins = {
     commit = "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae",
   },
 
-{
-  'pwntester/octo.nvim',
+  {
+    'pwntester/octo.nvim',
     commit = "feae1e5519deebad3c59ee1d57d28aa22822f7c8",
-   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-telescope/telescope.nvim',
-    -- OR 'ibhagwan/fzf-lua',
-    'nvim-tree/nvim-web-devicons',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      -- OR 'ibhagwan/fzf-lua',
+      'nvim-tree/nvim-web-devicons',
+    },
+    config = function()
+      require "octo".setup()
+    end
   },
-  config = function ()
-    require"octo".setup()
-  end
-},
 
   {
     "kosayoda/nvim-lightbulb",
