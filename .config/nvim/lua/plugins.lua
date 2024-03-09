@@ -119,8 +119,8 @@ local plugins = {
     -- event = 'LspAttach', This is what I use personnally and it works great
     opts = {
       enable = true,
-      max_width = 60,   -- The maximum width of the diagnostic messages
-      max_height = 10,  -- the maximum height per diagnostics
+      max_width = 60,     -- The maximum width of the diagnostic messages
+      max_height = 10,    -- the maximum height per diagnostics
       severity_colors = { -- The highlight groups to use for each diagnostic severity level
         error = "DiagnosticFloatingError",
         warning = "DiagnosticFloatingWarn",
@@ -134,12 +134,12 @@ local plugins = {
       scope = 'cursor', -- 'cursor', 'line' this changes the scope, so instead of showing errors under the cursor, it shows errors on the entire line.
       padding_top = 0,
       padding_right = 0,
-      text_align = 'right',                                -- 'left', 'right'
-      placement = 'inline',                                   -- 'top', 'inline'
-      inline_padding_left = 0,                             -- the padding left when the placement is inline
+      text_align = 'right',                                  -- 'left', 'right'
+      placement = 'inline',                                  -- 'top', 'inline'
+      inline_padding_left = 0,                               -- the padding left when the placement is inline
       update_event = { 'DiagnosticChanged', 'BufReadPost' }, -- the event that updates the diagnostics cache
-      toggle_event = {},                                   -- if InsertEnter, can toggle the diagnostics on inserts
-      show_sign = false,                                   -- set to true if you want to render the diagnostic sign before the diagnostic message
+      toggle_event = {},                                     -- if InsertEnter, can toggle the diagnostics on inserts
+      show_sign = false,                                     -- set to true if you want to render the diagnostic sign before the diagnostic message
       render_event = { 'DiagnosticChanged', 'CursorMoved' },
       border_chars = {
         top_left = "┌",
@@ -263,7 +263,7 @@ local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     --tag = '0.1.1',
-    commit = "87e92ea31b2b61d45ad044cf7b2d9b66dad2a618",
+    --commit = "87e92ea31b2b61d45ad044cf7b2d9b66dad2a618",
 
     -- or                            , branch = '0.1.x',
     dependencies = { { "nvim-lua/plenary.nvim", commit = "0c31c398261567cda89b66ddffc69d39495f63ae" } },
@@ -347,13 +347,13 @@ local plugins = {
   },
 
   {
-    "kyazdani42/nvim-web-devicons",
+    "nvim-tree/nvim-web-devicons",
     commit = "bb6d4fd1e010300510172b173ab5205d37af084f",
   },
 
   {
-    "kyazdani42/nvim-tree.lua",
-    commit = "08a0aa1a3b7411ee0a7887c8818528b1558cef96",
+    "nvim-tree/nvim-tree.lua",
+    commit = "041dbd18f440207ad161503a384e7c82d575db66",
   },
 
   {

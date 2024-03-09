@@ -5,6 +5,22 @@ TODO: Olha decisão em `ric` e aplica aqui e onde couber.
 local M = {}
 
 local plantuml = require("config.plantuml")
+
+require('telescope').setup({
+	defaults = {
+		vimgrep_arguments = {
+			"rg",
+			"--color=never",
+			"--no-heading",
+			"--with-filename",
+			"--line-number",
+			"--column",
+			"--hidden",
+			"--smart-case",
+		},
+	},
+})
+
 local builtin = require("telescope.builtin")
 local whichkey = require("which-key")
 local legendary = require("legendary")
@@ -12,8 +28,7 @@ local legendary_whichkey = require("legendary.integrations.which-key")
 
 -- TODO: Move all unrelated to dap from here to more neutral location
 function M.setup()
-
-  -- Utils {{{      
+  -- Utils {{{
   function KeyOf(tbl, value)
     for k, v in pairs(tbl) do
       if k == value then
@@ -23,19 +38,19 @@ function M.setup()
     end
     return nil
   end
-  
+
   function Open_browser_with_url()
     -- Get the word under the cursor
     local word = vim.fn.expand("<cWORD>")
-  
+
     word = word:gsub("^[%[%]%(%)<>]+", "") -- Remove characters at the beginning
     word = word:gsub("[%[%]%(%)<>]+$", "") -- Remove characters at the end
-  
+
     print("word: " .. word)
-  
+
     -- Check if the word looks like a URL
     local url = word:match("(%S+)") -- Extract the non-whitespace part
-  
+
     if url and string.match(url, "^https?://%S+") ~= nil then
       -- Execute the OpenBrowser command with the URL
       vim.cmd("OpenBrowser " .. url)
@@ -43,9 +58,10 @@ function M.setup()
       print("No URL under the cursor")
     end
   end
+
   -- }}}
 
-  -- Options {{{  
+  -- Options {{{
   local opts_no_leader = { buffer = bufnr, prefix = "" }
 
   local opts = {
@@ -71,20 +87,20 @@ function M.setup()
   -- }}}
 
   -- Mappings {{{
-    local g_maps = {
-      f = { "gf", "File" },
-      u = { "<cmd>lua Open_browser_with_url()<CR>", "Url under cursor" },
-      d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
-      D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
-      h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
-      I = { "<cmd>Telescope lsp_implementations<CR>", "Implementation" },
-      b = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
-      r = { "<cmd>Trouble lsp_references<cr>", "References" },
-      R = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References (Telescope)" },
-    }
+  local g_maps = {
+    f = { "gf", "File" },
+    u = { "<cmd>lua Open_browser_with_url()<CR>", "Url under cursor" },
+    d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+    D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+    h = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
+    I = { "<cmd>Telescope lsp_implementations<CR>", "Implementation" },
+    b = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Type Definition" },
+    r = { "<cmd>Trouble lsp_references<cr>", "References" },
+    R = { "<cmd>lua require('telescope.builtin').lsp_references()<CR>", "References (Telescope)" },
+  }
   -- }}}
 
-  -- Keymaps {{{  
+  -- Keymaps {{{
   local keymap_g = {
     name = "Get",
     g = g_maps,
@@ -260,7 +276,7 @@ function M.setup()
     },
     f = {
       name = "Find",
-      ["f"] = { builtin.find_files, "Files" },
+      ["f"] = { "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", "Files" },
       ["g"] = { builtin.live_grep, "Text" },
       ["b"] = { builtin.buffers, "Buffers" },
       r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -428,8 +444,7 @@ function M.setup()
 
   legendary.setup({ which_key = { auto_register = true } })
   -- }}}
-
-
+end
 
 --vim.api.nvim_set_keymap("n", "<Leader>gu", "<cmd>lua Open_browser_with_url()<CR>", { noremap = true, silent = true })
 
