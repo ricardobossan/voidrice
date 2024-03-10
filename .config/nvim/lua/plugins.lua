@@ -263,12 +263,16 @@ local plugins = {
   {
     "nvim-telescope/telescope.nvim",
     --tag = '0.1.1',
-    --commit = "87e92ea31b2b61d45ad044cf7b2d9b66dad2a618",
+    commit = "87e92ea31b2b61d45ad044cf7b2d9b66dad2a618",
 
     -- or                            , branch = '0.1.x',
     dependencies = { { "nvim-lua/plenary.nvim", commit = "0c31c398261567cda89b66ddffc69d39495f63ae" } },
   },
 
+  {
+    '/norcalli/nvim-colorizer.lua',
+    commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6"
+  },
   {
     "morhetz/gruvbox",
     commit = "bf2885a95efdad7bd5e4794dd0213917770d79b7",
