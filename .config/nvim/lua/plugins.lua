@@ -357,7 +357,7 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
-    commit = "041dbd18f440207ad161503a384e7c82d575db66",
+    commit = "9c97e6449b0b0269bd44e1fd4857184dfa57bb4c",
   },
 
   {
