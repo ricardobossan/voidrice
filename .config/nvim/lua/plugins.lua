@@ -1,6 +1,6 @@
 local plugins = {
-  -- Terminal
   {
+    -- Terminal
     "akinsho/toggleterm.nvim",
     commit = "ed6c92d6708e5208360347f2281de99602061dc8",
     tag = "*",
@@ -21,8 +21,6 @@ local plugins = {
     -- dependencies = { 'kkharji/sqlite.lua' }
   },
 
-  -- TODO: Install nvim-lightbulb
-  -- TODO: stevearc/dressing.nvim
   --
   -- LSP
   {
@@ -111,9 +109,9 @@ local plugins = {
     commit = "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf",
   },
 
-
   -- Lazy
   {
+    -- Better virtual text
     'dgagn/diagflow.nvim',
     commit = '6d2ad945ddbc46f42a0a2e7618975a5f3d2e7dbe',
     -- event = 'LspAttach', This is what I use personnally and it works great
@@ -152,8 +150,6 @@ local plugins = {
       show_borders = false,
     }
   },
-
-
 
   --cp ~/.local/share/nvim/plugged/vim-csharp/snippets/*.snippets ~/.vsnip
   -- { 'hrsh7th/vim-vsnip' },
@@ -270,21 +266,6 @@ local plugins = {
   },
 
   {
-    '/norcalli/nvim-colorizer.lua',
-    commit = "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6"
-  },
-  {
-    "morhetz/gruvbox",
-    commit = "bf2885a95efdad7bd5e4794dd0213917770d79b7",
-    --as = "gruvbox"
-    --config = function()
-    --vim.cmd[[
-    --colorscheme gruvbox
-    --]]
-    --end
-  },
-
-  {
     "mbbill/undotree",
     commit = "1a23ea84bd02c34f50d8e10a8b4bfc89597ffe4e",
   },
@@ -357,7 +338,7 @@ local plugins = {
 
   {
     "nvim-tree/nvim-tree.lua",
-    commit = "9c97e6449b0b0269bd44e1fd4857184dfa57bb4c",
+    commit = "08a0aa1a3b7411ee0a7887c8818528b1558cef96",
   },
 
   {
@@ -388,8 +369,6 @@ local plugins = {
     -- end
   },
 
-  -- WhichKey
-  -- Lua
   {
     "folke/which-key.nvim",
     commit = "5224c261825263f46f6771f1b644cae33cd06995",
@@ -403,7 +382,7 @@ local plugins = {
       --}
     end,
   },
-  -- Lua
+
   {
     "folke/trouble.nvim",
     commit = "67337644e38144b444d026b0df2dc5fa0038930f",
@@ -426,13 +405,12 @@ local plugins = {
     lazy = true,
   },
 
-  -- Comments
+  ---[[ Comments
   {
     "numToStr/Comment.nvim",
     commit = "0236521ea582747b58869cb72f70ccfa967d2e89",
   },
 
-  -- Todo highlight
   {
     "folke/todo-comments.nvim",
     commit = "077c59586d9d0726b0696dc5680eb863f4e04bc5",
@@ -452,6 +430,7 @@ local plugins = {
       })
     end,
   },
+  --]]
 
   {
     "mfussenegger/nvim-dap",
@@ -772,7 +751,7 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  -- Codeium
+
   {
     "Exafunction/codeium.nvim",
     commit = "cd5913ff5481229b15186293d1d46dd9500789f9",
@@ -790,19 +769,25 @@ local plugins = {
       require("codeium").setup({})
     end,
   },
-  -- BBye
+
   {
     "moll/vim-bbye",
     commit = "25ef93ac5a87526111f43e5110675032dbcacf56",
   },
+
   {
     "catppuccin/nvim",
     name = "catppuccin",
     commit = "9703f227bfab20d04bcee62d2f08f1795723b4ae",
     priority = 1000,
   },
-  --[[
-  -- ChatGPT
+
+  {
+    'NvChad/nvim-colorizer.lua',
+    commit = "85855b38011114929f4058efc97af1059ab3e41d"
+  }
+
+  --[[ ChatGPT
   local home = vim.fn.expand("$HOME")
   {
     "jackMort/ChatGPT.nvim",
@@ -817,7 +802,7 @@ local plugins = {
       "nvim-telescope/telescope.nvim",
     },
   }
--]]
+  --]]
 }
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
