@@ -6,17 +6,18 @@ require("catppuccin").setup({
   },
   custom_highlights = function()
     return {
-      LineNr = { fg = '#FFFFFF' },
-      CursorLineNr = { fg = '#FFFFFF' },
-      CursorLine = { bg = '#252525' },
-      ColorColumn = { bg = '#252525' },
-      GitSignsAdd = { fg = '#467555' },
-      GitSignsChange = { fg = '#856f3a' },
-      GitSignsDelete = { fg = '#753b34' },
-      TelescopeBorder = { fg = '#FFFFFF' },
+      --CursorLineNr = { fg = '#FF8FFF' },
+      LineNr = { fg = '#f9e2af' },
+      -- CursorLine = { bg = '#252525' },
+      -- ColorColumn = { bg = '#252525' },
+      -- GitSignsAdd = { fg = '#467555' },
+      -- GitSignsChange = { fg = '#856f3a' },
+      -- GitSignsDelete = { fg = '#753b34' },
+      -- TelescopeBorder = { fg = '#FFFFFF' },
     }
   end,
-  transparent_background = true,
+  -- Only apply transparency when not in Windows OS
+  transparent_background = not vim.loop.os_uname().version:match("Windows") and false or true,
   --[[
   integrations = {
     cmp = true,
