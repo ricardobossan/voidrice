@@ -167,5 +167,6 @@ alias \
     gfa='git fetch --all' \
   ### GitHub CLI
   alias \
+    gh auth login='gh auth login --scopes read:project' \
     prl=get_pr_list_for_authenticated_user \
     pr='gh pr view -c' \
