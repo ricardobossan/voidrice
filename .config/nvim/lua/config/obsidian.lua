@@ -15,7 +15,10 @@ function M.setup()
 				name = "ricardo",
 				path = "~/projetos/ricardo/",
 			},
-
+			{
+				name = "Unilasalle",
+				path = "~/projetos/unilasalle/",
+			},
 		},
 		templates = {
 			subdir = "templates",
