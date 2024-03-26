@@ -679,9 +679,15 @@ local plugins = {
     commit = "c5b7f7e76f7d9b07036948a2f9c1d6cd0167e884",
   },
 
+  -- Git {{{
   {
     "lewis6991/gitsigns.nvim",
     commit = "2c2463dbd82eddd7dbab881c3a62cfbfbe3c67ae",
+  },
+
+  {
+    "tpope/vim-fugitive",
+    commit = "193ba9b393931bad768c1d2eed688b0bcc240858"
   },
 
   {
@@ -697,7 +703,8 @@ local plugins = {
       require "octo".setup()
     end
   },
-
+  -- }}}
+  
   {
     "kosayoda/nvim-lightbulb",
     commit = "8f00b89dd1b1dbde16872bee5fbcee2e58c9b8e9",
