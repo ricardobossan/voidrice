@@ -7,18 +7,18 @@ local M = {}
 local plantuml = require("config.plantuml")
 
 require('telescope').setup({
-	defaults = {
-		vimgrep_arguments = {
-			"rg",
-			"--color=never",
-			"--no-heading",
-			"--with-filename",
-			"--line-number",
-			"--column",
-			"--hidden",
-			"--smart-case",
-		},
-	},
+  defaults = {
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--hidden",
+      "--smart-case",
+    },
+  },
 })
 
 local builtin = require("telescope.builtin")
@@ -296,6 +296,12 @@ function M.setup()
     G = {
       name = "Git",
       g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+      a = {
+        name = "Add",
+        a = { "<cmd>Git add .<cr>", "All" },
+        b = { "<cmd>Git add %<cr>", "Buffer" },
+        h = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Hunk" },
+      },
       j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
       k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
       l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
@@ -303,17 +309,12 @@ function M.setup()
       r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
       R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
       s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-      u = {
-        "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>",
-        "Undo Stage Hunk",
-      },
-      o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+      u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
+      d = { "<cmd>Telescope git_status<cr>", "Diff" },
+      -- d = { "<cmd>Gitsigns diff HEAD<cr>", "Diff" },
+      -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
       b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
       c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-      d = {
-        "<cmd>Gitsigns diffthis HEAD<cr>",
-        "Diff",
-      },
     },
     l = {
       name = "LSP",
