@@ -327,6 +327,7 @@ function M.setup()
         name = "Checkout",
         b = { "<cmd>Telescope git_branches<cr>", "Branch" },
         c = { "<cmd>Telescope git_commits<cr>", "Commit" },
+        E = { "<cmd>Git checkout .<cr>", "( ⚠️  Dangerous! )  Remove all uncommited changes" },
       },
       -- j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
       -- k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
