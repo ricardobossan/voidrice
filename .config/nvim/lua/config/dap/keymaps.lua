@@ -302,12 +302,28 @@ function M.setup()
         b = { "<cmd>Git add %<cr>", "Buffer" },
         h = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Hunk" },
       },
-      b = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
+      b = {
+        name = "Branch",
+        b = { "<cmd>Telescope git_branches<cr>", "List" },
+        d = { "<cmd>Git branch -d<cr>", "Delete" },
+        D = { "<cmd>Git branch -D<cr>", "Force Delete" },
+        r = { "<cmd>Git branch -r<cr>", "Remote" },
+        R = { "<cmd>Git branch -vv<cr>", "Remote Verbose" },
+      },
+      B = {
+        name = "Blame",
+        b = { "<cmd>Git blame<cr>", "Buffer" },
+        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Line" },
+      },
       d = {
         name = "Diff",
-        d = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "This" }, -- Gitsigns
-        --d = { "<cmd>Gvdiff<cr>", "Buffer" }, -- fugitive
-        h = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Hunk" },
+        l = { "<cmd>Telescope git_status<cr>", "List" },
+        f = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Compare file" }, -- Gitsigns
+        --b = { "<cmd>Gvdiff<cr>", "Buffer" }, -- Less precise
+        d = { "<cmd>Git diff<cr>", "Diff" },
+        h = { "<cmd>Git diff HEAD<cr>", "Diff HEAD" },
+        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+        --h = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Hunk" },
       },
       h = {
         name = "Hunk",
@@ -317,6 +333,14 @@ function M.setup()
         s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage" },
         u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo" },
         r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset" },
+      },
+      l = {
+        name = "Log",
+        a = { "<cmd>Git log --all --graph --oneline --decorate<cr>", "All (Oneline)" },
+        A = { "<cmd>Git log --all --graph --decorate<cr>", "All (Verbose)" },
+        b = { "<cmd>Git log --graph --oneline --decorate<cr>", "Branch (Oneline)" },
+        B = { "<cmd>Git log --graph --decorate<cr>", "Branch (Verbose)" },
+        c = { "<cmd>Telescope git_commits<cr>", "Commits" },
       },
       r = {
         name = "Reset",
@@ -329,6 +353,7 @@ function M.setup()
         c = { "<cmd>Telescope git_commits<cr>", "Commit" },
         E = { "<cmd>Git checkout .<cr>", "( ⚠️  Dangerous! )  Remove all uncommited changes" },
       },
+      s = { "<cmd>Git<cr>", "Status" },
       -- j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
       -- k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
       -- l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
