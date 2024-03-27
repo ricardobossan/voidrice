@@ -140,8 +140,181 @@ function M.setup()
   -- Keymaps (keymapX) -- ext commands?
 
   local keymap = {
-    ["e"] = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
-    ["m"] = {
+    b = {
+      name = "Buffers",
+      ["b"] = {
+        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
+        "Buffers",
+      },
+      ["d"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
+    },
+    d = {
+      name = "DAP",
+      R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
+      E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
+      C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
+      U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
+      --b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
+      c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+      d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+      e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
+      g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+      h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
+      S = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
+      i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+      o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+      p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
+      q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+      s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+      b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+      x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
+      u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+    },
+    e = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
+    f = {
+      name = "Find",
+      ["f"] = { "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", "Files" },
+      ["g"] = { builtin.live_grep, "Text" },
+      ["b"] = { builtin.buffers, "Buffers" },
+      r = { "<cmd>Trouble lsp_references<cr>", "References" },
+      i = { "<cmd>Trouble lsp_implementations<cr>", "References" },
+      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+      S = {
+        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+        "Workspace Symbols",
+      },
+    },
+    G = {
+      name = "Git",
+      --g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+      a = {
+        name = "Add",
+        a = { "<cmd>Git add .<cr>", "All" },
+        b = { "<cmd>Git add %<cr>", "Buffer" },
+        h = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Hunk" },
+      },
+      B = {
+        name = "Blame",
+        b = { "<cmd>Git blame<cr>", "Buffer" },
+        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Line" },
+      },
+      b = {
+        name = "Branch",
+        b = { "<cmd>Telescope git_branches<cr>", "List" },
+        d = { "<cmd>Git branch -d<cr>", "Delete" },
+        D = { "<cmd>Git branch -D<cr>", "Force Delete" },
+        r = { "<cmd>Git branch -r<cr>", "Remote" },
+        R = { "<cmd>Git branch -vv<cr>", "Remote Verbose" },
+      },
+      c = {
+        name = "Checkout",
+        b = { "<cmd>Telescope git_branches<cr>", "to Branch" },
+        c = { "<cmd>Telescope git_commits<cr>", "to Commit" },
+        R = { "<cmd>Git checkout .<cr>", "( ⚠️  Dangerous! )  Remove all uncommited changes" },
+        r = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Remove unstaged changes in this buffer" },
+      },
+      C = {
+        name = "Commit",
+        c = { "<cmd>Git commit<cr>", "Commit" },
+        --a = { "<cmd>Git commit --amend<cr>", "Amend" },
+        --A = { "<cmd>Git commit --amend --no-edit<cr>", "Amend (No Edit)" },
+        e = { "<cmd>Telescope git_commits<cr>", "List" },
+        --p = { "<cmd>Git commit --patch<cr>", "Patch" },
+        --P = { "<cmd>Git commit --patch --amend<cr>", "Patch Amend" },
+        --r = { "<cmd>Git commit --reword<cr>", "Reword" },
+        s = { "<cmd>Git commit --squash<cr>", "Squash" },
+        --S = { "<cmd>Git commit --squash --amend<cr>", "Squash Amend" },
+      },
+      d = {
+        name = "Diff",
+        l = { "<cmd>Telescope git_status<cr>", "List" },
+        f = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Compare file" }, -- Gitsigns
+        --b = { "<cmd>Gvdiff<cr>", "Buffer" }, -- Less precise
+        d = { "<cmd>Git diff<cr>", "Diff" },
+        h = { "<cmd>Git diff HEAD<cr>", "Diff HEAD" },
+        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+        --h = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Hunk" },
+      },
+      -- TODO: Think about hung navigation and keybinding. Look DevOps Toolbox config
+      h = {
+        name = "Hunk",
+        d = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Diff" },
+        n = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next" },
+        p = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev" },
+        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage" },
+        u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo" },
+        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset" },
+      },
+      l = {
+        name = "Log",
+        a = { "<cmd>Git log --all --graph --oneline --decorate<cr>", "All (Oneline)" },
+        A = { "<cmd>Git log --all --graph --decorate<cr>", "All (Verbose)" },
+        b = { "<cmd>Git log --graph --oneline --decorate<cr>", "Branch (Oneline)" },
+        B = { "<cmd>Git log --graph --decorate<cr>", "Branch (Verbose)" },
+        c = { "<cmd>Telescope git_commits<cr>", "Commits" },
+      },
+      r = {
+        name = "Reset",
+        h = { "Git reset HEAD<cr>", "All to HEAD" },
+      },
+      s = { "<cmd>Git<cr>", "Status" },
+    },
+    g = g_maps,
+    H = { builtin.help_tags, "Help (Vimtutor)" },
+    L = {
+      name = "Lazy",
+      l = { "<cmd>Lazy<CR>", "Home" },
+      s = { "<cmd>Lazy<CR>", "Sync" },
+    },
+    l = {
+      name = "LSP",
+      g = {
+        name = "Generic",
+        i = { "<cmd>LspInfo<cr>", "Info" },
+        I = { "<cmd>Mason<cr>", "Installer Info" },
+      },
+      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+      --d = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", "Diagnostics" },
+      d = {
+        "<cmd>lua vim.diagnostic.setloclist()<cr>",
+        "Document Diagnostics",
+      },
+      w = {
+        "<cmd>Trouble workspace_diagnostics<cr>",
+        "Workspace Diagnostics",
+      },
+      f = {
+        function()
+          ---@diagnostic disable-next-line: unused-local
+          local status, result = pcall(vim.lsp.buf.format, { async = true })
+          if result == nil then
+            require("conform").format()
+            print(" ")
+          end
+        end,
+        "Format",
+      },
+      j = {
+        "<cmd>lua vim.diagnostic.goto_next()<CR>",
+        "Next Diagnostic",
+      },
+      s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "Document Symbols" },
+      k = {
+        "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+        "Prev Diagnostic",
+      },
+      K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Documentation" },
+      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+      --q = { "<cmd>lua vim.diagnostic.set_loclist()<cr>", "Quickfix" },
+      r = { "<cmd>Trouble lsp_references<cr>", "References" },
+      --n = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
+      e = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+      t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document Diagnostics" },
+      L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "CodeLens" },
+      D = { "<cmd>lua require('config.lsp').toggle_diagnostics()<CR>", "Toggle Inline Diagnostics" },
+    },
+    m = {
       name = "Markdown",
       p = { "<cmd>MarkdownPreviewToggle<CR>", "Preview toggle" },
       c = { "<cmd>MkdnTableNewColAfter<CR>", "+ Column after" },
@@ -151,14 +324,7 @@ function M.setup()
       t = { "<cmd>InsertToc<CR>", "Insert TOC" },
       T = { "<cmd>InsertNToc<CR>", "Insert TOC (numbered)" },
     },
-    ["w"] = { "<cmd>w!<CR>", "Save" },
-    ["q"] = { "<cmd>q!<CR>", "Quit" },
-    --["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-    --["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
-    --["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
-    ["h"] = { builtin.help_tags, "Help (Vimtutor)" },
-    --["O"] = { "<cmd>only<CR>", "Only" },
-    ["O"] = {
+    O = {
       name = "Octo",
       i = {
         name = "+Issue",
@@ -259,162 +425,6 @@ function M.setup()
       a = { "<cmd>Octo actions <CR>", "Lists all available Octo actions" },
       s = { "<cmd>Octo search <CR>", "Search GitHub for issues and PRs matching the query" },
     },
-    ["T"] = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
-    ["U"] = {
-      name = "Plantuml",
-      p = { "<cmd>PlantumlOpen<CR>", "Preview UML" },
-      f = { plantuml.plantumlOutputSingle, "Print current file" },
-      w = { plantuml.plantumlOutputAll, "Print all files in workspace" },
-    },
-    b = {
-      name = "Buffers",
-      ["b"] = {
-        "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
-        "Buffers",
-      },
-      ["d"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
-    },
-    f = {
-      name = "Find",
-      ["f"] = { "<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>", "Files" },
-      ["g"] = { builtin.live_grep, "Text" },
-      ["b"] = { builtin.buffers, "Buffers" },
-      r = { "<cmd>Trouble lsp_references<cr>", "References" },
-      i = { "<cmd>Trouble lsp_implementations<cr>", "References" },
-      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-      S = {
-        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-        "Workspace Symbols",
-      },
-    },
-    L = {
-      name = "Lazy",
-      l = { "<cmd>Lazy<CR>", "Home" },
-      s = { "<cmd>Lazy<CR>", "Sync" },
-    },
-    g = g_maps,
-    G = {
-      name = "Git",
-      --g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-      a = {
-        name = "Add",
-        a = { "<cmd>Git add .<cr>", "All" },
-        b = { "<cmd>Git add %<cr>", "Buffer" },
-        h = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Hunk" },
-      },
-      b = {
-        name = "Branch",
-        b = { "<cmd>Telescope git_branches<cr>", "List" },
-        d = { "<cmd>Git branch -d<cr>", "Delete" },
-        D = { "<cmd>Git branch -D<cr>", "Force Delete" },
-        r = { "<cmd>Git branch -r<cr>", "Remote" },
-        R = { "<cmd>Git branch -vv<cr>", "Remote Verbose" },
-      },
-      B = {
-        name = "Blame",
-        b = { "<cmd>Git blame<cr>", "Buffer" },
-        l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Line" },
-      },
-      d = {
-        name = "Diff",
-        l = { "<cmd>Telescope git_status<cr>", "List" },
-        f = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Compare file" }, -- Gitsigns
-        --b = { "<cmd>Gvdiff<cr>", "Buffer" }, -- Less precise
-        d = { "<cmd>Git diff<cr>", "Diff" },
-        h = { "<cmd>Git diff HEAD<cr>", "Diff HEAD" },
-        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-        --h = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Hunk" },
-      },
-      h = {
-        name = "Hunk",
-        d = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Diff" },
-        n = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next" },
-        p = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev" },
-        s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage" },
-        u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo" },
-        r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset" },
-      },
-      l = {
-        name = "Log",
-        a = { "<cmd>Git log --all --graph --oneline --decorate<cr>", "All (Oneline)" },
-        A = { "<cmd>Git log --all --graph --decorate<cr>", "All (Verbose)" },
-        b = { "<cmd>Git log --graph --oneline --decorate<cr>", "Branch (Oneline)" },
-        B = { "<cmd>Git log --graph --decorate<cr>", "Branch (Verbose)" },
-        c = { "<cmd>Telescope git_commits<cr>", "Commits" },
-      },
-      r = {
-        name = "Reset",
-        b = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Buffer" },
-        h = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Hunk" },
-      },
-      c = {
-        name = "Checkout",
-        b = { "<cmd>Telescope git_branches<cr>", "Branch" },
-        c = { "<cmd>Telescope git_commits<cr>", "Commit" },
-        E = { "<cmd>Git checkout .<cr>", "( ⚠️  Dangerous! )  Remove all uncommited changes" },
-      },
-      s = { "<cmd>Git<cr>", "Status" },
-      -- j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-      -- k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-      -- l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
-      -- p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
-      -- r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
-      -- R = { "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Reset Buffer" },
-      -- s = { "<cmd>lua require 'gitsigns'.stage_hunk()<cr>", "Stage Hunk" },
-      -- u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo Stage Hunk" },
-      -- d = { "<cmd>Telescope git_status<cr>", "Diff" },
-      -- d = { "<cmd>Gitsigns diff HEAD<cr>", "Diff" },
-      -- o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
-      -- b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-      -- c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    },
-    l = {
-      name = "LSP",
-      g = {
-        name = "Generic",
-        i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>Mason<cr>", "Installer Info" },
-      },
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      --d = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", "Diagnostics" },
-      d = {
-        "<cmd>lua vim.diagnostic.setloclist()<cr>",
-        "Document Diagnostics",
-      },
-      w = {
-        "<cmd>Trouble workspace_diagnostics<cr>",
-        "Workspace Diagnostics",
-      },
-      f = {
-        function()
-          ---@diagnostic disable-next-line: unused-local
-          local status, result = pcall(vim.lsp.buf.format, { async = true })
-          if result == nil then
-            require("conform").format()
-            print(" ")
-          end
-        end,
-        "Format",
-      },
-      j = {
-        "<cmd>lua vim.diagnostic.goto_next()<CR>",
-        "Next Diagnostic",
-      },
-      s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "Document Symbols" },
-      k = {
-        "<cmd>lua vim.diagnostic.goto_prev()<cr>",
-        "Prev Diagnostic",
-      },
-      K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Documentation" },
-      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-      --q = { "<cmd>lua vim.diagnostic.set_loclist()<cr>", "Quickfix" },
-      r = { "<cmd>Trouble lsp_references<cr>", "References" },
-      --n = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
-      e = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
-      t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document Diagnostics" },
-      L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "CodeLens" },
-      D = { "<cmd>lua require('config.lsp').toggle_diagnostics()<CR>", "Toggle Inline Diagnostics" },
-    },
     o = {
       name = "Obsidian",
       t = { "<cmd>ObsidianTemplate<CR>", "Insert Template" },
@@ -443,6 +453,7 @@ function M.setup()
         l = { "<cmd>ObsidianLinks<CR>", "Search links for current note" },
       },
     },
+    q = { "<cmd>q!<CR>", "Quit" },
     s = {
       name = "Search",
       b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
@@ -454,31 +465,15 @@ function M.setup()
       k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
       C = { "<cmd>Telescope commands<cr>", "Commands" },
     },
-
+    T = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
     t = { "<cmd>TodoTrouble<CR>", "Todo" },
-    d = {
-      name = "DAP",
-      R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },
-      E = { "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input" },
-      C = { "<cmd>lua require'dap'.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
-      U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
-      --b = { "<cmd>lua require'dap'.step_back()<cr>", "Step Back" },
-      c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
-      d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
-      e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate" },
-      g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
-      h = { "<cmd>lua require'dap.ui.widgets'.hover()<cr>", "Hover Variables" },
-      S = { "<cmd>lua require'dap.ui.widgets'.scopes()<cr>", "Scopes" },
-      i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-      o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-      p = { "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause" },
-      q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
-      r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-      s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
-      b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
-      x = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
-      u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+    U = {
+      name = "Plantuml",
+      p = { "<cmd>PlantumlOpen<CR>", "Preview UML" },
+      f = { plantuml.plantumlOutputSingle, "Print current file" },
+      w = { plantuml.plantumlOutputAll, "Print all files in workspace" },
     },
+    w = { "<cmd>w!<CR>", "Save" },
   }
   -- }}}
 

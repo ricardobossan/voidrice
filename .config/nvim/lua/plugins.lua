@@ -695,7 +695,7 @@ local plugins = {
     commit = "feae1e5519deebad3c59ee1d57d28aa22822f7c8",
     dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
+      { "nvim-telescope/telescope.nvim", commit = "87e92ea31b2b61d45ad044cf7b2d9b66dad2a618" },
       -- OR 'ibhagwan/fzf-lua',
       'nvim-tree/nvim-web-devicons',
     },
@@ -704,7 +704,7 @@ local plugins = {
     end
   },
   -- }}}
-  
+
   {
     "kosayoda/nvim-lightbulb",
     commit = "8f00b89dd1b1dbde16872bee5fbcee2e58c9b8e9",
