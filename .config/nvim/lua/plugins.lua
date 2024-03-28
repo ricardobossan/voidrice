@@ -412,6 +412,7 @@ local plugins = {
   },
 
   {
+    -- Needs package `extra/ttf-jetbrains-mono-nerd` for icons to work
     "folke/todo-comments.nvim",
     commit = "077c59586d9d0726b0696dc5680eb863f4e04bc5",
     dependencies = {
