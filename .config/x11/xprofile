@@ -15,7 +15,7 @@ xrandr --dpi 96 # Set DPI. User may want to use a larger number for larger scree
 remaps & # run the remaps script, switching caps/esc and more; check it for more info
 setxkbmap -layout br
 syncthing --no-browser &
-redshift -l -22.9:-43.0 -t 6500:3500 -b 1:0.6 & # Apply blue-light filter, based on lat/long.
+redshift -l -22.9:-43.0 -t 6500:2500 -b 1:0.4 & # Apply blue-light filter, based on lat/long.
 transmission-daemon & # start torrent service
 pipewire & # sometimes, when leaving dwm and comming back, pipewre doesn't autostart. If it's already started, it just does nothing.
 
