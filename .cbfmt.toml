@@ -1,3 +1,97 @@
 [languages]
+# Rust formatting with rustfmt
+rust = ["rustfmt"]
+# Go formatting with gofmt
+go = ["gofmt"]
+# Lua formatting with stylua
 lua = ["stylua -s -"]
-sh = ["shellharden --transform "]
+# Python formatting with black
+python = ["black --fast -"]
+# JavaScript formatting with Prettier
+javascript = ["prettier --single-quote --trailing-comma all --print-width 100 --parser babel"]
+# TypeScript formatting with Prettier
+typescript = ["prettier --single-quote --trailing-comma all --print-width 100 --parser typescript"]
+# HTML formatting with Prettier
+html = ["prettier --print-width 100"]
+# CSS formatting with Prettier
+css = ["prettier --print-width 100"]
+# JSON formatting with Prettier
+json = ["prettier --print-width 100"]
+# YAML formatting with Prettier
+yaml = ["prettier --print-width 100 --parser yaml"]
+# Markdown formatting with Prettier
+markdown = ["prettier --print-width 100 --parser markdown"]
+# Shell script formatting with shfmt
+sh = ["shfmt -i 2 -ci -sr -kp"]
+# C/C++ formatting with clang-format
+c = ["clang-format -style=file"]
+cpp = ["clang-format -style=file"]
+# Java formatting with Google Java Format
+java = ["google-java-format"]
+# Swift formatting with swiftformat
+swift = ["swiftformat --indent 4 --wraparguments beforefirst"]
+# Kotlin formatting with ktlint
+kotlin = ["ktlint --format"]
+# Ruby formatting with RuboCop
+ruby = ["rubocop -a"]
+# PHP formatting with PHP-CS-Fixer
+php = ["php-cs-fixer fix"]
+# Scala formatting with Scalafmt
+scala = ["scalafmt"]
+# Shell script formatting with shfmt
+shell = ["shfmt -i 2 -ci -sr -kp"]
+# SQL formatting with sqlformat
+sql = ["sqlformat"]
+# XML formatting with xmllint
+xml = ["xmllint --format --recover"]
+# Dockerfile formatting with dockerfilelint
+dockerfile = ["dockerfilelint"]
+# GraphQL formatting with graphql-cli
+graphql = ["graphql-cli validate --fix"]
+# TOML formatting with tomlfmt
+toml = ["tomlfmt"]
+# HCL (HashiCorp Configuration Language) formatting with hclfmt
+hcl = ["hclfmt"]
+# Markdown formatting with Prettier
+markdown = ["prettier --print-width 100 --parser markdown"]
+# Terraform formatting with terraform fmt
+terraform = ["terraform fmt"]
+# Vue.js formatting with Prettier
+vue = ["prettier --print-width 100 --parser vue"]
+# Ruby on Rails formatting with RuboCop
+rails = ["rubocop -a"]
+# JSX formatting with Prettier
+jsx = ["prettier --print-width 100 --parser babel"]
+# TSX formatting with Prettier
+tsx = ["prettier --print-width 100 --parser typescript"]
+# GraphQL formatting with graphql-cli
+gql = ["graphql-cli validate --fix"]
+# YAML formatting with Prettier
+yml = ["prettier --print-width 100 --parser yaml"]
+# Dart formatting with dartfmt
+dart = ["dartfmt -l 120"]
+# Dart formatting with dartfmt
+fish = ["fish_indent"]
+# Reason formatting with refmt
+reason = ["refmt"]
+# OCaml formatting with ocamlformat
+ocaml = ["ocamlformat"]
+# R formatting with styler
+r = ["styler"]
+# C# formatting with dotnet format
+csharp = ["dotnet format"]
+# F# formatting with Fantomas
+fsharp = ["fantomas --indent 4"]
+# Bash formatting with shfmt
+#sh = ["shellharden --transform "]
+bash = ["shfmt -i 2 -ci -sr -kp"]
+# PowerShell formatting with Posh-Git
+powershell = ["posh-git format"]
+# Elixir formatting with mix format
+elixir = ["mix format"]
+# Julia formatting with JuliaFormatter
+julia = ["julia --project -e 'using JuliaFormatter; format(\"\")'"]
+# HTML formatting with Prettier
+html = ["prettier --print-width 100"]
+# Crystal formatting with crystal tool format
+crystal = ["crystal tool format"]
