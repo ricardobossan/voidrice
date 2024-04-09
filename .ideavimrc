@@ -28,11 +28,14 @@ set wrap linebreak
 set surround
 set multiple-cursors
 set commentary
+set which-key
+set notimeout
 set argtextobj
 set easymotion
 set textobj-entire
 set ReplaceWithRegister
 Plug 'preservim/nerdtree'
+" Plug 'kyazdani42/nvim-tree.lua'
 Plug 'nvim-telescope/telescope.nvim'
 
 """ Plugin settings -------------------------
@@ -83,6 +86,7 @@ let mapleader=" "
 """ Mappings --------------------------------
 """" Menus
 nnoremap <leader>e :NERDTreeToggle<CR>
+
 map <leader>z <Action>(ToggleDistractionFreeMode)
 map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
 "map <leader>o <Action>(FileStructurePopup)
@@ -105,8 +109,8 @@ nnoremap <leader>o :only<CR>
 "vnoremap Y "+Y
 
 """" Navigating
-nnoremap J :bn<CR>
-nnoremap K :bp<CR>
+nnoremap <C-k> :bn<CR>
+nnoremap <C-j> :bp<CR>
 
 """" Debugging
 map <leader>d <Action>(Debug)
