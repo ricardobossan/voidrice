@@ -5,7 +5,7 @@ function M.setup()
 		workspaces = {
 			{
 				name = "Zettelkasten",
-				path = "~/zettelkasten/Zettelkasten/",
+				path = "~/zettelkasten/",
 			},
 			{
 				name = "bys",
