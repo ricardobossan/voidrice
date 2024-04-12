@@ -205,7 +205,7 @@ local plugins = {
     commit = "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = "cd app && yarn install", -- can't use npm. See https://github.com/npm/cli/issues/5126
+    build = "cd app && yarn install", -- WARN: Needs yarn!!!!. See https://github.com/npm/cli/issues/5126
     dependencies = {
       {
         "zhaozg/vim-diagram",
