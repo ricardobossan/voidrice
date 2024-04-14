@@ -86,31 +86,114 @@ let mapleader=" "
 """ Which key settings -----------------------
 set notimeout
 let g:WhichKey_ShowVimActions = "true"
+let g:WhichKey_SortOrder = "by_key_prefix_first"
 
-"""" Vim bindings
-let g:WhichKeyDesc_goto_top = "gg goto first line"
+"""" Mappings (WhichKey)
+"""""" Comment
 let g:WhichKeyDesc_commentray_prefix = "gc Comment"
 let g:WhichKeyDesc_commentray_action = "gcc line"
 let g:WhichKeyDesc_commentray_action = "gcu block"
 
-""" Mappings --------------------------------
-"""" Menus
-nnoremap <leader>e :NERDTreeToggle<CR>
-
-map <leader>z <Action>(ToggleDistractionFreeMode)
-map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
-"map <leader>o <Action>(FileStructurePopup)
-"nnoremap <leader>f :Telescope find_files<CR>
+"""" Debugging
+let g:WhichKeyDesc_debug_prefix = "<leader>d Debug"
+map <leader>dB <Action>(AddConditionalBreakpoint)
+let g:WhichKeyDesc_debug_conditional_breakpoint_action = "<leader>dB Conditional Breakpoint"
+map <leader>db <Action>(ToggleLineBreakpoint)
+let g:WhichKeyDesc_debug_breakpoint_action = "<leader>db Toggle Breakpoint"
+map <leader>dc <Action>(Resume)
+let g:WhichKeyDesc_debug_resume_action = "<leader>dc Continue"
+map <leader>dI <Action>(XDebugger.Inspect)
+let g:WhichKeyDesc_debug_inspect_action = "<leader>de Inspect"
+map <leader>di <Action>(StepInto)
+let g:WhichKeyDesc_debug_step_into_action = "<leader>di Step Into"
+map <leader>do <Action>(StepOver)
+let g:WhichKeyDesc_debug_step_over_action = "<leader>do Step Over"
+map <leader>ds <Action>(Debug)
+let g:WhichKeyDesc_debug_start_action = "<leader>ds Debug"
+map <leader>du <Action>(StepOut)
+let g:WhichKeyDesc_debug_step_out_action = "<leader>du Step Out"
+map <leader>dx <Action>(Stop)
+let g:WhichKeyDesc_debug_stop_action = "<leader>dx Stop"
 
 """" Edit code
-map <leader>lf <Action>(ReformatCode)
 map <leader>r <Action>(RenameElement)
-map <leader>a <Action>(Annotate)
+let g:WhichKeyDesc_rename_action = "<leader>r Rename"
 nnoremap <leader>q :q<CR>
+let g:WhichKeyDesc_quit_action = "<leader>q Close Window"
+nnoremap <leader>Q :qa<CR>
+let g:WhichKeyDesc_quit_all_action = "<leader>Q Close All"
 nnoremap <leader>bd :bd<CR>
+let g:WhichKeyDesc_buffer_prefix = "<leader>b Buffer"
+let g:WhichKeyDesc_close_buffer_action = "<leader>bd Close Buffer"
 nnoremap <leader>w :w<CR>
-nnoremap <leader>wa :wall<CR>
+let g:WhichKeyDesc_save_action = "<leader>w Save"
+"nnoremap <leader>wa :wall<CR>
 nnoremap <leader>o :only<CR>
+let g:WhichKeyDesc_close_others_action = "<leader>o Close Others"
+
+"""""" Git
+let g:WhichKeyDesc_git_prefix = "<leader>G Git"
+map <leader>Gg <Action>(Git.Menu)
+let g:WhichKeyDesc_git_menu_action = "<leader>Gg Menu"
+map <leader>Gb <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_blame_lines_action = "<leader>Gb Blame (lines)"
+map <leader>GB <Action>(Annotate)
+let g:WhichKeyDesc_blame_file_history_action = "<leader>GB Blame (file)"
+
+"""""" LSP
+map <leader>lf <Action>(ReformatCode)
+let g:WhichKeyDesc_lsp_prefix = "<leader>l LSP"
+let g:WhichKeyDesc_lsp_format_action = "<leader>lf Format code"
+
+"""""" Markdown 
+let g:WhichKeyDesc_markdown_prefix = "<leader>m Markdown"
+map <leader>me <Action>(Markdown.Layout.EditorOnly)
+let g:WhichKeyDesc_markdown_editor_action = "<leader>me Editor Only"
+map <leader>mp <Action>(Markdown.Layout.EditorAndPreview)
+let g:WhichKeyDesc_markdown_preview_action = "<leader>mp Preview"
+map <leader>mt <Action>(Markdown.GenerateTableOfContents)
+let g:WhichKeyDesc_markdown_toc_action = "<leader>mt TOC"
+map <leader>mP <Action>(Markdown.Layout.PreviewOnly)
+let g:WhichKeyDesc_markdown_preview_only_action = "<leader>mP Preview Only"
+map <leader>mR <Action>(Markdown.Table.InsertRow.InsertAbove)
+let g:WhichKeyDesc_markdown_table_insert_row_above_action = "<leader>ma Insert Row Above"
+map <leader>mr <Action>(Markdown.Table.InsertRow.InsertBelow)
+let g:WhichKeyDesc_markdown_table_insert_row_below_action = "<leader>mb Insert Row Below"
+map <leader>mc <Action>(Markdown.Table.InsertTableColumn.InsertAfter)
+let g:WhichKeyDesc_markdown_table_insert_column_after_action = "<leader>mc Insert Column After"
+map <leader>mC <Action>(Markdown.Table.InsertTableColumn.InsertBefore)
+let g:WhichKeyDesc_markdown_table_insert_column_before_action = "<leader>md Insert Column Before"
+
+"""""" Navigation
+
+
+"""""" Menus
+nnoremap <leader>e :NERDTreeToggle<CR>
+let g:WhichKeyDesc_explorer_action = "<leader>e Explorer"
+
+"""""" Navigating
+nnoremap <C-k> :bn<CR>
+nnoremap <C-j> :bp<CR>
+map gr <action>(FindUsages)
+let g:WhichKeyDesc_find_usages_action = "r Get References"
+let g:WhichKeyDesc_goto_top = "gg goto first line"
+"
+"""""" Terminal 
+map <leader>T <Action>(ActivateTerminalToolWinddow)
+let g:WhichKeyDesc_terminal_action = "<leader>T Terminal"
+
+"""""" Todo 
+map <leader>t <Action>(ActivateTODOToolWindow)
+let g:WhichKeyDesc_todo_action = "<leader>t Todo"
+
+"""""" Zen Mode
+
+"""""" View
+map <leader>z <Action>(ToggleDistractionFreeMode)
+let g:WhichKeyDesc_zen_mode_toggle_action = "<leader>z Zen Mode"
+
+"map <leader>o <Action>(FileStructurePopup)
+"nnoremap <leader>f :Telescope find_files<CR>
 
 """"" Copy to other windows (unecessary if using 'set clipboard+=unnamedplus')
 "nnoremap y "+y
@@ -118,11 +201,3 @@ nnoremap <leader>o :only<CR>
 "nnoremap Y "+Y
 "vnoremap Y "+Y
 
-"""" Navigating
-nnoremap <C-k> :bn<CR>
-nnoremap <C-j> :bp<CR>
-
-"""" Debugging
-map <leader>d <Action>(Debug)
-map <leader>c <Action>(Stop)
-map <leader>b <Action>(ToggleLineBreakpoint)
