@@ -187,7 +187,7 @@ function M.setup()
     },
     G = {
       name = "Git",
-      --g = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
+      g = { "<cmd>LazyGit<cr>", "Lazygit" },
       a = {
         name = "Add",
         a = { "<cmd>Git add .<cr>", "All" },
