@@ -17,7 +17,7 @@ require("catppuccin").setup({
     }
   end,
   -- Only apply transparency when not in Windows OS
-  transparent_background = not vim.loop.os_uname().version:match("Windows") and false or true,
+  transparent_background = false --not vim.loop.os_uname().version:match("Windows") and false or true,
   --[[
   integrations = {
     cmp = true,

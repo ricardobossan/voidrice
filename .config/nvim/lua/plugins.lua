@@ -692,6 +692,27 @@ local plugins = {
   },
 
   {
+    "kdheepak/lazygit.nvim",
+    commit = "18060f9841e7443e8a22af14e67c0ba86c6188d3",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    keys = {
+      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" }
+    }
+  },
+
+  {
     'pwntester/octo.nvim',
     commit = "feae1e5519deebad3c59ee1d57d28aa22822f7c8",
     dependencies = {

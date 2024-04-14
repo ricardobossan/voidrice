@@ -83,6 +83,16 @@ sethandler <C-]> a:vim
 """ Map leader to space ---------------------
 let mapleader=" "
 
+""" Which key settings -----------------------
+set notimeout
+let g:WhichKey_ShowVimActions = "true"
+
+"""" Vim bindings
+let g:WhichKeyDesc_goto_top = "gg goto first line"
+let g:WhichKeyDesc_commentray_prefix = "gc Comment"
+let g:WhichKeyDesc_commentray_action = "gcc line"
+let g:WhichKeyDesc_commentray_action = "gcu block"
+
 """ Mappings --------------------------------
 """" Menus
 nnoremap <leader>e :NERDTreeToggle<CR>
