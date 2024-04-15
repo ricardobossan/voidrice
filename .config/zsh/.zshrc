@@ -94,5 +94,9 @@ bindkey -M vicmd '^[[P' vi-delete-char
 bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
+if grep -q microsoft /proc/version; then
+  eval "$(ssh-agent -s >/dev/null 2>&1)" # NOTE: In WSL, you will be prompted for credentials every time you open a new terminal
+fi
+
 # Load syntax highlighting; should be last.
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
