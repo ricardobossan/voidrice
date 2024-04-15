@@ -135,15 +135,17 @@ let g:WhichKeyDesc_close_others_action = "<leader>o Close Others"
 let g:WhichKeyDesc_git_prefix = "<leader>G Git"
 map <leader>Gg <Action>(Git.Menu)
 let g:WhichKeyDesc_git_menu_action = "<leader>Gg Menu"
-map <leader>Gb <Action>(Vcs.ShowTabbedFileHistory)
-let g:WhichKeyDesc_blame_lines_action = "<leader>Gb Blame (lines)"
-map <leader>GB <Action>(Annotate)
-let g:WhichKeyDesc_blame_file_history_action = "<leader>GB Blame (file)"
+map <leader>GB <Action>(Vcs.ShowTabbedFileHistory)
+let g:WhichKeyDesc_blame_file_history_Action = "<leader>GB Blame (file)"
+map <leader>Gb <Action>(Annotate)
+let g:WhichKeyDesc_blame_file_lines_action = "<leader>Gb Blame (lines)"
 
 """""" LSP
-map <leader>lf <Action>(ReformatCode)
 let g:WhichKeyDesc_lsp_prefix = "<leader>l LSP"
+map <leader>lf <Action>(ReformatCode)
 let g:WhichKeyDesc_lsp_format_action = "<leader>lf Format code"
+map <leader>lr <Action>(FindUsages)
+let g:WhichKeyDesc_lsp_find_usages_action = "<leader>lr Find Usages"
 
 """""" Markdown 
 let g:WhichKeyDesc_markdown_prefix = "<leader>m Markdown"
@@ -164,9 +166,6 @@ let g:WhichKeyDesc_markdown_table_insert_column_after_action = "<leader>mc Inser
 map <leader>mC <Action>(Markdown.Table.InsertTableColumn.InsertBefore)
 let g:WhichKeyDesc_markdown_table_insert_column_before_action = "<leader>md Insert Column Before"
 
-"""""" Navigation
-
-
 """""" Menus
 nnoremap <leader>e :NERDTreeToggle<CR>
 let g:WhichKeyDesc_explorer_action = "<leader>e Explorer"
@@ -175,9 +174,14 @@ let g:WhichKeyDesc_explorer_action = "<leader>e Explorer"
 nnoremap <C-k> :bn<CR>
 nnoremap <C-j> :bp<CR>
 map gr <action>(FindUsages)
-let g:WhichKeyDesc_find_usages_action = "r Get References"
+let g:WhichKeyDesc_find_usages_action = "gr Get References"
 let g:WhichKeyDesc_goto_top = "gg goto first line"
-"
+
+"""""" Search 
+let g:WhichKeyDesc_search_prefix = "<leader>f Search"
+map <leader>ff <Action>(SearchEverywhere.CompleteCommand)
+let g:WhichKeyDesc_search_everywhere_action = "<leader>ff Search Everywhere"
+
 """""" Terminal 
 map <leader>T <Action>(ActivateTerminalToolWinddow)
 let g:WhichKeyDesc_terminal_action = "<leader>T Terminal"
