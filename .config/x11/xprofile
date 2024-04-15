@@ -45,12 +45,9 @@ done >/dev/null 2>&1
 
 # :TODO Unsafe! find a way to mask the output file path
 #ip a show eno1 | grep -oP 'inet \K[\d.]+' | head -n 1 > $HOME/Ricanda/hostip
-
 if hostnamectl | grep -qi 'chassis.*desktop' ; then
     ip a show eno1 | grep -oP 'inet \K[\d.]+' | head -n 1 > $HOME/Ricanda/hostip
     x0vncserver -rfbauth ~/.vnc/passwd -Geometry 1920x1080+0+0 & # start tigervnc, to allow remote connections
   else
    connecthost
 fi
-
-
