@@ -95,7 +95,7 @@ bindkey -M vicmd '^e' edit-command-line
 bindkey -M visual '^[[P' vi-delete
 
 if grep -q microsoft /proc/version; then
-  eval "$(ssh-agent -s >/dev/null 2>&1)" # NOTE: In WSL, you will be prompted for credentials every time you open a new terminal
+  eval "$(ssh-agent -s)" # NOTE: In WSL, you will be prompted for credentials every time you open a new terminal
 fi
 
 # Load syntax highlighting; should be last.
