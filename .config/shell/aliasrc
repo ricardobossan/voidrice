@@ -142,36 +142,38 @@ alias \
 
 ## Linux only
 if ! grep -q microsoft /proc/version; then
-  alias
+  alias \
     connecthost="ssh $(echo $USER)@$(cat $HOME/Ricanda/hostip)" \
-    vnc="vncviewer $(cat $HOME/Ricanda/hostip):5900" \
+    vnc="vncviewer $(cat $HOME/Ricanda/hostip):5900" 
 fi
 
 ## Games
 STEAM_GAME="steam steam://rungameid"
 alias \
   sod="$STEAM_GAME/986130" \
-  valheim="$STEAM_GAME/892970" \
   et2="$STEAM_GAME/227300" \
   zomboid="$STEAM_GAME/108600" \
-  rimworld="$STEAM_GAME/294100" \
+  rimworld="$STEAM_GAME/294100" 
+  #valheim="$STEAM_GAME/892970" \
 
 ## Coding 
 alias \
   sourcez="source $HOME/.config/zsh/.zshrc" \
   tsdbg="google-chrome-stable --remote-debugging-port=9222 http://localhost:4200" \
   code="vscodium" \
-  ### Git 
-  alias \
-    lg='lazygit' \
-    gd='git diff -w' \
-    gl='git log --all --graph --oneline --decorate' \
-    gs='git status' \
-    ga='git add . && git status' \
-    gc='git commit -m' \
-    gfa='git fetch --all' \
-  ### GitHub CLI
-  alias \
-    gh auth login='gh auth login --scopes read:project' \
-    prl=get_pr_list_for_authenticated_user \
-    pr='gh pr view -c' \
+   
+### Git 
+alias \
+  lg='lazygit' \
+  gd='git diff -w' \
+  gl='git log --all --graph --oneline --decorate' \
+  gs='git status' \
+  ga='git add . && git status' \
+  gc='git commit -m' \
+  gfa='git fetch --all' \
+
+### GitHub CLI
+alias \
+  gh auth login='gh auth login --scopes read:project' \
+  prl='get_pr_list_for_authenticated_user' \
+  pr='gh pr view -c' \
