@@ -485,7 +485,7 @@ function M.setup()
     t = {
       name = "TODO",
       t = { "<cmd>TodoTrouble<CR>", "Todo" },
-      d = { "<cmd>lua toggle_doing()<CR>", "Toggle Doing" },
+      D = { "<cmd>lua toggle_doing()<CR>", "Toggle Doing" },
     },
     U = {
       name = "Plantuml",
