@@ -8,23 +8,22 @@ local warning_orange = "#ff8800"
 local info_yellow = "#FFCC66"
 local hint_blue = "#4FC1FF"
 local perf_purple = "#7C3AED"
+local doing_red = "#FF0000"
 
--- TODO: Some icons don't work, i.e., TODO, NOTE
 function M.setup()
   require("todo-comments").setup {
     signs = true,
     keywords = {
-      KiM = { icon = icons.ui.Fire, color = attention_marine},
-      FIX = { icon = icons.ui.Bug, color = error_red },
+      KiM = { icon = icons.ui.Fire, color = attention_marine },
       FIX = { icon = icons.ui.Bug, color = error_red },
       TODO = { icon = icons.ui.Check, color = hint_blue },
       HACK = { icon = icons.ui.Fire, color = warning_orange },
       WARN = { icon = icons.diagnostics.Warning, color = warning_orange },
       PERF = { icon = icons.ui.Dashboard, color = perf_purple },
       NOTE = { icon = icons.ui.Note, color = info_yellow },
+      DOING = { icon = icons.ui.BookMark, color = doing_red },
     },
   }
 end
 
 return M
-
