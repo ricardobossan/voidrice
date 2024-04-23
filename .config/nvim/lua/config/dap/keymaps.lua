@@ -59,6 +59,22 @@ function M.setup()
     end
   end
 
+  function toggle_doing()
+    local line = vim.fn.line('.')
+    local line_content = vim.fn.getline(line)
+    local pattern = "%s*<!%-%- DOING: %-%->%s*$"
+    local found = string.find(line_content, pattern)
+
+    if found then
+      -- Remove the string if found
+      local new_content = string.gsub(line_content, pattern, '')
+      vim.fn.setline(line, new_content)
+    else
+      -- Add the string at the end of the line if not found
+      vim.fn.setline(line, line_content .. ' <!-- DOING: -->')
+    end
+  end
+
   -- }}}
 
   -- Options {{{
@@ -226,14 +242,13 @@ function M.setup()
         s = { "<cmd>Git commit --squash<cr>", "Squash" },
         --S = { "<cmd>Git commit --squash --amend<cr>", "Squash Amend" },
       },
-      d = {
-        name = "Diff",
-        l = { "<cmd>Telescope git_status<cr>", "List" },
-        f = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Compare file" }, -- Gitsigns
+      d = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Diff this file" },   -- Gitsigns
+      D = {
+        name = "Diff options",
+        f = { "<cmd>lua require 'gitsigns'.diffthis()<cr>", "Diff this file" }, -- Gitsigns
         --b = { "<cmd>Gvdiff<cr>", "Buffer" }, -- Less precise
         d = { "<cmd>Git diff<cr>", "Diff" },
         h = { "<cmd>Git diff HEAD<cr>", "Diff HEAD" },
-        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
         --h = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Hunk" },
       },
       -- TODO: Think about hung navigation and keybinding. Look DevOps Toolbox config
@@ -246,7 +261,8 @@ function M.setup()
         u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<cr>", "Undo" },
         r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset" },
       },
-      l = {
+      l = { "<cmd>Telescope git_status<cr>", "Changed files" },
+      L = {
         name = "Log",
         a = { "<cmd>Git log --all --graph --oneline --decorate<cr>", "All (Oneline)" },
         A = { "<cmd>Git log --all --graph --decorate<cr>", "All (Verbose)" },
@@ -466,7 +482,11 @@ function M.setup()
       C = { "<cmd>Telescope commands<cr>", "Commands" },
     },
     T = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
-    t = { "<cmd>TodoTrouble<CR>", "Todo" },
+    t = {
+      name = "TODO",
+      t = { "<cmd>TodoTrouble<CR>", "Todo" },
+      d = { "<cmd>lua toggle_doing()<CR>", "Toggle Doing" },
+    },
     U = {
       name = "Plantuml",
       p = { "<cmd>PlantumlOpen<CR>", "Preview UML" },
