@@ -89,6 +89,7 @@ alias \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
   cls="clear && ls -At1hN --color=auto --group-directories-first" \
   docs="cd $HOME/zettelkasten && $EDITOR ." \
+  docsold="cd $HOME/Docs && $EDITOR ." \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
   clexa="clear && exa" \
   fd="fd -H" \
