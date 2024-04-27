@@ -63,6 +63,7 @@
   "vim-diagram": { "branch": "master", "commit": "bd94f79ac6d701caf52a1b5547069c7b93cf6acf" },
   "vim-fugitive": { "branch": "master", "commit": "193ba9b393931bad768c1d2eed688b0bcc240858" },
   "vim-markdown": { "branch": "master", "commit": "df4be8626e2c5b2a42eb60e1f100fce469b81f7d" },
+  "vim-spell-pt-br": { "branch": "master", "commit": "3d7eb3098de77b86c8a880354b442b3d84b18a72" },
   "vimwiki": { "branch": "dev", "commit": "c5b7f7e76f7d9b07036948a2f9c1d6cd0167e884" },
   "which-key.nvim": { "branch": "main", "commit": "5224c261825263f46f6771f1b644cae33cd06995" }
 }

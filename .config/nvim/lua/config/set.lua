@@ -18,6 +18,7 @@ opt.swapfile = false
 opt.backup = false
 opt.undodir = os.getenv("HOME") .. "/vim/undodir"
 
+vim.opt.spelllang = { "en", "pt_br"}
 opt.hlsearch = false
 opt.incsearch = true
 

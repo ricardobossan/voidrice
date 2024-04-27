@@ -220,6 +220,13 @@ local plugins = {
       vim.g.mkdp_filetypes = { "markdown" }
     end,
   },
+
+  -- Spell check for pt_br
+  {
+    "mateusbraga/vim-spell-pt-br",
+    commit = "3d7eb3098de77b86c8a880354b442b3d84b18a72"
+  },
+
   {
     "lukas-reineke/indent-blankline.nvim",
     commit = "258b5d899da7c681ce0e0225de32c593f3914c27",

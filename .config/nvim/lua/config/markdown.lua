@@ -24,5 +24,14 @@ api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[set conc
 --
 --api.nvim_create_autocmd("FileType", { pattern = "markdown", command = [[let g:mkdp_browser = '/usr/bin/firefox']] })
 api.nvim_create_autocmd("BufEnter", { command = [[set wrap linebreak]] })
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "gitcommit", "markdown" },
+	callback = function()
+		vim.opt_local.wrap = true
+		vim.opt_local.spell = true
+	end,
+})
+
 api.nvim_create_autocmd("FileType",
   { pattern = "markdown", command = "let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'csharp=cs']" })
