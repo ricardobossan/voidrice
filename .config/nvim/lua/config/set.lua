@@ -8,7 +8,7 @@ opt.foldmethod = "indent"
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.shiftwidth = 2
-opt.expandtab = true
+opt.expandtab = false
 
 opt.smartindent = true
 
@@ -16,9 +16,31 @@ vim.opt.wrap = true
 
 opt.swapfile = false
 opt.backup = false
+
+vim.opt.undofile = true
+vim.opt.undolevels = 30000
 opt.undodir = os.getenv("HOME") .. "/vim/undodir"
 
-vim.opt.spelllang = { "en", "pt_br"}
+opt.clipboard = "unnamedplus"
+
+opt.confirm = true
+opt.cursorline = true
+
+
+vim.opt.spelllang = { "en", "pt_br" }
+
+opt.wildmode = "longest:full,full"
+
+opt.shortmess:append("a")
+
+opt.pumblend = 10  -- Popup menu transparency
+opt.pumheight = 10 -- Popup menu height
+opt.winblend = 10  -- Window transparency
+
+vim.opt.mouse = "a" -- Enable mouse mode
+
+opt.formatoptions:remove("cro")
+
 opt.hlsearch = false
 opt.incsearch = true
 
