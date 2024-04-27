@@ -21,6 +21,14 @@ local plugins = {
     -- dependencies = { 'kkharji/sqlite.lua' }
   },
 
+  {
+    'stevearc/dressing.nvim',
+    commit = "18e5beb3845f085b6a33c24112b37988f3f93c06",
+    event = "VeryLazy",
+    config = function()
+      require("dressing").setup()
+    end,
+  },
   --
   -- LSP
   {
@@ -149,6 +157,29 @@ local plugins = {
       },
       show_borders = false,
     }
+  },
+
+  {
+    "utilyre/barbecue.nvim",
+    name = "barbecue",
+    version = "*",
+    dependencies = {
+      { "SmiteshP/nvim-navic",         commit = "5b44635e0022928b818bcf5ab31afb0589c185fd" },
+      { "nvim-tree/nvim-web-devicons", commit = "bb6d4fd1e010300510172b173ab5205d37af084f" }, -- optional dependency
+    },
+    opts = {
+      -- configurations go here
+    },
+  },
+
+  {
+    "aznhe21/actions-preview.nvim",
+    commit = "5072b1b1065a6b22bdd46b5c21780a91d6a08071",
+    event = "VeryLazy",
+    -- lazy = false,
+    config = function()
+      vim.keymap.set({ "v", "n" }, "<leader>la", require("actions-preview").code_actions)
+    end,
   },
 
   --cp ~/.local/share/nvim/plugged/vim-csharp/snippets/*.snippets ~/.vsnip
@@ -410,6 +441,101 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     commit = "0c31c398261567cda89b66ddffc69d39495f63ae",
     lazy = true,
+  },
+
+  -- Editing
+  {
+    'karb94/neoscroll.nvim',
+    commit = "4ecd20d9372e9ce3e2f11255b6f1e52171f3d13d",
+    event = "VeryLazy",
+    config = function()
+      require('neoscroll').setup({})
+    end
+  },
+  {
+    'kevinhwang91/nvim-hlslens',
+    commit = "3e8fceb2b030100857ee72741a8f48c9a1d8595e",
+    event = "VeryLazy",
+    config = function()
+      require('hlslens').setup()
+
+      vim.api.nvim_set_keymap('n', 'n',
+        [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        { desc = "Next search result", silent = true })
+
+      vim.api.nvim_set_keymap('n', 'N',
+        [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
+        { desc = "Previous Search Result", silent = true })
+
+      vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]],
+        { desc = 'Next Search Result Highlighted', silent = true })
+
+      vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]],
+        { desc = "Previous Search Result Highlighted", silent = true })
+
+      vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]],
+        { desc = "Mark Current Word And Search Forward", silent = true })
+
+      vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]],
+        { desc = "Mark Current Workd and Search Backwards" })
+
+      vim.api.nvim_set_keymap('n', '<Leader>n', '<Cmd>noh<CR>', { desc = "No HLS", silent = true })
+    end
+
+  },
+  {
+    'tpope/vim-surround',
+    commit = "3d188ed2113431cf8dac77be61b842acb64433d9",
+    event = "VeryLazy"
+  },
+  -- {
+  -- 	'kosayoda/nvim-lightbulb',
+  -- 	event = "VeryLazy",
+  -- 	config = function()
+  -- 		require('nvim-lightbulb').setup({
+  -- 			autocmd = { enabled = true }
+  -- 		})
+  -- 	end
+  -- },
+  {
+    'chentoast/marks.nvim',
+    commit = "74e8d01b2a2131b6e46354cffc553aa7f81bcf5b",
+    event = "VeryLazy",
+    config = function()
+      require('marks').setup({})
+    end
+  },
+  {
+    'HiPhish/nvim-ts-rainbow2',
+    commit = "b3120cd5ae9ca524af9cb602f41e12e301fa985f",
+    event = { "BufReadPre", "BufNewFile" },
+    -- event = "VeryLazy",
+    config = function()
+      require('nvim-treesitter.configs').setup({
+        rainbow = {
+          enable = true,
+          extended_mode = true,
+        }
+      })
+    end
+  },
+  {
+    "tzachar/local-highlight.nvim",
+    commit = "ae3ada3a332128b1036c84c8587b9069891c63da",
+    event = "VeryLazy",
+    config = function()
+      require('local-highlight').setup({
+        insert_mode = true,
+      })
+    end
+  },
+  {
+    "petertriho/nvim-scrollbar",
+    commit = "35f99d559041c7c0eff3a41f9093581ceea534e8",
+    event = "VeryLazy",
+    config = function()
+      require('scrollbar').setup({})
+    end
   },
 
   ---[[ Comments
@@ -822,6 +948,7 @@ local plugins = {
     'NvChad/nvim-colorizer.lua',
     commit = "85855b38011114929f4058efc97af1059ab3e41d"
   }
+
 
   --[[ ChatGPT
   local home = vim.fn.expand("$HOME")
