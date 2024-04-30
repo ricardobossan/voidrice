@@ -21,7 +21,7 @@ shell: zsh
   - [x] Markdown **formatter**
     - [x] Null-ls's builtin source for `Prettier` should do it properly.
       - [x] Worked after uninstalled other servers for markdown in Mason
-- [x] highlight para markdown (strikethrough, italic, bold, links)
+- [x] highlight para markdown (strike through, italic, bold, links)
   - [x] Para funcionar preciso rodar manualmente no buffer aberto `:set syntax=highlight`
   - [x] Talvez seja melhor acompanhar vídeo ensinando especificamente a configurar markdown no Neovim.
 - [x] Adicionar silent aos remaps
@@ -38,7 +38,7 @@ shell: zsh
 
 ## Remover configuração anterior
 
-- Verifica versão do Nvim. Na época, a minha foi `v0.9.0`:
+- Verifica versão do nvim. Na época, a minha foi `v0.9.0`:
 
   ```bash
   nvim -v
@@ -144,7 +144,7 @@ rm -rfv ~/.local/share/nvim/site/pack/packer
        - Os snapshots são salvos em `~/.cache/nvim/packer.nvim/`
        - Eu consigo salvar na pasta que quero se colocar o caminho absoluto.
 
-   - Instalar plugins dentro da função `return packer.startup(function(use) ... end`. eg.:
+   - Instalar plugins dentro da função `return packer.startup(function(use) ... end`, e.g.,:
 
      ```lua
      use({

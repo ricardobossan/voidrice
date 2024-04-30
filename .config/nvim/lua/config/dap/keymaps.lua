@@ -491,8 +491,8 @@ function M.setup()
 		T = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
 		t = {
 			name = "TODO",
-			t = { "<cmd>TodoTrouble<CR>", "Todo" },
-			D = { "<cmd>lua toggle_doing()<CR>", "Toggle Doing" },
+			T = { "<cmd>TodoTrouble<CR>", "Todo" },
+			t = { "<cmd>lua toggle_doing()<CR>", "Toggle Doing" },
 		},
 		U = {
 			name = "Plantuml",
