@@ -1,3 +1,20 @@
+---[[ Global Variables
+local function getHome_OSAgnostic()
+	if os.getenv("HOME") then
+		return os.getenv("HOME")
+	elseif os.getenv("USERPROFILE") then
+		return os.getenv("USERPROFILE")
+	else
+		error("Unable to determine the home directory.")
+	end
+end
+
+HOME = getHome_OSAgnostic()
+
+-- @brief Path separator based on the operating system
+PS = package.config:sub(1, 1)
+--]]
+
 require("plugins")
 require("config")
 require("bufferline").setup({})

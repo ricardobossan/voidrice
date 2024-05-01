@@ -3,7 +3,7 @@
 local pid = vim.fn.getpid()
 
 -- WARNING: This requireds changing permissions: chmod +rx /.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp
-local omnisharp_bin = os.getenv("HOME") .. "/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp"
+local omnisharp_bin = HOME .. "/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp"
 -- Or you can use the one from pacman
 --local omnisharp_bin = "/usr/bin/omnisharp"
 

@@ -19,7 +19,7 @@ opt.backup = false
 
 vim.opt.undofile = true
 vim.opt.undolevels = 30000
-opt.undodir = os.getenv("HOME") .. "/vim/undodir"
+opt.undodir = HOME .. "/vim/undodir"
 
 opt.clipboard = "unnamedplus"
 

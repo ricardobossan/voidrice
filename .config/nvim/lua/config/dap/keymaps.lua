@@ -123,6 +123,53 @@ function M.setup()
 	}
 
 	local keymapV = {
+		l = {
+			name = "LSP",
+			g = {
+				name = "Generic",
+				i = { "<cmd>LspInfo<cr>", "Info" },
+				I = { "<cmd>Mason<cr>", "Installer Info" },
+			},
+			a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+			--d = { "<cmd>lua require('telescope.builtin').diagnostics()<CR>", "Diagnostics" },
+			d = {
+				"<cmd>lua vim.diagnostic.setloclist()<cr>",
+				"Document Diagnostics",
+			},
+			w = {
+				"<cmd>Trouble workspace_diagnostics<cr>",
+				"Workspace Diagnostics",
+			},
+			f = {
+				function()
+					---@diagnostic disable-next-line: unused-local
+					local status, result = pcall(vim.lsp.buf.format, { async = true })
+					if result == nil then
+						require("conform").format()
+						print(" ")
+					end
+				end,
+				"Format",
+			},
+			j = {
+				"<cmd>lua vim.diagnostic.goto_next()<CR>",
+				"Next Diagnostic",
+			},
+			s = { "<cmd>lua require('telescope.builtin').lsp_document_symbols()<CR>", "Document Symbols" },
+			k = {
+				"<cmd>lua vim.diagnostic.goto_prev()<cr>",
+				"Prev Diagnostic",
+			},
+			K = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Documentation" },
+			l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
+			--q = { "<cmd>lua vim.diagnostic.set_loclist()<cr>", "Quickfix" },
+			r = { "<cmd>Trouble lsp_references<cr>", "References" },
+			--n = { "<cmd>lua require('renamer').rename()<CR>", "Rename" },
+			e = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+			t = { "<cmd>TroubleToggle document_diagnostics<CR>", "Document Diagnostics" },
+			L = { "<cmd>lua vim.lsp.codelens.refresh()<CR>", "CodeLens" },
+			D = { "<cmd>lua require('config.lsp').toggle_diagnostics()<CR>", "Toggle Inline Diagnostics" },
+		},
 		o = {
 			name = "Obsidian",
 			t = { "<cmd>ObsidianTemplate<CR>", "Insert Template" },
