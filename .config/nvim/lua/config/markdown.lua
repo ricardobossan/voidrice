@@ -56,6 +56,7 @@ local notesDefault = HOME .. "/.local/share/calcurse/notes/*"
 local noteBuff = "/tmp/calcurse-note*"
 
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
-	pattern = { "markdown", "*.md", "octo://*", noteBuff, notesDefault, notesCustom },
+	--pattern = { "markdown", "*.md", "octo://*", noteBuff, notesDefault, notesCustom }, -- "octo://*" makes gitdiff files in Octo lose their syntax highlighting
+	pattern = { "markdown", "*.md", noteBuff, notesDefault, notesCustom },
 	callback = ForceMarkdown
 })
