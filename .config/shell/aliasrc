@@ -128,17 +128,17 @@ alias \
   manuais="cd $HOME/Ricanda/manuais/ && exa" \
   vmon="vm_start" \
   vmoff="vm_shutdown" \
-  calcurse="calcurse -D $HOME/calcurse/ && clexa $HOME/calcurse -a" \
+  calcurse="calcurse -D $HOME/calcurse/ && cls $HOME/calcurse -a" \
   rg="rg -.i" \
   vncs="x0vncserver -rfbauth ~/.vnc/passwd &  \ # start tigervnc, to allow remote connections" \
   rarandr="arandr && vncs" \
   wdisplay="xrandr -s 1920x1080" \
   uwdisplay="xrandr -s 2560x1080" \
-  bys="cd $HOME/projetos/bys/ && $EDITOR . && clexa -a" \
+  bys="cd $HOME/projetos/bys/ && $EDITOR . && cls -a" \
   ric="cd $HOME/projetos/ricardo/ && $EDITOR ." \
   size="du -h --max-depth=1|sort -rh" \
   suspend="systemctl suspend" \
-	cls="clear && exa"
+	cls="clear && exa" \
   #cls="clear && ls -At1hN --color=auto --group-directories-first" \
 
 ## Linux only
