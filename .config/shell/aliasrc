@@ -87,11 +87,9 @@ get_pr_list_for_authenticated_user() {
 ## General 
 alias \
   agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
-  cls="clear && ls -At1hN --color=auto --group-directories-first" \
   docs="cd $HOME/zettelkasten && $EDITOR ." \
   docsold="cd $HOME/Docs && $EDITOR ." \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
-  clexa="clear && exa" \
   fd="fd -H" \
   fecha="pomo s -t \"#ritual_fechamento\" -p 1 \"Ritual de fechamento\"" \
   hj="cd $HOME/HISTORICO/ATIVO/`date '+%Y'`/`date '+%m'` && $HOME/.local/bin/hj.lua" \
@@ -140,6 +138,8 @@ alias \
   ric="cd $HOME/projetos/ricardo/ && $EDITOR ." \
   size="du -h --max-depth=1|sort -rh" \
   suspend="systemctl suspend" \
+	cls="clear && exa"
+  #cls="clear && ls -At1hN --color=auto --group-directories-first" \
 
 ## Linux only
 if ! grep -q microsoft /proc/version; then
