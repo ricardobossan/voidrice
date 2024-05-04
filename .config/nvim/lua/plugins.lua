@@ -569,6 +569,18 @@ local plugins = {
 		event = "VeryLazy",
 	},
 
+	-- Session
+	{
+		'rmagatti/auto-session',
+		commit = "9e0a169b6fce8791278abbd110717b921afe634d",
+		config = function()
+			require("auto-session").setup {
+				log_level = "error",
+				auto_session_suppress_dirs = { "~/Downloads", "/" },
+			}
+		end
+	},
+
 	-- Navigation
 	{
 		'smoka7/hop.nvim',
