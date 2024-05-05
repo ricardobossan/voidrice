@@ -18,7 +18,15 @@ local ps = package.config:sub(1, 1)
 
 --local posix = require("posix")
 --local INSTALL_FOLDER = posix.realpath(home .. ps .. ".local" .. ps .. "share" .. ps .. "nvim")
-local INSTALL_FOLDER = home .. ps .. ".local" .. ps .. "share" .. ps .. "nvim"
+
+local INSTALL_FOLDER = ""
+
+if(Is_windows()) then
+	INSTALL_FOLDER = home .. ps .. "AppData" .. ps .. "Local" .. ps .. "nvim-data"
+else
+  INSTALL_FOLDER = home .. ps .. ".local" .. ps .. "share" .. ps .. "nvim"
+end
+
 local LOCAL_LUA_DEBUGGER_VSCODE_URL = "https://github.com/tomblind/local-lua-debugger-vscode"
 
 -- Function to execute shell commands

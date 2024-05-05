@@ -12,11 +12,11 @@ local function adjust_paths_and_commands()
 	local extension_path
 
 	if is_windows() then
-		debug_adapter_path = "C:\\Users\\ricar\\AppData\\Local\\nvim\\local-lua-debugger-vscode\\extension\\debugAdapter.js"
-		extension_path = "C:\\Users\\ricar\\AppData\\Local\\nvim\\local-lua-debugger-vscode\\"
+		debug_adapter_path = HOME ..  "\\AppData\\Local\\nvim-data\\local-lua-debugger-vscode\\extension\\debugAdapter.js"
+		extension_path = HOME .. "\\AppData\\Local\\nvim-data\\local-lua-debugger-vscode\\"
 	else
-		debug_adapter_path = "/home/ricar/.local/share/nvim/local-lua-debugger-vscode/extension/debugAdapter.js"
-		extension_path = "/home/ricar/.local/share/nvim/local-lua-debugger-vscode/"
+		debug_adapter_path = HOME .. "/.local/share/nvim/local-lua-debugger-vscode/extension/debugAdapter.js"
+		extension_path = HOME .. "/.local/share/nvim/local-lua-debugger-vscode/"
 	end
 
 	return debug_adapter_path, extension_path
