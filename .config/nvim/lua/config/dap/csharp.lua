@@ -1,12 +1,23 @@
 local M = {}
 
 -- Debugger installation location
-local DEBUGGER_LOCATION = HOME ..
+local DEBUGGER_LOCATION = ""
+
+if(Is_Windows) then
+	DEBUGGER_LOCATION = os.getenv("USERPROFILE") ..
+		PS ..
+		"AppData" ..
+		PS ..
+		"Local" ..
+		PS .. "nvim-data" .. PS .. "mason" .. PS .. "packages" .. PS .. "netcoredbg"
+else
+	DEBUGGER_LOCATION = os.getenv("HOME") ..
 		PS ..
 		".local" ..
 		PS ..
 		"share" ..
 		PS .. "nvim" .. PS .. "mason" .. PS .. "packages" .. PS .. "netcoredbg"
+end
 
 function M.setup()
 	local dap = require("dap")
