@@ -1,4 +1,9 @@
 ---[[ Global Variables
+function Is_windows()
+	return package.config:sub(1, 1) == "\\"
+end -- Function to adjust paths and commands based on the operating system
+
+
 local function getHome_OSAgnostic()
 	if os.getenv("HOME") then
 		return os.getenv("HOME")
