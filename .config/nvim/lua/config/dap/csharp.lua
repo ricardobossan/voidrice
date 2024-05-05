@@ -3,13 +3,13 @@ local M = {}
 -- Debugger installation location
 local DEBUGGER_LOCATION = ""
 
-if(Is_Windows) then
+if(Is_windows()) then
 	DEBUGGER_LOCATION = os.getenv("USERPROFILE") ..
 		PS ..
 		"AppData" ..
 		PS ..
 		"Local" ..
-		PS .. "nvim-data" .. PS .. "mason" .. PS .. "packages" .. PS .. "netcoredbg"
+		PS .. "nvim-data" .. PS .. "mason" .. PS .. "packages" .. PS .. "netcoredbg" .. PS .. "netcoredbg"
 else
 	DEBUGGER_LOCATION = os.getenv("HOME") ..
 		PS ..
@@ -22,10 +22,18 @@ end
 function M.setup()
 	local dap = require("dap")
 
+	local command = ""
+	
+	if(Is_windows()) then
+	command = DEBUGGER_LOCATION .. PS .. "netcoredbg.exe"
+	else
+	command = DEBUGGER_LOCATION .. PS .. "netcoredbg"
+	end
+
 	-- Adapter configuration
 	dap.adapters.coreclr = {
 		type = "executable",
-		command = DEBUGGER_LOCATION .. PS .. "netcoredbg",
+		command = command,
 		args = { "--interpreter=vscode" },
 	}
 
