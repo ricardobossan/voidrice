@@ -28,3 +28,7 @@ WinForms
 lazy.nvim
 lazy.nvim's
 dotnet
+config
+callstack
+untriaged
+WinForms

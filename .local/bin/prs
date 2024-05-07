@@ -1,0 +1,39 @@
+echo ""
+echo "#########################"
+echo "#### Looking up GitHub..."
+echo "#########################"
+echo ""
+echo ""
+
+gh status
+
+echo "###############################"
+echo -e "#### Check PRs for review on:\n"${PWD}" ..."
+echo "###############################"
+echo ""
+echo ""
+
+echo "####################"
+echo "######## Colleagues:"
+echo "####################"
+
+for user in Epica3055 LeafShi1 SimonZhao888; do gh pr list -L 200 -A $user; done
+
+echo ""
+echo ""
+echo "######################"
+echo "######## Contributors:"
+echo "######################"
+
+gh pr list -L 200 -l "area: NRT"
+
+echo ""
+echo ""
+echo "#################"
+echo "######## Testers:"
+echo "#################"
+
+gh pr list -L 200 -S 10453
+
+echo ""
+echo ""
