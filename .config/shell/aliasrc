@@ -172,6 +172,7 @@ alias \
   ga='git add . && git status' \
   gc='git commit -m' \
   gfa='git fetch --all' \
+	gr='git reflog --pretty=short --date=iso' \
 
 ### GitHub CLI
 alias \
