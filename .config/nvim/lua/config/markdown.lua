@@ -26,6 +26,9 @@ local function setup_markdown_options()
 	vim.g.vim_markdown_json_frontmatter = 1
 	vim.g.vim_markdown_strikethrough = 1
 	vim.g.vim_markdown_new_list_item_indent = 2
+	vim.opt.shiftwidth = 2
+	vim.opt.tabstop = 2
+	vim.opt.softtabstop = 2
 	vim.g.vim_markdown_edit_url_in = 'tab'
 	vim.cmd("set conceallevel=1")
 	vim.cmd("set wrap linebreak")
