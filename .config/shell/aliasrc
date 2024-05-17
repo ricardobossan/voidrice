@@ -135,7 +135,7 @@ alias \
   wdisplay="xrandr -s 1920x1080" \
   uwdisplay="xrandr -s 2560x1080" \
   bys="cd $HOME/projetos/bys/ && $EDITOR . && cls -a" \
-  ric="cd $HOME/projetos/ricardo/ && $EDITOR ." \
+  ric="cd $HOME/projetos/ricardo/ && nvim . -c ObsidianToday" \
   size="du -h --max-depth=1|sort -rh" \
   suspend="systemctl suspend" \
 	cls="clear && exa" \

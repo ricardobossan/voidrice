@@ -14,6 +14,13 @@ function M.setup()
 			{
 				name = "ricardo",
 				path = "~/projetos/ricardo/",
+				overrides = {
+					daily_notes = {
+						folder = "daily_notes",
+						date_format = "%Y-%m-%d",
+						template = "daily_notes_template.md",
+					}
+				}
 			},
 			{
 				name = "Unilasalle",
@@ -23,7 +30,7 @@ function M.setup()
 		templates = {
 			subdir = "templates",
 			date_format = "%Y-%m-%d",
-			time_format = "%H:%M:%S",
+			time_format = "%H:%M",
 			-- A map for custom variables, the key should be the variable and the value a function
 			substitutions = {},
 		},
