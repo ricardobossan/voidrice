@@ -139,13 +139,15 @@ alias \
   size="du -h --max-depth=1|sort -rh" \
   suspend="systemctl suspend" \
 	cls="clear && exa" \
-  #cls="clear && ls -At1hN --color=auto --group-directories-first" \
+  #cls="clear && ls -At1hN --color=auto --group-directories-first" 
 
 ## Linux only
+## TODO: TEST ON WINDOWS IF THOSE DON'T SHOW on `alias|grep -i vnc`"
 if ! grep -q microsoft /proc/version; then
   alias \
     connecthost="ssh $(echo $USER)@$(cat $HOME/Ricanda/hostip)" \
-    vnc="vncviewer $(cat $HOME/Ricanda/hostip):5900" 
+    vnc="vncviewer $(cat $HOME/Ricanda/hostip):5900" \
+		rsn="sudo sytemctl restart systemd-networkd"
 fi
 
 ## Games
