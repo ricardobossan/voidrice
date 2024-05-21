@@ -540,7 +540,12 @@ function M.setup()
 			k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
 			C = { "<cmd>Telescope commands<cr>", "Commands" },
 		},
-		T = { "<cmd>ToggleTerm direction=float<cr>", "Terminal" },
+		T = {
+			name = "Terminal",
+			f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
+			h = { "<cmd>ToggleTerm direction=horizontal<cr>", "Horizontal" },
+			v = { "<cmd>ToggleTerm direction=vertical<cr>", "Vertical" },
+		},
 		t = {
 			name = "TODO",
 			T = { "<cmd>TodoTrouble<CR>", "Todo" },
