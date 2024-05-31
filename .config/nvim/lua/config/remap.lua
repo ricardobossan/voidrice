@@ -45,6 +45,8 @@ end)
 -- Cria linhas sem entrar em insert
 map("n", "o", "o<Esc>", default_opts)
 map("n", "O", "O<Esc>", default_opts)
+map("v", "o", "o<Esc>", default_opts)
+map("v", "O", "O<Esc>", default_opts)
 
 -- Buffers
 map("n", "<C-k>", ":BufferLineCycleNext<CR>", default_opts)

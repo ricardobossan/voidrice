@@ -30,7 +30,7 @@ local function setup_markdown_options()
 	vim.opt.tabstop = 2
 	vim.opt.softtabstop = 2
 	vim.g.vim_markdown_edit_url_in = 'tab'
-	vim.cmd("set conceallevel=1")
+	vim.cmd("set conceallevel=2")
 	vim.cmd("set wrap linebreak")
 	vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'csharp=cs' }
 end
