@@ -39,6 +39,7 @@
   "mason.nvim": { "branch": "main", "commit": "2311d9d883eb709ad9979a726a38c5ce1343b63c" },
   "mind.nvim": { "branch": "master", "commit": "e59c52758c399caceb549c698cfa2d65e6bbb9f9" },
   "mkdnflow.nvim": { "branch": "main", "commit": "1b24b8b5fe10fe09af4572c0165293e0dcd998aa" },
+  "neoformat": { "branch": "master", "commit": "82864d6c7926c4f3b535a2fd7eab919b116fc969" },
   "neorg": { "branch": "main", "commit": "9766bef893ec993af9408ea0d44a8f13adbd1e80" },
   "neoscroll.nvim": { "branch": "master", "commit": "4ecd20d9372e9ce3e2f11255b6f1e52171f3d13d" },
   "nvim-autopairs": { "branch": "master", "commit": "ae5b41ce880a6d850055e262d6dfebd362bb276e" },

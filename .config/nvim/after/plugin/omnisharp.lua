@@ -49,8 +49,10 @@ require("lspconfig").omnisharp.setup({
   analyze_open_documents_only = false,
 })
 
+--[[ Had to comment out because razor/blazor files would crash when I edited them.
 -- Razor syntax hilight (html, actually)
 vim.api.nvim_create_autocmd({ "BufWinEnter", "BufEnter", "BufRead", "BufNewFile" }, {
   pattern = { "*.cshtml", "*.razor", noteBuff, notesDefault, notesCustom },
   command = "set filetype=html.cshtml.razor"
 })
+--]] 

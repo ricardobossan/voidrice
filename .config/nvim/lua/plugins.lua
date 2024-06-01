@@ -331,6 +331,12 @@ local plugins = {
 		commit = "c0e0e80f0c233cb3a249f719a44324c660163a3f",
 		opts = {},
 	},
+
+	-- formatter for use with csharpier
+	{
+		"sbdchd/neoformat",
+		commit = "82864d6c7926c4f3b535a2fd7eab919b116fc969"
+	},
 	-- auto closing
 	{
 		"windwp/nvim-autopairs",
