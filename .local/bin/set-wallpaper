@@ -30,7 +30,7 @@ while IFS= read -r line; do
 done <<< "$string"
 
 if ! styli.sh -s nature -w "$highest_resolution_w" -h "$highest_resolution_h" > /dev/null; then
-	if ! styli.sh -r earthporn -w "$highest_resolution_w" -h "$highest_resolution_h"; then 
+	if ! styli.sh -r earthporn -c --bg-fill; then 
 		setbg
 	fi
 fi
