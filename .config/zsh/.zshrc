@@ -32,6 +32,11 @@ _comp_options+=(globdots)		# Include hidden files.
 bindkey -v
 export KEYTIMEOUT=1
 
+# fix for transmission locale error
+export LC_ALL=C
+export LC_ALL=pt_BR.UTF-8
+export LANG=pt_BR.UTF-8
+
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
 bindkey -M menuselect 'k' vi-up-line-or-history
@@ -93,6 +98,10 @@ bindkey -M visual '^[[P' vi-delete
 
 if grep -q microsoft /proc/version; then
   eval "$(ssh-agent -s)" >/dev/null 2>&1 # NOTE: In WSL, you will be prompted for credentials every time you open a new terminal
+fi
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
 fi
 
 # Load syntax highlighting; should be last.
