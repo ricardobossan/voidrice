@@ -101,7 +101,7 @@ if grep -q microsoft /proc/version; then
 fi
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
+  exec tmux -f $XDG_CONFIG_HOME/tmux.conf
 fi
 
 # Load syntax highlighting; should be last.
