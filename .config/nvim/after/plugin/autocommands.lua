@@ -1,4 +1,4 @@
-vim.api.nvim_create_autocmd({ "BufEnter", "BufEnter", "BufRead", "BufNewFile" },
+vim.api.nvim_create_autocmd({ "BufEnter", "BufRead", "BufNewFile" },
 	{
 		pattern = "*",
 		command = [[set wrap linebreak]]

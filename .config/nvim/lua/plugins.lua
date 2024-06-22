@@ -117,6 +117,21 @@ local plugins = {
 		commit = "1735dd5a5054c1fb7feaf8e8658dbab925f4f0cf",
 	},
 
+	{
+		'hrsh7th/vim-vsnip',
+		commit = "02a8e79295c9733434aab4e0e2b8c4b7cea9f3a9"
+	},
+
+	{
+		'hrsh7th/vim-vsnip-integ',
+		commit = "1914e72cf3de70df7f5dde476cd299aba2440aef"
+	},
+
+	{
+		'OrangeT/vim-csharp',
+		commit = "b5982fc69bba7d507638a308d6875b031054280d"
+	},
+
 	-- Lazy
 	{
 		-- Better virtual text
