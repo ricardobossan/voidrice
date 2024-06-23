@@ -100,6 +100,7 @@ if grep -q microsoft /proc/version; then
   eval "$(ssh-agent -s)" >/dev/null 2>&1 # NOTE: In WSL, you will be prompted for credentials every time you open a new terminal
 fi
 
+# Run tmux on every new shell, unless already in a tmux session.
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux -f $XDG_CONFIG_HOME/tmux.conf
 fi
