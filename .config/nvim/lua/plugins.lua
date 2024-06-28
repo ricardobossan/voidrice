@@ -29,7 +29,7 @@ local plugins = {
 			require("dressing").setup()
 		end,
 	},
-	--
+
 	-- LSP
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -980,34 +980,6 @@ local plugins = {
 	},
 
 	{
-		"kristijanhusak/vim-dadbod-ui",
-		commit = "165699c573469e6a95b48d35052f848c340c5911",
-		dependencies = {
-			{
-				"tpope/vim-dadbod",
-				commit = "9d3e3ce74a264642a41e8ae126be5afd095ef107",
-				--lazy = true
-			},
-			{
-				"kristijanhusak/vim-dadbod-completion",
-				commit = "c920cb0ba3dff4b1b0ed373e1c0b3007dec696c2",
-				ft = { "sql", "mysql", "plsql" },
-				lazy = true,
-			},
-		},
-		cmd = {
-			"DBUI",
-			"DBUIToggle",
-			"DBUIAddConnection",
-			"DBUIFindBuffer",
-		},
-		init = function()
-			-- Your DBUI configuration
-			vim.g.db_ui_use_nerd_fonts = 1
-		end,
-	},
-
-	{
 		"Exafunction/codeium.nvim",
 		commit = "cd5913ff5481229b15186293d1d46dd9500789f9",
 		dependencies = {
@@ -1040,8 +1012,51 @@ local plugins = {
 	{
 		'NvChad/nvim-colorizer.lua',
 		commit = "85855b38011114929f4058efc97af1059ab3e41d"
-	}
+	},
 
+	---[[ Database Client: vim-dadbod
+	{
+		"tpope/vim-dadbod"
+	},
+
+	-- UI for multiple connections at once
+	{
+		"kristijanhusak/vim-dadbod-ui"
+	},
+
+	-- Autocompletion for dadbod
+	{
+		"kristijanhusak/vim-dadbod-completion"
+	},
+
+	{
+		"kristijanhusak/vim-dadbod-ui",
+		commit = "165699c573469e6a95b48d35052f848c340c5911",
+		dependencies = {
+			{
+				"tpope/vim-dadbod",
+				commit = "9d3e3ce74a264642a41e8ae126be5afd095ef107",
+				--lazy = true
+			},
+			{
+				"kristijanhusak/vim-dadbod-completion",
+				commit = "c920cb0ba3dff4b1b0ed373e1c0b3007dec696c2",
+				ft = { "sql", "mysql", "plsql" },
+				lazy = true,
+			},
+		},
+		cmd = {
+			"DBUI",
+			"DBUIToggle",
+			"DBUIAddConnection",
+			"DBUIFindBuffer",
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+		end,
+	},
+	--]]
 
 	--[[ ChatGPT
   local home = vim.fn.expand("$HOME")

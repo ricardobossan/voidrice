@@ -215,6 +215,7 @@ function M.setup()
 			["d"] = { "<cmd>bdelete!<CR>", "Close Buffer" },
 		},
 		ch = { "<cmd>lua require('obsidian').util.toggle_checkbox()<CR>", "Toggle checkbox" },
+		D = { "<cmd>DBUIToggle<CR>", "Databases" },
 		d = {
 			name = "DAP",
 			R = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor" },

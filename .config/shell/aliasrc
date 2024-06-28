@@ -98,6 +98,7 @@ alias \
   lsa="ls -At1hN --color=auto --group-directories-first" \
   mapa="libreoffice $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/mapa_da_ignorancia/mapa_da_ignorancia/mapa_da_ignorancia.ods" \
   meta="cd $HOME/Ricanda/meta/ && $EDITOR ." \
+	mountsafe="sudo mount -o async,big_writes,flush" \
   pl="pomo l --assend -n 5" \
   pomobackup="pomo l --json > pomo_hist_\`date '+%Y-%m-%d_%Hh%Mm%Ss'\`.json && mv *.json /home/ricar/Ricanda/HISTORICO/pomo" \
   prnt="import \`date '+%Y-%m-%d_%Hh%Mm%Ss'\`.jpg" \
