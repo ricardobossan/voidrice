@@ -8,8 +8,8 @@ cmp.setup({
   },
   sources = {
     -- Copilot
-    { name = "copilot" },
-    { name = "codeium" },
+    --{ name = "copilot" },
+    --{ name = "codeium" },
     -- Snippets
     { name = "luasnip" },
     { name = "neosnippet" },

@@ -677,16 +677,17 @@ local plugins = {
 					-- setup dap config by VsCode launch.json file
 					-- require("dap.ext.vscode").load_launchjs()
 					Dap = require("dap")
-					local dapui = require("dapui")
-					dapui.setup(opts)
+					DapUi = require("dapui")
+					DapUiWidgets = require("dap.ui.widgets")
+					DapUi.setup(opts)
 					Dap.listeners.after.event_initialized["dapui_config"] = function()
-						dapui.open({})
+						DapUi.open({})
 					end
 					Dap.listeners.before.event_terminated["dapui_config"] = function()
-						dapui.close({})
+						DapUi.close({})
 					end
 					Dap.listeners.before.event_exited["dapui_config"] = function()
-						dapui.close({})
+						DapUi.close({})
 					end
 				end,
 			},
@@ -735,12 +736,17 @@ local plugins = {
 					},
 				},
 			},
+
+			{
+				"https://github.com/nvim-telescope/telescope-dap.nvim",
+				commit = "8c88d9716c91eaef1cdea13cb9390d8ef447dbfe"
+			},
 		},
 
 		-- TODO: Maybe move into config.lsp.keymaps.lua
 		-- stylua: ignore
 		keys = {
-			{ "<leader>dB", function() Dap.set_breakpoint(vim.f.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+			{ "<leader>dB", function() Dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
 			{ "<leader>db", function() Dap.toggle_breakpoint() end,                                   desc = "Toggle Breakpoint" },
 			{ "<leader>dc", function() Dap.continue() end,                                            desc = "Continue" },
 			---@diagnostic disable-next-line: undefined-global
