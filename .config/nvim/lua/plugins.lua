@@ -692,6 +692,17 @@ local plugins = {
 				end,
 			},
 
+			dependencies = {
+				{
+					"mfussenegger/nvim-dap",
+					commit = "780fd4dd06b0744b235a520d71660c45279d9447"
+				},
+				{
+					"nvim-neotest/nvim-nio",
+					commit = "def97d9351bf423f4302b9b76fd4e9729e85086c"
+				},
+			},
+
 			-- virtual text for the debugger
 			{
 				"theHamsta/nvim-dap-virtual-text",
@@ -746,24 +757,24 @@ local plugins = {
 		-- TODO: Maybe move into config.lsp.keymaps.lua
 		-- stylua: ignore
 		keys = {
-			{ "<leader>dB", function() Dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
-			{ "<leader>db", function() Dap.toggle_breakpoint() end,                                   desc = "Toggle Breakpoint" },
-			{ "<leader>dc", function() Dap.continue() end,                                            desc = "Continue" },
-			---@diagnostic disable-next-line: undefined-global
-			{ "<leader>da", function() Dap.continue({ before = get_args }) end,                       desc = "Run with Args" },
-			{ "<leader>dC", function() Dap.run_to_cursor() end,                                       desc = "Run to Cursor" },
-			{ "<leader>dg", function() Dap.goto_() end,                                               desc = "Go to line (no execute)" },
-			{ "<leader>di", function() Dap.step_into() end,                                           desc = "Step Into" },
-			{ "<leader>dj", function() Dap.down() end,                                                desc = "Down" },
-			{ "<leader>dk", function() Dap.up() end,                                                  desc = "Up" },
-			{ "<leader>dl", function() Dap.run_last() end,                                            desc = "Run Last" },
-			{ "<leader>do", function() Dap.step_out() end,                                            desc = "Step Out" },
-			{ "<leader>dO", function() Dap.step_over() end,                                           desc = "Step Over" },
-			{ "<leader>dp", function() Dap.pause() end,                                               desc = "Pause" },
-			{ "<leader>dr", function() Dap.repl.toggle() end,                                         desc = "Toggle REPL" },
-			{ "<leader>ds", function() Dap.session() end,                                             desc = "Session" },
-			{ "<leader>dt", function() Dap.terminate() end,                                           desc = "Terminate" },
-			{ "<leader>dw", function() require("dap.ui.widgets").hover() end,                         desc = "Widgets" },
+			-- { "<leader>dB", function() Dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, desc = "Breakpoint Condition" },
+			-- { "<leader>db", function() Dap.toggle_breakpoint() end,                                   desc = "Toggle Breakpoint" },
+			-- { "<leader>dc", function() Dap.continue() end,                                            desc = "Continue" },
+			-- ---@diagnostic disable-next-line: undefined-global
+			-- { "<leader>da", function() Dap.continue({ before = get_args }) end,                       desc = "Run with Args" },
+			-- { "<leader>dC", function() Dap.run_to_cursor() end,                                       desc = "Run to Cursor" },
+			-- { "<leader>dg", function() Dap.goto_() end,                                               desc = "Go to line (no execute)" },
+			-- { "<leader>di", function() Dap.step_into() end,                                           desc = "Step Into" },
+			-- { "<leader>dj", function() Dap.down() end,                                                desc = "Down" },
+			-- { "<leader>dk", function() Dap.up() end,                                                  desc = "Up" },
+			-- { "<leader>dl", function() Dap.run_last() end,                                            desc = "Run Last" },
+			-- { "<leader>do", function() Dap.step_out() end,                                            desc = "Step Out" },
+			-- { "<leader>dO", function() Dap.step_over() end,                                           desc = "Step Over" },
+			-- { "<leader>dp", function() Dap.pause() end,                                               desc = "Pause" },
+			-- { "<leader>dr", function() Dap.repl.toggle() end,                                         desc = "Toggle REPL" },
+			-- { "<leader>ds", function() Dap.session() end,                                             desc = "Session" },
+			-- { "<leader>dt", function() Dap.terminate() end,                                           desc = "Terminate" },
+			-- { "<leader>dw", function() require("dap.ui.widgets").hover() end,                         desc = "Widgets" },
 		},
 
 		config = function()

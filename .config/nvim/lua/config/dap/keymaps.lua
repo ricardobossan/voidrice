@@ -219,26 +219,36 @@ function M.setup()
 		d = {
 			name = "DAP",
 			---@diagnostic disable-next-line: undefined-global
+			A = { function() Dap.run_last() end, "Run last" },
 			a = { function() Dap.continue({ before = get_args }) end, "Run with Args" },
-			B = { function() Dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, "Breakpoint Condition" },
+			C = { function() Dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end, "Breakpoint (Conditional)" },
 			--b = { function() Dap.step_back()<cr>", "Step Back" },
+			B = { function() DapUi.float_element("breakpoints", { enter = true }) end, "Breakpoints" },
 			b = { function() Dap.toggle_breakpoint() end, "Toggle Breakpoint" },
 			--C = { function() Dap.set_breakpoint(vim.fn.input '[Condition] > ')<cr>", "Conditional Breakpoint" },
 			c = { function() Dap.continue() end, "Continue" },
 			d = { function() Dap.disconnect() end, "Disconnect" },
-			E = { function() DapUi.eval(vim.fn.input '[Expression] > ') end, "Evaluate Input" },
-			e = { function() DapUi.eval() end, "Evaluate" },
+			--E = { function() DapUi.eval(vim.fn.input '[Expression] > ') end, "Evaluate Input" },
+			E = { function() DapUiWidgets.centered_float(DapUiWidgets.expression) end, "Evaluate dynamically" },
+			e = { function() DapUi.eval(nil, { enter = true }) end, "Evaluate" },
+			t = { function() DapUiWidgets.centered_float(DapUiWidgets.threads) end, "Threads and Call Stack (A)" },
+			T = { function() DapUi.float_element("stacks", { enter = true }) end, "Threads and Call Stack (B)" },
 			G = { function() Dap.session() end, "Get Session" },
 			g = { function() Dap.goto_() end, "Go to line (no execute)" },
-			h = { function() DapUiWidgets.hover() end, "Hover Variables" },
+			--h = { function() DapUiWidgets.hover() end, "Hover Variables" }, -- Unecessary due to `<leader>de`, i.e., "Evaluate"
 			i = { function() Dap.step_into() end, "Step Into" },
+			L = { function() DapUiWidgets.centered_float(DapUiWidgets.scopes) end, "Locals (B)" },
+			l = { function() DapUi.float_element("scopes", { enter = true }) end, "Locals (A)" },
+			w = { function() DapUi.float_element("Watches", { enter = true }) end, "Watch list" },
 			o = { function() Dap.step_over() end, "Step Over" },
+			P = { function() DapUiWidgets.preview() end, "Preview as pane" },
 			p = { function() Dap.pause.toggle() end, "Pause" },
 			q = { function() Dap.close() end, "Quit" },
 			R = { function() Dap.run_to_cursor() end, "Run to Cursor" },
 			r = { function() Dap.repl.toggle() end, "Toggle Repl" },
 			S = { function() DapUiWidgets.scopes() end, "Scopes" },
 			s = { function()
+				vim.cmd(":wa")
 				os.execute("dotnet build")
 				Dap.run({
 					type = "coreclr",
