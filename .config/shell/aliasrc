@@ -86,7 +86,8 @@ get_pr_list_for_authenticated_user() {
 
 ## General 
 alias \
-  agora="date '+%Y-%m-%d_%Hh%Mm%Ss'" \
+	map="libreoffice $HOME/projetos/ricardo/mapa_da_ignorancia/mapa_da_ignorancia/mapa_da_ignorancia.ods" \
+	maptec="sc-im $HOME/projetos/ricardo/mapa_da_ignorancia/tecnico_consolidado/tec_consolidado.sc" \
   docs="cd $HOME/zettelkasten && $EDITOR ." \
   docsold="cd $HOME/Docs && $EDITOR ." \
   exa="exa --icons -1 --group-directories-first -s=extension -rs modified" \
