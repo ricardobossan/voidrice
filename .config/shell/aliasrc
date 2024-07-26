@@ -155,6 +155,7 @@ fi
 ## Games
 STEAM_GAME="steam steam://rungameid"
 alias \
+  dayz="$STEAM_GAME/221100" \
   sod="$STEAM_GAME/986130" \
   et2="$STEAM_GAME/227300" \
   zomboid="$STEAM_GAME/108600" \
