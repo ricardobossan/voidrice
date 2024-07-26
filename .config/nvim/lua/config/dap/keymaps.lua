@@ -264,6 +264,7 @@ function M.setup()
 			U = { function() DapUi.toggle() end, "Toggle UI" },
 			u = { function() Dap.step_out() end, "Step Out" },
 		},
+		E = { "<cmd>NvimTreeCollapse<cr>", "Colapse Explorer" },
 		e = { "<cmd>NvimTreeFindFileToggle<cr>", "Explorer" },
 		f = {
 			name = "Find",
