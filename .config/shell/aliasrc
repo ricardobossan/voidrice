@@ -140,6 +140,7 @@ alias \
   ric="cd $HOME/projetos/ricardo/ && nvim -c ObsidianToday" \
   size="du -h --max-depth=1|sort -rh" \
   suspend="systemctl suspend" \
+  hybernate="systemctl hybrid-sleep" \
 	cls="clear && exa" \
   #cls="clear && ls -At1hN --color=auto --group-directories-first" 
 
