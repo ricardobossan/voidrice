@@ -33,6 +33,6 @@ contas="cd $HOME/Ricanda/Financeiro/Historico/Contas/ && exa --icons -1" \
 treasure="$HOME/ORG/not_everyday/familia/ricanda/ricardo/controle/LOGIN/" \
 cfs="\$EDITOR $HOME/.config/shell/shortcutrc" \
 priori="\$EDITOR ~/Docs/pivot/LISTA_prioridades.md" \
-ads="cd $HOME/projetos/unilasalle/p5/ && cls" \
+ads="cd $HOME/projetos/unilasalle/p6/ && cls" \
 bys="cd $HOME/projetos/bys/ && $EDITOR . && cexa" \
 ric="cd $HOME/projetos/ricardo/ && $EDITOR ./ && cexa" \

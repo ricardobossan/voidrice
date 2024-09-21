@@ -97,7 +97,6 @@ alias \
   kamed="libreoffice $HOME/Ricanda/KAMAL/KAMAL_REMEDIOS.ods" \
   kamal="cd $HOME/Ricanda/KAMAL && exa" \
   lsa="ls -At1hN --color=auto --group-directories-first" \
-  mapa="libreoffice $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/mapa_da_ignorancia/mapa_da_ignorancia/mapa_da_ignorancia.ods" \
   meta="cd $HOME/Ricanda/meta/ && $EDITOR ." \
 	mountsafe="sudo mount -o async,big_writes,flush" \
   pl="pomo l --assend -n 5" \
@@ -108,6 +107,7 @@ alias \
   renameall="$HOME/.local/bin/rename_multiple" \
   repo="cd ~/source/repos/" \
   steam="flatpak run com.valvesoftware.Steam" \
+	discord="flatpak run com.discordapp.Discord" \
   uniproj="$HOME/HISTORICO/ATIVO/PROJETOS/UNILASALLE" \
   unrar="unrar-free" \
   wall="set-wallpaper" \
