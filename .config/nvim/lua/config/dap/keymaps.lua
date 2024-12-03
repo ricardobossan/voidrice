@@ -435,8 +435,9 @@ function M.setup()
 			},
 			p = {
 				name = "+Pull Request",
-				l = { "<cmd>Octo pr list [repo] [key=value] (2)<CR>", "List all PRs satisfying given filter" },
-				s = { "<cmd>Octo pr search<CR>", "Live issue search" },
+				-- l = { "<cmd>Octo pr list [repo] [key=value] (2)<CR>", "List all open PRs" },
+				l = { "<cmd>Octo pr search<CR>", "List all PRs" },
+				-- s = { "<cmd>Octo pr search<CR>", "Live issue search" },
 				["e "] = { "<cmd>Octo pr edit [repo]<CR>", "Edit PR <number> in current or specified repo" },
 				r = { "<cmd>Octo pr reopen<CR>", "Reopen the current PR" },
 				c = { "<cmd>Octo pr create<CR>", "Creates a new PR for the current branch" },
