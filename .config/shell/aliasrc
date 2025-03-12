@@ -98,7 +98,7 @@ alias \
   kamal="cd $HOME/Ricanda/KAMAL && exa" \
   lsa="ls -At1hN --color=auto --group-directories-first" \
   meta="cd $HOME/Ricanda/meta/ && $EDITOR ." \
-	mountsafe="sudo mount -o async,big_writes,flush" \
+	mountsafe="sudo mount -o async,flush" \
   pl="pomo l --assend -n 5" \
   pomobackup="pomo l --json > pomo_hist_\`date '+%Y-%m-%d_%Hh%Mm%Ss'\`.json && mv *.json /home/ricar/Ricanda/HISTORICO/pomo" \
   prnt="import \`date '+%Y-%m-%d_%Hh%Mm%Ss'\`.jpg" \
@@ -123,7 +123,7 @@ alias \
   hist="$EDITOR $HOME/.cache/zsh/history" \
   music="sudo apple-music-for-linux" \
   cpgpt="echo 'window.clear();Array.from(document.getElementsByClassName(\"text-base\")).forEach((x)=>console.log(x.textContent));'|xclip" \
-  prospect="cd $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/_oportunidades && clear && exa" \
+  prospect="cd $HOME/projetos/ricardo/processo_seletivo/" \
   prospectb="cd $HOME/HISTORICO/ATIVO/PROJETOS/RICARDO/proc_seletivo/_oportunidades && clear && libreoffice ./oportunidades.ods" \
   mupdf="/bin/mupdf -I" \
   pumldoc="$HOME/.local/bin/pumldoc.lua" \
@@ -142,6 +142,7 @@ alias \
   suspend="systemctl suspend" \
   hybernate="systemctl hybrid-sleep" \
 	cls="clear && exa" \
+	connect="sudo systemctl restart systemd-networkd"
   #cls="clear && ls -At1hN --color=auto --group-directories-first" 
 
 ## Linux only
@@ -156,6 +157,8 @@ fi
 ## Games
 STEAM_GAME="steam steam://rungameid"
 alias \
+	phasmo="$STEAM_GAME/739630" \
+  df="$STEAM_GAME/975370" \
   dayz="$STEAM_GAME/221100" \
   sod="$STEAM_GAME/986130" \
   et2="$STEAM_GAME/227300" \

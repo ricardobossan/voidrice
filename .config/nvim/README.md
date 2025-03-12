@@ -2,12 +2,12 @@
 nvim -v output:
   - NVIM: v0.9.5
   - Build type: Release
-  - LuaJIT: 2.1.1702233742
+  - LuaJIT: 2.1.1731601260
 so: Archlinux
 shell: zsh
 ---
 
-# MyNvim
+# `MyNvim`
 
 <!-- TODO: Own neovim -->
 
@@ -40,55 +40,58 @@ shell: zsh
 
 - Verifica versão do nvim. Na época, a minha foi `v0.9.0`:
 
-  ```bash
+  ```sh
   nvim -v
-  #NVIM v0.9.0-dev-769+g0f52e2c84
-  #Build type: Debug
-  #LuaJIT 2.1.0-beta3
-  #Compilation: /usr/bin/cc -g -Wall -Wextra -pedantic -Wno-unused-parameter -Wstrict-prototypes -std=gnu99 -Wshadow -Wconversion -Wdouble-promotion -Wmissing-noreturn -Wmissing-format-attribute -Wmissing-prototypes -Wimplicit-fallthrough -Wvla -fno-common -fdiagnostics-color=auto -fstack-protector-strong -DNVIM_UNIBI_HAS_VAR_FROM -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_TS_HAS_SET_MATCH_LIMIT -DNVIM_TS_HAS_SET_ALLOCATOR -DINCLUDE_GENERATED_DECLARATIONS -D_GNU_SOURCE -DMIN_LOG_LEVEL=1 -I/home/ricar/source/repos/neovim/.deps/usr/include/luajit-2.1 -I/usr/include -I/home/ricar/source/repos/neovim/.deps/usr/include -I/home/ricar/source/repos/neovim/build/src/nvim/auto -I/home/ricar/source/repos/neovim/build/include -I/home/ricar/source/repos/neovim/build/cmake.config -I/home/ricar/source/repos/neovim/src
-  #Compilado por ricar
-  #
-  #Features: +acl +iconv +tui
-  #See ":help feature-compile"
-  #
-  #    arquivo vimrc de sistema: "$VIM/sysinit.vim"
-  #            padrão para $VIM: "/usr/local/share/nvim"
-  #
-  #Run :checkhealth for more info
+     #NVIM v0.9.0-dev-769+g0f52e2c84
+     #Build type: Debug
+     #LuaJIT 2.1.0-beta3
+     #Compilation: /usr/bin/cc -g -Wall -Wextra -pedantic -Wno-unused-parameter -Wstrict-prototypes -std=gnu99 -Wshadow -Wconversion -Wdouble-promotion -Wmissing-noreturn -Wmissing-format-attribute -Wmissing-prototypes -Wimplicit-fallthrough -Wvla -fno-common -fdiagnostics-color=auto -fstack-protector-strong -DNVIM_UNIBI_HAS_VAR_FROM -DNVIM_MSGPACK_HAS_FLOAT32 -DNVIM_TS_HAS_SET_MATCH_LIMIT -DNVIM_TS_HAS_SET_ALLOCATOR -DINCLUDE_GENERATED_DECLARATIONS -D_GNU_SOURCE -DMIN_LOG_LEVEL=1 -I/home/ricar/source/repos/neovim/.deps/usr/include/luajit-2.1 -I/usr/include -I/home/ricar/source/repos/neovim/.deps/usr/include -I/home/ricar/source/repos/neovim/build/src/nvim/auto -I/home/ricar/source/repos/neovim/build/include -I/home/ricar/source/repos/neovim/build/cmake.config -I/home/ricar/source/repos/neovim/src
+     #Compilado por ricar
+     #
+     #Features: +acl +iconv +tui
+     #See ":help feature-compile"
+     #
+     #    arquivo vimrc de sistema: "$VIM/sysinit.vim"
+     #            padrão para $VIM: "/usr/local/share/nvim"
+     #
+     #Run :checkhealth for more info
   ```
 
 - Delete a instalação anterior:
 
   - Delete o codigo-fonte:
 
-    ```bash
+    ```sh
     rm -rfv ~/source/repos/neovim/
     ```
 
   - Remove Neovim com o gerenciador de arquivos:
 
-    ```bash
-    yay -R neovim
+    ```sh
+    yay -R neovim-spellsitter-git
+		yay -R nvim-lazy
+		yay -R vim-plugin-runtime
+		yay -R neovim
     ```
 
   - Remove binários:
 
-    ```bash
+    ```sh
     sudo rm /usr/local/bin/nvim
     ```
 
 - clone o código-fonte do Neovim:
 
-  ```bash
+  ```sh
   git clone https://github.com/neovim/neovim.git
-  git checkout release-0.9
+	git checkout origin/release-0.## # ## is the release number you want
   ```
 
 - Instale do código-fonte:
 
-  ```bash
+  ```sh
   make CMAKE_BUILD_TYPE=RelWithDebInfo
-  sudo make install
+	sudo make install
   ```
 
 ## Estrutura de Pastas
@@ -97,10 +100,10 @@ shell: zsh
 
   - Para mim:
 
-    ```bash
+    ```sh
     tree $HOME/.config/nvim
-    #├── init.lua
-    #├── lua
+           #├── init.lua
+           #├── lua
     ```
 
   - Módulos chamados a partir de `require("módulo")` ficam dentro da pasta `$HOME/.config/nvim/lua/`. Os nomes dos módulos são os caminhos sem a extensão `.lua`
@@ -109,7 +112,7 @@ shell: zsh
 
 1. Remove a pasta da instalação anterior de Packer:
 
-```bash
+```sh
 rm -rfv ~/.local/share/nvim/site/pack/packer
 ```
 
@@ -118,7 +121,7 @@ rm -rfv ~/.local/share/nvim/site/pack/packer
    - Só consegui fazer funcionar no Arch com o [pacote do AUR](https://aur.archlinux.org/packages/nvim-packer-git)
    - Configuração:
 
-     ```bash
+     ```sh
      touch ~/.config/nvim/plugins.lua
      ```
 
@@ -132,10 +135,10 @@ rm -rfv ~/.local/share/nvim/site/pack/packer
        	-- Packer can manage itself
        	use("wbthomason/packer.nvim")
        	--[[ Explorador de arquivos
-                     use {
-                     'nvim-tree/nvim-tree.lua',
-                     }
-                     --]]
+                                                               use {
+                                                               'nvim-tree/nvim-tree.lua',
+                                                               }
+                                                               --]]
        end)
        ```
 
@@ -219,6 +222,10 @@ use({
   })
   ```
 
-### Null-ls
+## After install:
 
-- [Link](
+```
+yay neovim-spellsitter-git
+yay nvim-lazy
+yay vim-copilot-git
+```
