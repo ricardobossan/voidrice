@@ -625,6 +625,9 @@ function M.setup()
 		},
 		o = {
 			name = "Obsidian",
+			b = { "<cmd>ObsidianWorkspace bys<CR>", "Change vault: bys" },
+			r = { "<cmd>ObsidianWorkspace ricardo<CR>", "Change vault: ricardo" },
+			d = { "<cmd>ObsidianWorkspace zettelkasten<CR>", "Change vault: docs" },
 			t = { "<cmd>ObsidianTemplate<CR>", "Insert Template" },
 			w = { "<cmd>ObsidianWorkspace<CR>", "Select Workspace" },
 			l = {

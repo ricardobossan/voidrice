@@ -14,7 +14,7 @@ unsetopt PROMPT_SP
 export EDITOR="nvim"
 export TERMINAL="st"
 export TERMINAL_PROG="st"
-export BROWSER="chromium"
+export BROWSER="/mnt/c/Users/v-rbossan/AppData/Local/BraveSoftware/Brave-Browser/Application/brave.exe"
 
 # Change the default crypto/weather monitor sites.
 # export CRYPTOURL="rate.sx"
