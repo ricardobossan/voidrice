@@ -625,11 +625,7 @@ function M.setup()
 		},
 		o = {
 			name = "Obsidian",
-			b = { "<cmd>ObsidianWorkspace bys<CR>", "Change vault: bys" },
-			r = { "<cmd>ObsidianWorkspace ricardo<CR>", "Change vault: ricardo" },
-			d = { "<cmd>ObsidianWorkspace zettelkasten<CR>", "Change vault: docs" },
 			t = { "<cmd>ObsidianTemplate<CR>", "Insert Template" },
-			w = { "<cmd>ObsidianWorkspace<CR>", "Select Workspace" },
 			l = {
 				name = "Link",
 				e = { "<cmd>ObsidianLink<CR>", "Add existing" },
@@ -655,6 +651,14 @@ function M.setup()
 				t = { "<cmd>ObsidianTags<CR>", "Search tags" },
 				l = { "<cmd>ObsidianLinks<CR>", "Search links for current note" },
 			},
+			v = {
+			name = "Vaults",
+			w = { "<cmd>ObsidianWorkspace<CR>", "Select Workspace" },
+			b = { "<cmd>ObsidianWorkspace bys<CR>", "Change vault: bys" },
+			d = { "<cmd>ObsidianWorkspace zettelkasten<CR>", "Change vault: docs" },
+			r = { "<cmd>ObsidianWorkspace ricardo<CR>", "Change vault: ricardo" },
+			s = { "<cmd>ObsidianWorkspace src<CR>", "Change vault: src" },
+			}
 		},
 		q = { "<cmd>q!<CR>", "Quit" },
 		n = {
