@@ -86,7 +86,7 @@ get_pr_list_for_authenticated_user() {
 
 ## General 
 alias \
-	map="libreoffice $HOME/projetos/ricardo/mapa_da_ignorancia/mapa_da_ignorancia/mapa_da_ignorancia.ods" \
+	map="libreoffice $HOME/projetos/ricardo/mapa_da_ignorancia/mapa_da_ignorancia/mapa_da_ignorancia.csv" \
 	maptec="sc-im $HOME/projetos/ricardo/mapa_da_ignorancia/tecnico_consolidado/tec_consolidado.sc" \
   docs="cd $HOME/zettelkasten && $EDITOR ." \
   docsold="cd $HOME/Docs && $EDITOR ." \

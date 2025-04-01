@@ -26,6 +26,10 @@ function M.setup()
 				name = "Unilasalle",
 				path = "~/projetos/unilasalle/",
 			},
+			{
+				name = "src",
+				path = "~/source/repos/"
+			},
 		},
 		templates = {
 			subdir = "templates",
