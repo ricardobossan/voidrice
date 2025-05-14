@@ -1,11 +1,16 @@
-echo ""
-echo "#########################"
-echo "#### Looking up GitHub..."
-echo "#########################"
-echo ""
-echo ""
-
-gh status
+#!/bin/bash
+clear
+git fetch --all
+git pull upstream main
+clear
+#echo ""
+#echo "#########################"
+#echo "#### Looking up GitHub..."
+#echo "#########################"
+#echo ""
+#echo ""
+#
+#gh status
 
 echo "###############################"
 echo -e "#### Check PRs for review on:\n"${PWD}" ..."
@@ -17,7 +22,7 @@ echo "####################"
 echo "######## Colleagues:"
 echo "####################"
 
-for user in Epica3055 LeafShi1 SimonZhao888; do gh pr list -L 200 -A $user; done
+for user in Epica3055 LeafShi1; do gh pr list -L 200 -A $user; done
 
 echo ""
 echo ""
@@ -33,7 +38,9 @@ echo "#################"
 echo "######## Testers:"
 echo "#################"
 
-gh pr list -L 200 -S 10453
+gh pr list -L 200 -S 10453 # Coverage to controls
+gh pr list -L 200 -S 10773 # Coverage to designers
+gh pr list -L 200 -S 13442 # Coverage to buttons
 
 echo ""
 echo ""
